@@ -15,7 +15,8 @@
         </item>        <!-- Customize your theme here. -->
         <item name="android:navigationBarColor">@color/white</item>
     </style>
-
+    <color name="button_normal">#F7F7F7</color>
+    <color name="button_pressed">#E7E7E7</color>
     <color name="colorText">@color/black</color>
 
     <style name="Theme.TestApp.NoActionBar">
