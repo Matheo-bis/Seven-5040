@@ -26,7 +26,7 @@ public class Jeu1Activity extends AppCompatActivity {
         setContentView(R.layout.activity_jeu1);
         //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         //TEMPORAIRE
-        setQuestion("3x+7-9=0\n\nx=____________");
+        setQuestion(Debutant.equation());
 
     }
 
