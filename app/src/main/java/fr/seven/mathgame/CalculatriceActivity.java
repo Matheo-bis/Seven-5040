@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class Calculatrice extends AppCompatActivity {
+public class CalculatriceActivity extends AppCompatActivity {
 
     private Button[] buttons = new Button[20];
     private TextView resultat;

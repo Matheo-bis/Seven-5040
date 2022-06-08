@@ -16,50 +16,50 @@
         android:theme="@style/Theme.TestApp"
         tools:targetApi="31">
         <activity
-            android:name=".Historique_jeu2"
+            android:name=".HistoriqueJeu2Activity"
             android:exported="false"
-            android:parentActivityName=".Jeu2"/>
+            android:parentActivityName=".Jeu2Activity"/>
         <activity
-            android:name=".Ecran_fin"
+            android:name=".EcranFinActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".Jeu2"
+            android:name=".Jeu2Activity"
             android:exported="false" />
         <activity
-            android:name=".Lancement_jeu2"
+            android:name=".LancementJeu2Activity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".Historique_jeu1"
+            android:name=".HistoriqueJeu1Activity"
             android:exported="false"
-            android:parentActivityName=".Jeu1" />
+            android:parentActivityName=".Jeu1Activity" />
         <activity
-            android:name=".Jeu1"
-            android:exported="false"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".Lancement_jeu1"
+            android:name=".Jeu1Activity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".Cours"
+            android:name=".LancementJeu1Activity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".Parametres"
+            android:name=".CoursActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".Calculatrice"
+            android:name=".ParametresActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".Score"
+            android:name=".CalculatriceActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".Profil"
+            android:name=".ScoreActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ProfilActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity
