@@ -38,8 +38,15 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void goto_param(View view){
-        Intent intent=new Intent(this, ParametresActivity.class);
+    public void goto_win(View view){
+        Intent intent=new Intent(this, EcranFinActivity.class);
+        intent.putExtra("action","win");
+        startActivity(intent);
+    }
+
+    public void goto_lose(View view){
+        Intent intent=new Intent(this, EcranFinActivity.class);
+        intent.putExtra("action","lose");
         startActivity(intent);
     }
 }

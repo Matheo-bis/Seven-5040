@@ -21,7 +21,12 @@ public class EcranFinActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ecran_fin);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            win(null);
+            if(getIntent().getStringExtra("action").compareTo("lose")==0){
+                lose(null);
+            }
+            else{
+                win(null);
+            }
         }
     }
 

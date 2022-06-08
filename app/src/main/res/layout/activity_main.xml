@@ -1,49 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="226dp"
-        android:layout_weight="0.4" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button10"
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="_XxJustinDu13xX_"
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorText"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="200dp"
+        android:layout_height="2dp"
+        android:background="@color/button_normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TableLayout
+        android:id="@+id/tableLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:background="@drawable/button"
-        android:onClick="goto_jeu1"
-        android:text="Jeu 1" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.29000002">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:background="@drawable/button"
-        android:onClick="goto_calc"
-        android:text="Calc" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button15"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:layout_weight="0.4"
-        android:background="@drawable/button"
-        android:minHeight="48dp"
-        android:onClick="goto_param"
-        android:text="Paramètres" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button10"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_margin="30dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/button"
+                android:onClick="goto_jeu1"
+                android:text="Jeu 1" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="301dp"
-        android:layout_weight="0.4" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button"
+                style="@style/Widget.AppCompat.Button.Borderless"
 
-</LinearLayout>
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_margin="30dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/button"
+                android:onClick="goto_calc"
+                android:text="Calc" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button101"
+                style="@style/Widget.AppCompat.Button.Borderless"
+
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_margin="30dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/button"
+                android:onClick="goto_win"
+                android:text="Win" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button111"
+                style="@style/Widget.AppCompat.Button.Borderless"
+
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_margin="30dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/button"
+                android:onClick="goto_lose"
+                android:text="Lose" />
+        </TableRow>
+
+    </TableLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="409dp"
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="1dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,7 +18,7 @@
 
 
     </style>
-    <color name="button_normal">#070707</color>
+    <color name="button_normal">#232323</color>
     <color name="button_pressed">#333333</color>
     <color name="colorText">@color/white</color>
 </resources>
