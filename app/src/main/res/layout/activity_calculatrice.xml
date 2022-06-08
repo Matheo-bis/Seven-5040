@@ -4,15 +4,278 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="Onclick"
     tools:context=".Calculatrice">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ceci est la calculatrice"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/button1"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+                android:fontFamily="monospace"
+                android:text="1"
+                android:textColor="@color/colorText"
+                android:textSize="24sp"
+                android:typeface="sans" />
+
+            <Button
+                android:id="@+id/button2"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+                android:fontFamily="monospace"
+                android:onClick="onCli"
+                android:text="2"
+                android:textColor="@color/colorText"
+                android:textSize="24sp"
+                android:typeface="sans" />
+
+            <Button
+                android:id="@+id/button3"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+                android:fontFamily="monospace"
+                android:text="3"
+                android:textColor="@color/colorText"
+                android:textSize="24sp"
+                android:typeface="sans" />
+
+            <Button
+                android:id="@+id/buttondiv"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.4"
+                android:fontFamily="monospace"
+                android:text="÷"
+                android:textColor="@color/colorText"
+                android:textSize="24sp"
+                android:typeface="sans" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/button4"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+                android:fontFamily="monospace"
+                android:text="4"
+                android:textColor="@color/colorText"
+                android:textSize="24sp"
+                android:typeface="sans" />
+
+            <Button
+                android:id="@+id/button5"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+                android:fontFamily="monospace"
+                android:text="5"
+                android:textColor="@color/colorText"
+                android:textSize="24sp"
+                android:typeface="sans" />
+
+            <Button
+                android:id="@+id/button6"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+                android:fontFamily="monospace"
+                android:text="6"
+                android:textColor="@color/colorText"
+                android:textSize="24sp"
+                android:typeface="sans" />
+
+            <Button
+                android:id="@+id/buttonmult"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.4"
+                android:fontFamily="monospace"
+                android:text="×"
+                android:textColor="@color/colorText"
+                android:textSize="24sp"
+                android:typeface="sans" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/button7"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+                android:fontFamily="monospace"
+                android:text="7"
+                android:textColor="@color/colorText"
+                android:textSize="24sp"
+                android:typeface="sans" />
+
+            <Button
+                android:id="@+id/button8"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+                android:fontFamily="monospace"
+                android:text="8"
+                android:textColor="@color/colorText"
+                android:textSize="24sp"
+                android:typeface="sans" />
+
+            <Button
+                android:id="@+id/button9"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+                android:fontFamily="monospace"
+                android:text="9"
+                android:textColor="@color/colorText"
+                android:textSize="24sp"
+                android:typeface="sans" />
+
+            <Button
+                android:id="@+id/buttonadd"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.4"
+                android:fontFamily="monospace"
+                android:text="+"
+                android:textColor="@color/colorText"
+                android:textSize="24sp"
+                android:typeface="sans" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/buttondel"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+                android:fontFamily="monospace"
+                android:onClick="lose"
+                android:text="Del"
+                android:textColor="#F44336"
+                android:textSize="24sp"
+                android:typeface="sans" />
+
+            <Button
+                android:id="@+id/button0"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+                android:fontFamily="monospace"
+                android:onClick="OnCLICKZERO"
+                android:text="0"
+                android:textColor="@color/colorText"
+                android:textSize="24sp"
+                android:typeface="sans" />
+
+            <Button
+                android:id="@+id/buttonok"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+                android:fontFamily="monospace"
+                android:onClick="win"
+                android:text="OK"
+                android:textColor="#8BC34A"
+                android:textSize="24sp"
+                android:typeface="sans" />
+
+            <Button
+                android:id="@+id/buttonsub"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.4"
+                android:fontFamily="monospace"
+                android:text="-"
+                android:textColor="@color/colorText"
+                android:textSize="24sp"
+                android:typeface="sans" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/calcul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="108dp"
+        android:layout_weight="0"
+        android:fontFamily="sans-serif-black"
+        android:text="3x12"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@id/tableLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:fontFamily="sans-serif-black"
+        android:text="38 - 2"
+        android:textColor="#142488"
+        android:textColorLink="#FFFFFF"
+        android:textIsSelectable="false"
+        android:textSize="96sp"
+        app:layout_constraintBottom_toTopOf="@+id/calcul"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.081" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
