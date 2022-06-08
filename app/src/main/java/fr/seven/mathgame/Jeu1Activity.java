@@ -103,8 +103,18 @@ public class Jeu1Activity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void buttonOK(View view){
-        Intent intent=new Intent(this, EcranFinActivity.class);
-        startActivity(intent);
+        String text = ((TextView) findViewById(R.id.textView)).getText().toString();
+        int comparaison = (Debutant.resultat()).compareTo(text);
+        if (comparaison == 0) {
+            Intent intent = new Intent(this, EcranFinActivity.class);
+            intent.putExtra("action","win");
+            startActivity(intent);
+        }
+        else{
+            Intent intent = new Intent(this, EcranFinActivity.class);
+            intent.putExtra("action","lose");
+            startActivity(intent);
+        }
     }
     public void buttonDEL(View view){
         if(EquationHistory.size()>1)
@@ -116,6 +126,4 @@ public class Jeu1Activity extends AppCompatActivity {
     public void buttonCE(View view){
         setQuestion(EquationHistory.get(0));
     }
-
-
 }
