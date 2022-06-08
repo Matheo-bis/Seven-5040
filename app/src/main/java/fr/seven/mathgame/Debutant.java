@@ -9,13 +9,14 @@ public class Debutant extends Equation {
         Random rand = new Random();
         switch (rand.nextInt(3)) {
             case 0:
-                jeuatrouchiffre();
+                return jeuatrouchiffre();
             case 1:
-                jeuatrouoperateur();
+                return jeuatrouchiffre();
+                //jeuatrouoperateur();
             case 2:
-                return "";
+                return jeuatrouchiffre();
             default:
-                return "";
+                return "Attention";
         }
     }
 
