@@ -50,6 +50,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void goto_wide(View view){
+        Intent intent=new Intent(this, EcranFinActivity.class);
+        intent.putExtra("action","wide");
+        startActivity(intent);
+    }
+
+
     public void goto_settings(View view){
         Intent intent=new Intent(this, ParametresActivity.class);
         startActivity(intent);

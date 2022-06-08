@@ -4,6 +4,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -22,11 +23,15 @@ public class EcranFinActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ecran_fin);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            if(getIntent().getStringExtra("action").compareTo("lose")==0){
-                lose(null);
-            }
-            else{
-                win(null);
+            switch(getIntent().getStringExtra("action")){
+                case "lose":
+                    lose(null);
+                    break;
+                case "win":
+                    win(null);
+                    break;
+                default:
+                    wide(null);
             }
         }
     }
@@ -34,7 +39,9 @@ public class EcranFinActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void win(View view){
         Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        v.vibrate(50);
+        long[] a = {0,50,50,50};
+        VibrationEffect V  = VibrationEffect.createWaveform(a,-1);
+        v.vibrate(V);
 
         VideoView videoView = findViewById(R.id.videoView);
         if((getApplicationContext().getResources().getConfiguration().uiMode& Configuration.UI_MODE_NIGHT_YES)!=0)
@@ -47,16 +54,60 @@ public class EcranFinActivity extends AppCompatActivity {
         videoView.setVisibility(View.VISIBLE);
         findViewById(R.id.losetext).setVisibility(View.GONE);
         findViewById(R.id.wintext).setVisibility(View.VISIBLE);
-        MediaPlayer mediaPlayer;
-        if(getApplicationContext().getResources().getConfiguration().orientation==Configuration.ORIENTATION_LANDSCAPE) {
-            mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.wide);
-            mediaPlayer.seekTo(400);
-        }
-        else {
-            mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.victory_audio);
-        }
+        findViewById(R.id.trolltext).setVisibility(View.GONE);
+
+        MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.wide);
+        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.victory_audio);
+
+        mediaPlayer.seekTo(400);
         mediaPlayer.start();
+        videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                Intent intent=new Intent(getApplicationContext(), Jeu1Activity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
+
     }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void wide(View view){
+        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        long[] a = {0,200,200,200,200,200};
+        VibrationEffect V  = VibrationEffect.createWaveform(a,-1);
+        v.vibrate(V);
+
+        VideoView videoView = findViewById(R.id.videoView);
+        if((getApplicationContext().getResources().getConfiguration().uiMode& Configuration.UI_MODE_NIGHT_YES)!=0)
+            videoView.setVideoURI(Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.wide_dark));
+        else
+            videoView.setVideoURI(Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.wide));
+        videoView.setZOrderOnTop(true);
+        videoView.seekTo(0);
+        videoView.start();
+        videoView.setVisibility(View.VISIBLE);
+        findViewById(R.id.losetext).setVisibility(View.GONE);
+        findViewById(R.id.wintext).setVisibility(View.GONE);
+        findViewById(R.id.trolltext).setVisibility(View.VISIBLE);
+
+        MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.wide);
+        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.wide_audio);
+        mediaPlayer.start();
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                Intent intent=new Intent(getApplicationContext(), Jeu1Activity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void lose(View view){
         Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
@@ -73,13 +124,16 @@ public class EcranFinActivity extends AppCompatActivity {
         videoView.setVisibility(View.VISIBLE);
         findViewById(R.id.losetext).setVisibility(View.VISIBLE);
         findViewById(R.id.wintext).setVisibility(View.GONE);
+        findViewById(R.id.trolltext).setVisibility(View.GONE);
         MediaPlayer mediaPlayer;
-        if(getApplicationContext().getResources().getConfiguration().orientation==Configuration.ORIENTATION_LANDSCAPE) {
-            mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.wide);
-        }
-        else {
-            mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.lose_audio);
-        }
+        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.lose_audio);
+        videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                finish();
+            }
+        });
+
         mediaPlayer.start();
     }
 
@@ -88,6 +142,8 @@ public class EcranFinActivity extends AppCompatActivity {
         videoView.setVisibility(View.INVISIBLE);
         findViewById(R.id.losetext).setVisibility(View.GONE);
         findViewById(R.id.wintext).setVisibility(View.GONE);
+        findViewById(R.id.trolltext).setVisibility(View.GONE);
+
     }
 
 }

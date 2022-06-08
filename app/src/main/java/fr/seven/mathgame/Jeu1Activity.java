@@ -114,6 +114,7 @@ public class Jeu1Activity extends AppCompatActivity {
             Intent intent = new Intent(this, EcranFinActivity.class);
             intent.putExtra("action","lose");
             startActivity(intent);
+            buttonCE(null);
         }
     }
     public void buttonDEL(View view){
@@ -126,4 +127,6 @@ public class Jeu1Activity extends AppCompatActivity {
     public void buttonCE(View view){
         setQuestion(EquationHistory.get(0));
     }
+
+
 }
