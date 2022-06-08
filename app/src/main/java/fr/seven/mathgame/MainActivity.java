@@ -2,7 +2,6 @@ package fr.seven.mathgame;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Context;
 import android.content.Intent;
@@ -80,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goto_calc(View view){
-        Intent intent=new Intent(this, Calculatrice.class);
+        Intent intent=new Intent(this, CalculatriceActivity.class);
         startActivity(intent);
     }
 }
