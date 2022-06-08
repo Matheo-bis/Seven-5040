@@ -76,7 +76,7 @@ public class EcranFinActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void wide(View view){
         Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        long[] a = {0,200,200,200,200,200};
+        long[] a = {500,500,500,500,500,500};
         VibrationEffect V  = VibrationEffect.createWaveform(a,-1);
         v.vibrate(V);
 
@@ -96,7 +96,7 @@ public class EcranFinActivity extends AppCompatActivity {
         MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.wide);
         mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.wide_audio);
         mediaPlayer.start();
-        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+        videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
                 Intent intent=new Intent(getApplicationContext(), Jeu1Activity.class);
@@ -115,10 +115,12 @@ public class EcranFinActivity extends AppCompatActivity {
         VibrationEffect V  = VibrationEffect.createWaveform(a,-1);
         v.vibrate(V);
         VideoView videoView = findViewById(R.id.videoView);
+
         if((getApplicationContext().getResources().getConfiguration().uiMode& Configuration.UI_MODE_NIGHT_YES)!=0)
             videoView.setVideoURI(Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.lose_dark));
         else
-            videoView.setVideoURI(Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.lose));        videoView.setZOrderOnTop(true);
+            videoView.setVideoURI(Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.lose));
+        videoView.setZOrderOnTop(true);
         videoView.seekTo(0);
         videoView.start();
         videoView.setVisibility(View.VISIBLE);
