@@ -49,4 +49,9 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("action","lose");
         startActivity(intent);
     }
+
+    public void goto_settings(View view){
+        Intent intent=new Intent(this, ParametresActivity.class);
+        startActivity(intent);
+    }
 }

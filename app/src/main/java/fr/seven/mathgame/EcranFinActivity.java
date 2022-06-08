@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.VideoView;
 
@@ -46,8 +47,14 @@ public class EcranFinActivity extends AppCompatActivity {
         videoView.setVisibility(View.VISIBLE);
         findViewById(R.id.losetext).setVisibility(View.GONE);
         findViewById(R.id.wintext).setVisibility(View.VISIBLE);
-        MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(),R.raw.victory_audio);
-        mediaPlayer.seekTo(400);
+        MediaPlayer mediaPlayer;
+        if(getApplicationContext().getResources().getConfiguration().orientation==Configuration.ORIENTATION_LANDSCAPE) {
+            mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.wide);
+            mediaPlayer.seekTo(400);
+        }
+        else {
+            mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.victory_audio);
+        }
         mediaPlayer.start();
     }
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -66,7 +73,13 @@ public class EcranFinActivity extends AppCompatActivity {
         videoView.setVisibility(View.VISIBLE);
         findViewById(R.id.losetext).setVisibility(View.VISIBLE);
         findViewById(R.id.wintext).setVisibility(View.GONE);
-        MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(),R.raw.lose_audio);
+        MediaPlayer mediaPlayer;
+        if(getApplicationContext().getResources().getConfiguration().orientation==Configuration.ORIENTATION_LANDSCAPE) {
+            mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.wide);
+        }
+        else {
+            mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.lose_audio);
+        }
         mediaPlayer.start();
     }
 
