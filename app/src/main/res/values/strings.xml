@@ -10,4 +10,10 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_lancement_jeu2">Lancement_jeu2</string>
+    
+    <string-array name="difficulties">
+        <item>Débutant</item>
+        <item>Intermédiaire</item>
+        <item>Expert</item>
+    </string-array>
 </resources>

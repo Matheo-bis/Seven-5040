@@ -37,4 +37,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent=new Intent(this, CalculatriceActivity.class);
         startActivity(intent);
     }
+
+    public void goto_param(View view){
+        Intent intent=new Intent(this, ParametresActivity.class);
+        startActivity(intent);
+    }
 }

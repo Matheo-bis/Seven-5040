@@ -9,7 +9,7 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="226dp"
         android:layout_weight="0.4" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -30,9 +30,20 @@
         android:onClick="goto_calc"
         android:text="Calc" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button15"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:layout_weight="0.4"
+        android:background="@drawable/button"
+        android:minHeight="48dp"
+        android:onClick="goto_param"
+        android:text="Paramètres" />
+
     <Space
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="301dp"
         android:layout_weight="0.4" />
 
 </LinearLayout>
