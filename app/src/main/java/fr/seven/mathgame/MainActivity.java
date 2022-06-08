@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -76,5 +77,10 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.losetext).setVisibility(View.GONE);
         findViewById(R.id.wintext).setVisibility(View.GONE);
         findViewById(R.id.endscreen).setVisibility(View.VISIBLE);
+    }
+
+    public void goto_calc(View view){
+        Intent intent=new Intent(this, Calculatrice.class);
+        startActivity(intent);
     }
 }
