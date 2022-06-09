@@ -42,11 +42,12 @@ public class Debutant extends Equation {
                 toutresultat = Sumx + operateur + Sumy + "=" + SumResultat;
                 switch (rand.nextInt(2)) {
                     case 0:
-                        return Sumx + operateur + Sumy + "=" + new String(new char[String.valueOf(SumResultat).length()]).replace('\u0000', '_');
+                        return Sumx + operateur + Sumy + "=<b><font color='#33FF99'>" + new String(new char[String.valueOf(SumResultat).length()]).replace('\u0000', '_')+"</font></b>";
                     case 1:
-                        return Sumx +"_"+Sumy+ "=" +SumResultat;
+                        return Sumx +"<b><font color='#33FF99'>_</font></b>"+Sumy+ "=" +SumResultat;
                     case 2:
                         return SumResultat+"";
+
                     default:
                         return "Attention";
                 }
@@ -63,9 +64,9 @@ public class Debutant extends Equation {
                 toutresultat = Minx+operateur+Miny+"="+MinResultat;
                 switch (rand.nextInt(2)) {
                     case 0:
-                        return Minx + operateur + Miny + "=" + new String(new char[String.valueOf(MinResultat).length()]).replace('\u0000', '_');
+                        return Minx + operateur + Miny + "=<b><font color='#33FF99'>" + new String(new char[String.valueOf(MinResultat).length()]).replace('\u0000', '_')+"</font></b>";
                     case 1:
-                        return Minx+"_"+Miny+ "=" +MinResultat;
+                        return Minx+"<b><font color='#33FF99'>_</font></b>"+Miny+ "=" +MinResultat;
                     default:
                         return "Attention";
                 }
@@ -77,9 +78,9 @@ public class Debutant extends Equation {
                 toutresultat = Multx+operateur+Multy+"="+MultResultat;
                 switch (rand.nextInt(2)) {
                     case 0:
-                        return Multx + operateur + Multy + "=" + new String(new char[String.valueOf(MultResultat).length()]).replace('\u0000', '_');
+                        return Multx + operateur + Multy + "=<b><font color='#33FF99'>" + new String(new char[String.valueOf(MultResultat).length()]).replace('\u0000', '_')+"</font></b>";
                     case 1:
-                        return Multx + "_" + Multy + "="+ MultResultat;
+                        return Multx + "<b><font color='#33FF99'>_</font></b>" + Multy + "="+ MultResultat;
                     default:
                         return "Attention";
                 }
