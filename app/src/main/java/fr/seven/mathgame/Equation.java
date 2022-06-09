@@ -1,5 +1,5 @@
 package fr.seven.mathgame;
 
 public abstract class Equation {
-    int resultat;
+    public static String toutresultat;
 }
