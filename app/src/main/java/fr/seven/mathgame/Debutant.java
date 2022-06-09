@@ -45,6 +45,8 @@ public class Debutant extends Equation {
                         return Sumx + operateur + Sumy + "=" + new String(new char[String.valueOf(SumResultat).length()]).replace('\u0000', '_');
                     case 1:
                         return Sumx +"_"+Sumy+ "=" +SumResultat;
+                    case 2:
+                        return SumResultat+"";
                     default:
                         return "Attention";
                 }
