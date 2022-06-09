@@ -110,6 +110,7 @@ public class Jeu1Activity extends AppCompatActivity {
             Intent intent = new Intent(this, EcranFinActivity.class);
             intent.putExtra("action","win");
             startActivity(intent);
+            ScoreActivity.setScore(1);
         }
         else{
             Intent intent = new Intent(this, EcranFinActivity.class);
