@@ -104,7 +104,7 @@ public class Jeu1Activity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void buttonOK(View view){
-        String text = EquationHistory.get(EquationHistory.size() - 1);
+        String text = ((TextView)findViewById(R.id.textView)).getText().toString();
         int comparaison = (Debutant.resultat()).compareTo(text);
         if (comparaison == 0) {
             Intent intent = new Intent(this, EcranFinActivity.class);
