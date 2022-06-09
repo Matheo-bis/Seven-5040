@@ -52,6 +52,7 @@ public class EcranFinActivity extends AppCompatActivity {
         videoView.seekTo(0);
         videoView.start();
         videoView.setVisibility(View.VISIBLE);
+        videoView.requestFocus();
         findViewById(R.id.losetext).setVisibility(View.GONE);
         findViewById(R.id.wintext).setVisibility(View.VISIBLE);
         findViewById(R.id.trolltext).setVisibility(View.GONE);
@@ -64,9 +65,7 @@ public class EcranFinActivity extends AppCompatActivity {
         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
-                Intent intent=new Intent(getApplicationContext(), Jeu1Activity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+                nextActivity();
             }
         });
 
@@ -89,6 +88,7 @@ public class EcranFinActivity extends AppCompatActivity {
         videoView.seekTo(0);
         videoView.start();
         videoView.setVisibility(View.VISIBLE);
+        videoView.requestFocus();
         findViewById(R.id.losetext).setVisibility(View.GONE);
         findViewById(R.id.wintext).setVisibility(View.GONE);
         findViewById(R.id.trolltext).setVisibility(View.VISIBLE);
@@ -99,10 +99,7 @@ public class EcranFinActivity extends AppCompatActivity {
         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
-                Intent intent=new Intent(getApplicationContext(), Jeu1Activity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                finish();
+                nextActivity();
             }
         });
     }
@@ -124,6 +121,7 @@ public class EcranFinActivity extends AppCompatActivity {
         videoView.seekTo(0);
         videoView.start();
         videoView.setVisibility(View.VISIBLE);
+        videoView.requestFocus();
         findViewById(R.id.losetext).setVisibility(View.VISIBLE);
         findViewById(R.id.wintext).setVisibility(View.GONE);
         findViewById(R.id.trolltext).setVisibility(View.GONE);
@@ -132,7 +130,7 @@ public class EcranFinActivity extends AppCompatActivity {
         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
-                finish();
+                nextActivity();
             }
         });
 
@@ -147,5 +145,19 @@ public class EcranFinActivity extends AppCompatActivity {
         findViewById(R.id.trolltext).setVisibility(View.GONE);
 
     }
+
+    public void nextActivity(){
+        if(getIntent().getStringExtra("action").compareTo("lose")!=0){
+            Intent intent=new Intent(getApplicationContext(), Jeu1Activity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        }
+        finish();
+
+    }
+    public void next(View view){
+        nextActivity();
+    }
+
 
 }
