@@ -6,9 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".Jeu1Activity">
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/tableLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +27,58 @@
             android:textColor="@color/colorText"
             android:textSize="24sp"
             android:typeface="sans" />
-    </FrameLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button20"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            android:layout_weight="0.2"
+
+            android:background="@drawable/button"
+            android:fontFamily="monospace"
+            android:onClick="buttonclick"
+            android:text="1"
+            android:textColor="@color/colorText"
+            android:textSize="24sp"
+            android:typeface="sans"
+            android:visibility="gone" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button19"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            android:layout_weight="0.2"
+
+            android:background="@drawable/button"
+            android:fontFamily="monospace"
+            android:onClick="buttonclick"
+            android:text="1"
+            android:textColor="@color/colorText"
+            android:textSize="24sp"
+            android:typeface="sans"
+            android:visibility="gone" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button22"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            android:layout_weight="0.2"
+
+            android:background="@drawable/button"
+            android:fontFamily="monospace"
+            android:onClick="buttonclick"
+            android:text="1"
+            android:textColor="@color/colorText"
+            android:textSize="24sp"
+            android:typeface="sans"
+            android:visibility="gone" />
+    </LinearLayout>
 
     <TableLayout
         android:id="@+id/tableLayout2"
@@ -410,7 +462,6 @@
 
         </TableRow>
     </TableLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

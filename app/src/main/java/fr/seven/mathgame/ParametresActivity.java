@@ -20,6 +20,7 @@ public class ParametresActivity extends AppCompatActivity implements AdapterView
 
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
+    public static int selectiondifficultes;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,13 +55,17 @@ public class ParametresActivity extends AppCompatActivity implements AdapterView
         switch (sharedPreferences.getString("Difficulty", "ERREUR")){
             case "Débutant":
                 pos=0;
+                selectiondifficultes =1;
                 break;
             case "Intermédiaire":
                 pos=1;
+                selectiondifficultes =2;
                 break;
             case "Expert":
                 pos=2;
+                selectiondifficultes=3;
                 break;
+                // probleme on doit avoir retourner une deuxieme fois pour que le mode se seletionne bien
         }
         spinner.setSelection(pos);
         System.out.println("La difficulté est: "+sharedPreferences.getString("Difficulty", "ERREUR"));
@@ -125,5 +130,8 @@ public class ParametresActivity extends AppCompatActivity implements AdapterView
     public void goto_profil(View view){
         Intent intent=new Intent(this, ProfilActivity.class);
         startActivity(intent);
+    }
+    public static int Selectiondiff(){
+        return selectiondifficultes;
     }
 }

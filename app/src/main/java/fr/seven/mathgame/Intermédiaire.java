@@ -4,37 +4,14 @@ import java.util.Random;
 
 public class Intermédiaire extends Equation{
 
-    static String equation() {
-        Random rand = new Random();
-        switch (rand.nextInt(3)) {
-            case 0:
-                return jeuatrouchiffre();
-            case 1:
-                return jeuatrouchiffre();
-            //jeuatrouoperateur();
-            case 2:
-                return jeuatrouchiffre();
-            default:
-                return "Attention";
-        }
-    }
 
-    private static String jeuatrouoperateur(){
-        Random rand = new Random();
-        switch (rand.nextInt(2)){
-            case 0:
-                return "";
-            default:
-                return "Atttention";
-        }
-    }
 
     static String resultat() {
         return String.valueOf(toutresultat);
     }
 
 
-    private static String jeuatrouchiffre() {
+    static String equation() {
         Random rand = new Random();
         String operateur;
         String operateur1;
@@ -44,12 +21,14 @@ public class Intermédiaire extends Equation{
                 operateur = "+";
                 int Sumx = rand.nextInt(51)+50;
                 int Sumy = rand.nextInt(51)+50;
-                String StringSumx = String.valueOf(Sumx);
-                String StringSumy = String.valueOf(Sumy);
                 int SumResultat = Sumx + Sumy;
-                toutresultat = StringSumx+operateur+StringSumy +"="+ SumResultat;
-                return StringSumx + operateur + StringSumy + "=" + new String(new char[String.valueOf(SumResultat).length()]).replace('\u0000', '_');
-
+                toutresultat = Sumx+operateur+Sumy +"="+ SumResultat;
+                switch (rand.nextInt(2)) {
+                    case 0:
+                        return Sumx + operateur + Sumy + "=<b><font color='#33FF99'>" + new String(new char[String.valueOf(SumResultat).length()]).replace('\u0000', '_')+"</font></b>";
+                    case 1:
+                        return Sumx+"<b><font color='#33FF99'>_</font></b>"+Sumy+ "=" +SumResultat;
+                }
             case 1:
                 operateur = "-";
                 int Minx = rand.nextInt(151)+50;
@@ -59,45 +38,52 @@ public class Intermédiaire extends Equation{
                     Miny = Minx;
                     Minx = replace;
                 }
-                String StringMinx = String.valueOf(Minx);
-                String StringMiny = String.valueOf(Miny);
                 int MinResultat = Minx - Miny;
-                toutresultat = StringMinx+operateur+StringMiny+"="+MinResultat;
-                return StringMinx + operateur + StringMiny + "=" + new String(new char[String.valueOf(MinResultat).length()]).replace('\u0000', '_');
-
+                toutresultat = Minx+operateur+Miny+"="+MinResultat;
+                switch(rand.nextInt(2)) {
+                    case 0:
+                        return Minx + operateur + Miny + "=<b><font color='#33FF99'>" + new String(new char[String.valueOf(MinResultat).length()]).replace('\u0000', '_') + "</font></b>";
+                    case 1:
+                        return Minx + "<b><font color='#33FF99'>_</font></b>" + Miny + "=" + MinResultat;
+                }
             case 2:
                 operateur = "*";
                 int Multx = rand.nextInt(11)+10;
                 int Multy = rand.nextInt(6)+5;
-                String StringMultx = String.valueOf(Multx);
-                String StringMulty = String.valueOf(Multy);
                 int MultResultat = Multx * Multy;
-                toutresultat = StringMultx+operateur+StringMulty+"="+MultResultat;
-                return StringMultx + operateur + StringMulty + "=" + new String(new char[String.valueOf(MultResultat).length()]).replace('\u0000', '_');
-
+                toutresultat = Multx+operateur+Multy+"="+MultResultat;
+                switch(rand.nextInt(2)) {
+                    case 0:
+                        return Multx + operateur + Multy + "=<b><font color='#33FF99'>" + new String(new char[String.valueOf(MultResultat).length()]).replace('\u0000', '_') + "</font></b>";
+                    case 1:
+                        return Multx + "<b><font color='#33FF99'>_</font></b>" + Multy + "=" + MultResultat;
+                }
             case 3:
                 operateur ="÷";
                 int Divy=rand.nextInt(14)+1;
                 int DivResultat=rand.nextInt(5);
                 int Divx=Divy*DivResultat;
-                String StringDivx=String.valueOf(Divx);
-                String StringDivy=String.valueOf(Divy);
-                toutresultat = StringDivx+operateur+StringDivy+"="+DivResultat;
-                return StringDivx + operateur + StringDivy + "=" + new String(new char[String.valueOf(DivResultat).length()]).replace('\u0000', '_');
-
+                toutresultat = Divx+operateur+Divy+"="+DivResultat;
+                switch (rand.nextInt(2)) {
+                    case 0:
+                        return Divx + operateur + Divy + "=<b><font color='#33FF99'>" + new String(new char[String.valueOf(DivResultat).length()]).replace('\u0000', '_') + "</font></b>";
+                    case 1:
+                        return Divx + "<b><font color='#33FF99'>_</font></b>" + Divy + "=" + DivResultat;
+                }
             case 4:
                 operateur1 = "+";
                 operateur2= "-";
                 int x = rand.nextInt(51)+50;
                 int y = rand.nextInt(51)+50;
                 int z = rand.nextInt(91)+10;
-                String Stringx = String.valueOf(x);
-                String Stringy = String.valueOf(y);
-                String Stringz = String.valueOf(z);
                 int Resultat = x + y - z;
-                toutresultat = Stringx+operateur1+Stringy +operateur2+Stringz+"="+ Resultat;
-                return Stringx + operateur1 + Stringy + operateur2+Stringz+"=" + new String(new char[String.valueOf(Resultat).length()]).replace('\u0000', '_');
-
+                toutresultat = x+operateur1+y +operateur2+z+"="+ Resultat;
+                switch (rand.nextInt(2)) {
+                    case 0:
+                        return x + operateur1 + y + operateur2 + z + "=<b><font color='#33FF99'>" + new String(new char[String.valueOf(Resultat).length()]).replace('\u0000', '_')+"</font></b>";
+                    case 1:
+                        return x + "<b><font color='#33FF99'>_</font></b>" + y + "<b><font color='#33FF99'>_</font></b>" + z + "=" + Resultat;
+                }
             default:
                 return "Attention";
         }

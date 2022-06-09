@@ -7,30 +7,12 @@ import java.util.Random;
 public class Debutant extends Equation {
     private static String toutresultat;
 
-    static String equation() {
-        Random rand = new Random();
-        switch (rand.nextInt(2)) {
-            case 0:
-                return jeuatrouchiffre();
-            case 1:
-                return jeuequation();
-            default:
-                return "Attention";
-        }
-    }
-
-    private static String jeuequation(){
-        Random rand = new Random();
-
-        return "jeu equation a faire";
-    }
 
     static String resultat() {
         return String.valueOf(toutresultat);
     }
 
-
-   private static String jeuatrouchiffre() {
+    static String equation() {
         Random rand = new Random();
         String operateur;
         switch (rand.nextInt(3)) {
@@ -46,10 +28,16 @@ public class Debutant extends Equation {
                     case 1:
                         return Sumx +"<b><font color='#33FF99'>_</font></b>"+Sumy+ "=" +SumResultat;
                     case 2:
+                        int fake1x = rand.nextInt(20)+1;
+                        int fake1y = rand.nextInt(20)+1;
+                        int fake2x = rand.nextInt(20)+1;
+                        int fake2y = rand.nextInt(20)+1;
+                        int equationfake1= fake1x + fake2x;
+                        if (equationfake1==SumResultat)fake1x=fake1x+1;
+                        int equationfake2 = fake2x+fake2y;
+                        if (equationfake2==SumResultat)fake2x=fake2x+1;
                         return SumResultat+"";
 
-                    default:
-                        return "Attention";
                 }
             case 1:
                 operateur = "-";
@@ -88,4 +76,5 @@ public class Debutant extends Equation {
                 return "Attention";
         }
     }
+
 }
