@@ -1,23 +1,22 @@
 package fr.seven.mathgame;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.preference.Preference;
 import androidx.preference.PreferenceManager;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.CompoundButton;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 
-public class ParametresActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, SeekBar.OnSeekBarChangeListener, CompoundButton.OnCheckedChangeListener {
+public class ParametresActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, SeekBar.OnSeekBarChangeListener {
 
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
@@ -33,6 +32,9 @@ public class ParametresActivity extends AppCompatActivity implements AdapterView
             editor.putString("Difficulty", "Débutant");
             editor.putInt("Volume", 100);
             editor.putBoolean("Vibrations", true);
+            if(Build.VERSION.SDK_INT<29){
+                editor.putBoolean("Dark", false);
+            }
             editor.apply();
         }
 
@@ -72,9 +74,21 @@ public class ParametresActivity extends AppCompatActivity implements AdapterView
         seekBar.setProgress(sharedPreferences.getInt("Volume", 100));
         seekBar.setOnSeekBarChangeListener(this);
 
-        Switch toggle = findViewById(R.id.switch1);
-        toggle.setChecked(sharedPreferences.getBoolean("Vibrations", true));
-        toggle.setOnCheckedChangeListener(this);
+        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch toggleVib = findViewById(R.id.switch1);
+        toggleVib.setChecked(sharedPreferences.getBoolean("Vibrations", true));
+        toggleVib.setOnCheckedChangeListener((buttonView, b) -> {
+            editor.putBoolean("Vibrations", b);
+            editor.apply();
+        });
+
+        if(Build.VERSION.SDK_INT<29){
+            @SuppressLint("UseSwitchCompatOrMaterialCode") Switch toggleDark = findViewById(R.id.switch2);
+            toggleDark.setVisibility(View.VISIBLE);
+            toggleDark.setOnCheckedChangeListener((buttonView, b) -> {
+                editor.putBoolean("Dark", b);
+                editor.apply();
+            });
+        }
     }
 
     //Méthodes du spinner
@@ -111,10 +125,9 @@ public class ParametresActivity extends AppCompatActivity implements AdapterView
         editor.apply();
     }
 
-    //Méthode du Switch
-    @Override
-    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-        editor.putBoolean("Vibrations", b);
-        editor.apply();
+    //Autres méthodes
+    public void goto_profil(View view){
+        Intent intent=new Intent(this, ProfilActivity.class);
+        startActivity(intent);
     }
 }
