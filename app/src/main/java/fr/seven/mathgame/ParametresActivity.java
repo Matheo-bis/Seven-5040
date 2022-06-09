@@ -48,8 +48,6 @@ public class ParametresActivity extends AppCompatActivity implements AdapterView
 
     protected void onStart() {
         super.onStart();
-        TextView textView = findViewById(R.id.difficulte);
-        textView.setText(sharedPreferences.getString("Difficulty", "ERREUR"));
 
         Spinner spinner = findViewById(R.id.spinner);
         int pos=-1;
@@ -94,9 +92,7 @@ public class ParametresActivity extends AppCompatActivity implements AdapterView
     //Méthodes du spinner
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        TextView textView = findViewById(R.id.difficulte);
         String string = (String) adapterView.getItemAtPosition(i);
-        textView.setText(string);
         editor.putString("Difficulty", string);
         editor.apply();
     }
