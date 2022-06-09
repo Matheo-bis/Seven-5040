@@ -6,6 +6,7 @@ import androidx.preference.PreferenceManager;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -49,7 +50,20 @@ public class ParametresActivity extends AppCompatActivity implements AdapterView
         textView.setText(sharedPreferences.getString("Difficulty", "ERREUR"));
 
         Spinner spinner = findViewById(R.id.spinner);
-        spinner.setPrompt(sharedPreferences.getString("Difficulty", "ERREUR"));
+        int pos=-1;
+        switch (sharedPreferences.getString("Difficulty", "ERREUR")){
+            case "Débutant":
+                pos=0;
+                break;
+            case "Intermédiaire":
+                pos=1;
+                break;
+            case "Expert":
+                pos=2;
+                break;
+        }
+        spinner.setSelection(pos);
+        System.out.println("La difficulté est: "+sharedPreferences.getString("Difficulty", "ERREUR"));
 
         TextView textView1 = findViewById(R.id.volume);
         textView1.setText(String.valueOf(sharedPreferences.getInt("Volume", 100)));
