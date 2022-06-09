@@ -1,5 +1,7 @@
 package fr.seven.mathgame;
 
+import android.view.View;
+
 import java.util.Random;
 
 public class Debutant extends Equation {
@@ -7,27 +9,20 @@ public class Debutant extends Equation {
 
     static String equation() {
         Random rand = new Random();
-        switch (rand.nextInt(3)) {
+        switch (rand.nextInt(2)) {
             case 0:
                 return jeuatrouchiffre();
             case 1:
-                return jeuatrouchiffre();
-                //jeuatrouoperateur();
-            case 2:
-                return jeuatrouchiffre();
+                return jeuequation();
             default:
                 return "Attention";
         }
     }
 
-    private static String jeuatrouoperateur(){
+    private static String jeuequation(){
         Random rand = new Random();
-        switch (rand.nextInt(2)){
-            case 0:
-                return "";
-            default:
-                return "Atttention";
-        }
+
+        return "jeu equation a faire";
     }
 
     static String resultat() {
@@ -41,39 +36,51 @@ public class Debutant extends Equation {
         switch (rand.nextInt(3)) {
             case 0:
                 operateur = "+";
-                int Sumx = rand.nextInt(21);
-                int Sumy = rand.nextInt(21);
-                String StringSumx = String.valueOf(Sumx);
-                String StringSumy = String.valueOf(Sumy);
+                int Sumy = rand.nextInt(20) + 1;
+                int Sumx = rand.nextInt(20) + 1;
                 int SumResultat = Sumx + Sumy;
-                toutresultat = StringSumx+operateur+StringSumy +"="+ SumResultat;
-                return StringSumx + operateur + StringSumy + "=" + new String(new char[String.valueOf(SumResultat).length()]).replace('\u0000', '_');
-
+                toutresultat = Sumx + operateur + Sumy + "=" + SumResultat;
+                switch (rand.nextInt(2)) {
+                    case 0:
+                        return Sumx + operateur + Sumy + "=" + new String(new char[String.valueOf(SumResultat).length()]).replace('\u0000', '_');
+                    case 1:
+                        return Sumx +"_"+Sumy+ "=" +SumResultat;
+                    default:
+                        return "Attention";
+                }
             case 1:
                 operateur = "-";
-                int Minx = rand.nextInt(21);
-                int Miny = rand.nextInt(21);
+                int Minx = rand.nextInt(20)+1;
+                int Miny = rand.nextInt(20)+1;
                 if (Miny >= Minx) {
                     int replace = Miny;
                     Miny = Minx;
                     Minx = replace;
                 }
-                String StringMinx = String.valueOf(Minx);
-                String StringMiny = String.valueOf(Miny);
                 int MinResultat = Minx - Miny;
-                toutresultat = StringMinx+operateur+StringMiny+"="+MinResultat;
-                return StringMinx + operateur + StringMiny + "=" + new String(new char[String.valueOf(MinResultat).length()]).replace('\u0000', '_');
-
+                toutresultat = Minx+operateur+Miny+"="+MinResultat;
+                switch (rand.nextInt(2)) {
+                    case 0:
+                        return Minx + operateur + Miny + "=" + new String(new char[String.valueOf(MinResultat).length()]).replace('\u0000', '_');
+                    case 1:
+                        return Minx+"_"+Miny+ "=" +MinResultat;
+                    default:
+                        return "Attention";
+                }
             case 2:
-                operateur = "x";
-                int Multx = rand.nextInt(6);
-                int Multy = rand.nextInt(6);
-                String StringMultx = String.valueOf(Multx);
-                String StringMulty = String.valueOf(Multy);
+                operateur = "×";
+                int Multx = rand.nextInt(5)+1;
+                int Multy = rand.nextInt(5)+1;
                 int MultResultat = Multx * Multy;
-                toutresultat = StringMultx+operateur+StringMulty+"="+MultResultat;
-                return StringMultx + operateur + StringMulty + "=" + new String(new char[String.valueOf(MultResultat).length()]).replace('\u0000', '_');
-
+                toutresultat = Multx+operateur+Multy+"="+MultResultat;
+                switch (rand.nextInt(2)) {
+                    case 0:
+                        return Multx + operateur + Multy + "=" + new String(new char[String.valueOf(MultResultat).length()]).replace('\u0000', '_');
+                    case 1:
+                        return Multx + "_" + Multy + "="+ MultResultat;
+                    default:
+                        return "Attention";
+                }
             default:
                 return "Attention";
         }
