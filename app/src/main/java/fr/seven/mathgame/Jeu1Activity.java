@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.VideoView;
@@ -33,7 +34,7 @@ public class Jeu1Activity extends AppCompatActivity {
     public void setQuestion(String str){
         EquationHistory.clear();
         EquationHistory.add(str);
-        ((TextView)findViewById(R.id.textView)).setText(str);
+        ((TextView)findViewById(R.id.textView)).setText(Html.fromHtml(str));
     }
 
 
@@ -94,16 +95,16 @@ public class Jeu1Activity extends AppCompatActivity {
                 break;
         }
         TextView textView = findViewById(R.id.textView);
-        String text = textView.getText().toString();
+        String text = EquationHistory.get(EquationHistory.size() - 1);
         if(text.contains("_")) {
             EquationHistory.add(text.replaceFirst("_", button));
-            textView.setText(EquationHistory.get(EquationHistory.size() - 1));
+            textView.setText(Html.fromHtml(EquationHistory.get(EquationHistory.size() - 1)));
         }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void buttonOK(View view){
-        String text = ((TextView) findViewById(R.id.textView)).getText().toString();
+        String text = EquationHistory.get(EquationHistory.size() - 1);
         int comparaison = (Debutant.resultat()).compareTo(text);
         if (comparaison == 0) {
             Intent intent = new Intent(this, EcranFinActivity.class);
@@ -121,7 +122,7 @@ public class Jeu1Activity extends AppCompatActivity {
         if(EquationHistory.size()>1)
             EquationHistory.remove(EquationHistory.size()-1);
         TextView textView = findViewById(R.id.textView);
-        textView.setText(EquationHistory.get(EquationHistory.size()-1));
+        textView.setText(Html.fromHtml(EquationHistory.get(EquationHistory.size()-1)));
     }
 
     public void buttonCE(View view){
