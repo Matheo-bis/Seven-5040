@@ -3,6 +3,7 @@ package fr.seven.mathgame;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -14,14 +15,17 @@ import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.VideoView;
 
 public class EcranFinActivity extends AppCompatActivity {
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ecran_fin);
+        ((TextView)findViewById(R.id.scoretext)).setText("Score: "+ ScoreActivity.getScore());
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             switch(getIntent().getStringExtra("action")){
                 case "lose":
