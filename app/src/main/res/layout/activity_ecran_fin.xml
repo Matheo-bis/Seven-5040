@@ -65,6 +65,8 @@
         android:layout_gravity="end"
         android:layout_marginTop="100dp"
         android:layout_weight="1"
+        android:focusableInTouchMode="false"
+        android:onClick="next"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
