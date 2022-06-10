@@ -47,7 +47,7 @@ public class Expert extends Equation{
                         return Minx + "<b><font color='#33FF99'>_</font></b>" + Miny + "=" + MinResultat;
                 }
             case 2:
-                operateur = "*";
+                operateur = "×";
                 int Multx = rand.nextInt(31)+10;
                 int Multy = rand.nextInt(31)+10;
                 int MultResultat = Multx * Multy;

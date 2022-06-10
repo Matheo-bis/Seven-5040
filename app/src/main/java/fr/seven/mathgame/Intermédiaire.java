@@ -47,7 +47,7 @@ public class Intermédiaire extends Equation{
                         return Minx + "<b><font color='#33FF99'>_</font></b>" + Miny + "=" + MinResultat;
                 }
             case 2:
-                operateur = "*";
+                operateur = "×";
                 int Multx = rand.nextInt(11)+10;
                 int Multy = rand.nextInt(6)+5;
                 int MultResultat = Multx * Multy;
