@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.VideoView;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 
 public class Jeu1Activity extends AppCompatActivity {
     private ArrayList<String> EquationHistory = new ArrayList<String>();
+    private int difficulty;
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,14 +28,27 @@ public class Jeu1Activity extends AppCompatActivity {
         setContentView(R.layout.activity_jeu1);
         //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         //TEMPORAIRE
-        setQuestion(Debutant.equation());
+        switch (ParametresActivity.Selectiondiff()){
+            case 1:
+                setQuestion(Debutant.equation());
+                break;
+            case 2:
+                setQuestion(Intermédiaire.equation());
+                break;
+            case 3:
+                setQuestion(Expert.equation());
+                break;
+            default:
+                setQuestion(Debutant.equation());
+        }
+        //setQuestion(Debutant.equation());
 
     }
 
     public void setQuestion(String str){
         EquationHistory.clear();
         EquationHistory.add(str);
-        ((TextView)findViewById(R.id.textView)).setText(str);
+        ((TextView)findViewById(R.id.textView)).setText(Html.fromHtml(str));
     }
 
 
@@ -92,25 +107,58 @@ public class Jeu1Activity extends AppCompatActivity {
             case "fr.seven.mathapp:id/buttonpow":
                 button = "^";
                 break;
+            case "fr.seven.mathapp:id/button20":
+                button = "allller la 20*";
+            case "fr.seven.mathapp:id/button22":
+                button="super 22";
+            case "fr.seven.mathapp:id/button19":
+                button= "good 19 ";
         }
+        View qcmbutton = findViewById(R.id.button20);
+        qcmbutton.setVisibility(View.GONE);
         TextView textView = findViewById(R.id.textView);
-        String text = textView.getText().toString();
+        String text = EquationHistory.get(EquationHistory.size() - 1);
         if(text.contains("_")) {
             EquationHistory.add(text.replaceFirst("_", button));
-            textView.setText(EquationHistory.get(EquationHistory.size() - 1));
+            textView.setText(Html.fromHtml(EquationHistory.get(EquationHistory.size() - 1)));
         }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void buttonOK(View view){
-        Intent intent=new Intent(this, EcranFinActivity.class);
-        startActivity(intent);
+        String text = ((TextView)findViewById(R.id.textView)).getText().toString();
+        int comparaison;
+        switch (ParametresActivity.Selectiondiff()) {
+            case 1:
+                comparaison = (Debutant.resultat()).compareTo(text);
+                break;
+            case 2:
+                comparaison = (Intermédiaire.resultat()).compareTo(text);
+                break;
+            case 3:
+                comparaison = (Expert.resultat()).compareTo(text);
+                break;
+            default:
+                comparaison =(Debutant.resultat()).compareTo(text);
+        }
+        if (comparaison == 0) {
+            Intent intent = new Intent(this, EcranFinActivity.class);
+            intent.putExtra("action","win");
+            startActivity(intent);
+            ScoreActivity.setScore(1);
+        }
+        else{
+            Intent intent = new Intent(this, EcranFinActivity.class);
+            intent.putExtra("action","lose");
+            startActivity(intent);
+            buttonCE(null);
+        }
     }
     public void buttonDEL(View view){
         if(EquationHistory.size()>1)
             EquationHistory.remove(EquationHistory.size()-1);
         TextView textView = findViewById(R.id.textView);
-        textView.setText(EquationHistory.get(EquationHistory.size()-1));
+        textView.setText(Html.fromHtml(EquationHistory.get(EquationHistory.size()-1)));
     }
 
     public void buttonCE(View view){

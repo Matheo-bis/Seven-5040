@@ -38,7 +38,26 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void goto_param(View view){
+    public void goto_win(View view){
+        Intent intent=new Intent(this, EcranFinActivity.class);
+        intent.putExtra("action","win");
+        startActivity(intent);
+    }
+
+    public void goto_lose(View view){
+        Intent intent=new Intent(this, EcranFinActivity.class);
+        intent.putExtra("action","lose");
+        startActivity(intent);
+    }
+
+    public void goto_wide(View view){
+        Intent intent=new Intent(this, EcranFinActivity.class);
+        intent.putExtra("action","wide");
+        startActivity(intent);
+    }
+
+
+    public void goto_settings(View view){
         Intent intent=new Intent(this, ParametresActivity.class);
         startActivity(intent);
     }

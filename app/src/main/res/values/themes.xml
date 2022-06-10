@@ -14,9 +14,11 @@
         <item name="android:windowLightStatusBar" tools:targetApi="m">true
         </item>        <!-- Customize your theme here. -->
         <item name="android:navigationBarColor">@color/white</item>
+        <item name="android:windowAnimationStyle">@style/anim</item>
+
     </style>
-    <color name="button_normal">#F7F7F7</color>
-    <color name="button_pressed">#E7E7E7</color>
+    <color name="button_normal">#ECECEC</color>
+    <color name="button_pressed">#DFDFDF</color>
     <color name="colorText">@color/black</color>
 
     <style name="Theme.TestApp.NoActionBar">
@@ -24,6 +26,13 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="anim" parent="@android:style/Animation.Activity">
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:activityOpenEnterAnimation">@anim/in_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/out_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/in_left</item>
+        <item name="android:activityCloseExitAnimation">@anim/out_right</item>
+    </style>
     <style name="Theme.TestApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.TestApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
