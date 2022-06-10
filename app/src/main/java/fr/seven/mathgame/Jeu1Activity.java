@@ -2,8 +2,11 @@ package fr.seven.mathgame;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
+
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -28,14 +31,12 @@ public class Jeu1Activity extends AppCompatActivity {
         setContentView(R.layout.activity_jeu1);
         //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         //TEMPORAIRE
-        switch (ParametresActivity.Selectiondiff()){
-            case 1:
-                setQuestion(Debutant.equation());
-                break;
-            case 2:
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        switch (sharedPreferences.getString("Difficulty", "ERREUR")) {
+            case "Intermediaire":
                 setQuestion(Intermédiaire.equation());
                 break;
-            case 3:
+            case "Expert":
                 setQuestion(Expert.equation());
                 break;
             default:
@@ -128,14 +129,12 @@ public class Jeu1Activity extends AppCompatActivity {
     public void buttonOK(View view){
         String text = ((TextView)findViewById(R.id.textView)).getText().toString();
         int comparaison;
-        switch (ParametresActivity.Selectiondiff()) {
-            case 1:
-                comparaison = (Debutant.resultat()).compareTo(text);
-                break;
-            case 2:
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        switch (sharedPreferences.getString("Difficulty", "ERREUR")) {
+            case "Intermédiaire":
                 comparaison = (Intermédiaire.resultat()).compareTo(text);
                 break;
-            case 3:
+            case "Expert":
                 comparaison = (Expert.resultat()).compareTo(text);
                 break;
             default:

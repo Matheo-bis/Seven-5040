@@ -131,7 +131,5 @@ public class ParametresActivity extends AppCompatActivity implements AdapterView
         Intent intent=new Intent(this, ProfilActivity.class);
         startActivity(intent);
     }
-    public static int Selectiondiff(){
-        return selectiondifficultes;
-    }
+
 }
