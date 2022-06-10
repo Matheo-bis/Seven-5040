@@ -33,7 +33,7 @@ public class Jeu1Activity extends AppCompatActivity {
         //TEMPORAIRE
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         switch (sharedPreferences.getString("Difficulty", "ERREUR")) {
-            case "Intermediaire":
+            case "Intermédiaire":
                 setQuestion(Intermédiaire.equation());
                 break;
             case "Expert":
