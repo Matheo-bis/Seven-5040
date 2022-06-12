@@ -16,6 +16,10 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class ParametresActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, SeekBar.OnSeekBarChangeListener {
 
     private SharedPreferences sharedPreferences;
@@ -65,7 +69,11 @@ public class ParametresActivity extends AppCompatActivity implements AdapterView
                 pos=2;
                 selectiondifficultes=3;
                 break;
-                // probleme on doit avoir retourner une deuxieme fois pour que le mode se seletionne bien
+            case "ERREUR":
+                updateDifficultyInDatabase();
+                pos=0;
+                selectiondifficultes =1;
+                break;
         }
         spinner.setSelection(pos);
         System.out.println("La difficulté est: "+sharedPreferences.getString("Difficulty", "ERREUR"));
@@ -100,6 +108,11 @@ public class ParametresActivity extends AppCompatActivity implements AdapterView
         String string = (String) adapterView.getItemAtPosition(i);
         editor.putString("Difficulty", string);
         editor.apply();
+        updateDifficultyInDatabase();
+
+        if (StartActivity.firebaseAuth.getCurrentUser() != null) {
+
+        }
     }
 
     @Override
@@ -132,4 +145,9 @@ public class ParametresActivity extends AppCompatActivity implements AdapterView
         startActivity(intent);
     }
 
+    public void updateDifficultyInDatabase(){
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://projet7-e3b8a-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference reference = database.getReference("userdata").child(StartActivity.firebaseAuth.getCurrentUser().getUid());
+        reference.child("difficulty").setValue(sharedPreferences.getString("Difficulty", "Débutant"));
+    }
 }

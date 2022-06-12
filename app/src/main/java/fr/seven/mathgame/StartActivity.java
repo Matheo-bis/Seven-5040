@@ -21,6 +21,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.OAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Objects;
 
@@ -108,6 +110,12 @@ public class StartActivity extends AppCompatActivity {
         Intent intent=new Intent(getApplicationContext(), MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+        if (firebaseAuth.getCurrentUser() != null) {
+            FirebaseDatabase database = FirebaseDatabase.getInstance("https://projet7-e3b8a-default-rtdb.europe-west1.firebasedatabase.app/");
+            DatabaseReference reference = database.getReference("userdata").child(firebaseAuth.getCurrentUser().getUid());
+            reference.child("username").setValue(firebaseAuth.getCurrentUser().getDisplayName());
+            ScoreActivity.initScore();
+        }
         finish();
     }
 }
