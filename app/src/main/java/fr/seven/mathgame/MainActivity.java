@@ -55,6 +55,16 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void goto_jeu2(View view){
+        Intent intent=new Intent(this, Jeu2Activity.class);
+        startActivity(intent);
+    }
+
+    public void goto_jeu3(View view){
+        Intent intent=new Intent(this, Jeu3Activity.class);
+        startActivity(intent);
+    }
+
     public void goto_calc(View view){
         Intent intent=new Intent(this, CalculatriceActivity.class);
         startActivity(intent);

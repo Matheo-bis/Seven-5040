@@ -41,7 +41,7 @@
             android:weightSum="1">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button10"
+                android:id="@+id/buttonjeu1"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
@@ -52,7 +52,7 @@
                 android:text="Jeu 1" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button"
+                android:id="@+id/buttoncalc"
                 style="@style/Widget.AppCompat.Button.Borderless"
 
                 android:layout_width="0dp"
@@ -66,13 +66,44 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="137dp"
+            android:layout_height="match_parent"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
             android:weightSum="1">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button1013"
+                android:id="@+id/buttonjeu2"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_margin="15dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/button"
+                android:onClick="goto_jeu2"
+                android:text="Jeu 2" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonjeu3"
+                style="@style/Widget.AppCompat.Button.Borderless"
+
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_margin="15dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/button"
+                android:onClick="goto_jeu3"
+                android:text="Jeu 3" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:weightSum="1">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttontroll"
                 style="@style/Widget.AppCompat.Button.Borderless"
 
                 android:layout_width="0dp"
@@ -120,38 +151,6 @@
             android:layout_marginEnd="0dp"
             app:srcCompat="@drawable/logo_shadow" />
     </androidx.cardview.widget.CardView>
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="64dp"
-        android:layout_margin="100dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_shadow" />
-
-    <Button
-        android:id="@+id/button16"
-        android:layout_width="184dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="40dp"
-        android:text="Jeu 2"
-        android:onClick="goto_jeu2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout3" />
-
-    <Button
-        android:id="@+id/button17"
-        android:layout_width="173dp"
-        android:layout_height="59dp"
-        android:text="Jeu 3"
-        android:onClick="goto_jeu3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button16" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
