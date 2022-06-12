@@ -91,7 +91,7 @@ public class Expert extends Equation{
                 int Summultx = rand.nextInt(501)+500;
                 int Summulty = rand.nextInt(501)+500;
                 int Summultz = rand.nextInt(901)+100;
-                int SummultResultat = Summultx + Summulty - Summultz;
+                int SummultResultat = Summultx + Summulty * Summultz;
                 toutresultat = Summultx+operateur1+Summulty +operateur2+Summultz+"="+ SummultResultat;
                 switch (rand.nextInt(2)) {
                     case 0:
