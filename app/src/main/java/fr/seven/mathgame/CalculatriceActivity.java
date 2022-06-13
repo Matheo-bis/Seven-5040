@@ -190,6 +190,12 @@ public class CalculatriceActivity extends AppCompatActivity {
                     result=(float)factorial((double)num1);
                     resultat.setText(String.valueOf(result));
                     num1=result;
+                    if (num1==5040){
+                        Intent intent=new Intent(this, EcranFinActivity.class);
+                        intent.putExtra("action","wide");
+                        intent.putExtra("numero", 4);
+                        startActivity(intent);
+                    }
                 }
                 else{
                     num2 = Double.parseDouble((String)deuxio.getText());
