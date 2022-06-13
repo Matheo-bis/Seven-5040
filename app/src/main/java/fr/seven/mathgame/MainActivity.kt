@@ -1,26 +1,16 @@
 package fr.seven.mathgame
 
-import androidx.appcompat.app.AppCompatActivity
-import androidx.annotation.RequiresApi
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import fr.seven.mathgame.R
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import android.widget.TextView
-import com.squareup.picasso.Picasso
-import android.widget.VideoView
-import android.content.Intent
 import android.view.View
 import android.widget.ImageView
-import fr.seven.mathgame.Jeu1Activity
-import fr.seven.mathgame.Jeu2Activity
-import fr.seven.mathgame.Jeu3Activity
-import fr.seven.mathgame.CalculatriceActivity
-import fr.seven.mathgame.EcranFinActivity
-import fr.seven.mathgame.ParametresActivity
-import fr.seven.mathgame.RankingActivity
-import java.lang.Exception
+import android.widget.TextView
+import android.widget.VideoView
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.squareup.picasso.Picasso
 
 class MainActivity : AppCompatActivity() {
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -91,5 +81,13 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun goto_profil(view: View?) {
+        val intent = Intent(this, ProfilActivity::class.java)
+        startActivity(intent)
+    }
 
+    fun goto_cours(view: View?) {
+        val intent = Intent(this, CoursActivity::class.java)
+        startActivity(intent)
+    }
 }
