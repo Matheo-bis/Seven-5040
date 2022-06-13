@@ -16,6 +16,7 @@ public class Jeu2Activity extends AppCompatActivity {
     private String equation1;
     private String equation2;
     private String equation3;
+    private String equation4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,25 +41,30 @@ public class Jeu2Activity extends AppCompatActivity {
         public void qcm () {
             setQuestion(Debutant.equation());
             Random rand = new Random();
-            Button qcmbutton1 = findViewById(R.id.buttonequation1);
-            Button qcmbutton2 = findViewById(R.id.buttonequation2);
-            Button qcmbutton3 = findViewById(R.id.buttonequation3);
+            Button qcmbutton1 = findViewById(R.id.buttonequation4);
+            Button qcmbutton2 = findViewById(R.id.buttonequation5);
+            Button qcmbutton3 = findViewById(R.id.buttonequation6);
+            Button qcmbutton4 = findViewById(R.id.buttonequation7);
             View space = findViewById(R.id.Space);
-            int u = rand.nextInt(3) + 1;
+            int u = rand.nextInt(4) + 1;
+            int z;
             int y;
             int x;
             switch (u) {
                 case 1:
+                    z = 4;
                     x = 3;
                     y = 2;
                     break;
                 case 2:
-                    x = 1;
+                    z = 2;
+                    x = 4;
                     y = 3;
                     break;
                 default:
-                    x = 2;
-                    y = 1;
+                    z = 3;
+                    x = 1;
+                    y = 4;
                     break;
             }
             //space.setVisibility(View.VISIBLE);
@@ -71,6 +77,8 @@ public class Jeu2Activity extends AppCompatActivity {
             //qcmbutton3.setVisibility(View.VISIBLE);
             qcmbutton3.setText(Debutant.funcequationqcm(y));
             equation3 = Debutant.funcequationqcm(y);
+            qcmbutton4.setText(Debutant.funcequationqcm(z));
+            equation4 = Debutant.funcequationqcm(z);
 
         }
     public void buttonclick(View view) {
@@ -92,6 +100,7 @@ public class Jeu2Activity extends AppCompatActivity {
             Button qcmbutton1 = findViewById(R.id.buttonequation4);
             Button qcmbutton2 = findViewById(R.id.buttonequation5);
             Button qcmbutton3 = findViewById(R.id.buttonequation6);
+            Button qcmbutton4 = findViewById(R.id.buttonequation7);
             View space = findViewById(R.id.Space);
             int comparaison = button.compareTo(Debutant.bonneequation());
             if (comparaison == 0) {

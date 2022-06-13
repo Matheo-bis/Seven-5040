@@ -6,6 +6,7 @@ public class Debutant extends Equation {
     private static int jeuequation = 0;
     private static String equationfake1;
     private static String equationfake2;
+    private static String equationfake3;
     private static String equationok;
 
     static String resultat() {return String.valueOf(toutresultat);}
@@ -14,6 +15,7 @@ public class Debutant extends Equation {
         if (i == 1) {return equationfake1;}
         else if (i == 2) {return equationfake2;}
         else if (i == 3) {return equationok;}
+        else if (i == 4) {return equationfake3;}
         return "";
     }
     static String bonneequation() {return equationok;}
@@ -45,6 +47,8 @@ public class Debutant extends Equation {
                         equationfake1 = " "+fake1x + operateur + fake2x + " = ";
                         if (fake2x + fake2y == SumResultat) fake2x = fake2x + 1;
                         equationfake2 = " "+fake2x + operateur + fake2y + " = ";
+                        if (fake1x + fake2y == SumResultat) fake1x = fake1x + 1;
+                        equationfake3 = " "+fake1x + operateur + fake2y + " = ";
                         equationok = " "+Sumx + operateur + Sumy + " = ";
                         return "" + SumResultat + "";
 
@@ -76,6 +80,8 @@ public class Debutant extends Equation {
                         equationfake1 = "  "+fake1x + operateur + fake2x + " = ";
                         if (fake2x - fake2y == MinResultat) fake2x = fake2x + 1;
                         equationfake2 = " "+fake2x + operateur + fake2y + " = ";
+                        if (fake1x + fake2y == MinResultat) fake1x = fake1x + 1;
+                        equationfake3 = " "+fake1x + operateur + fake2y + " = ";
                         equationok = " "+Minx + operateur + Miny + " = ";
                         return "" + MinResultat + "";
                 }
@@ -101,6 +107,8 @@ public class Debutant extends Equation {
                         equationfake1 = " "+fake1x + operateur + fake2x + " = ";
                         if (fake2x * fake2y == MultResultat) fake2x = fake2x + 1;
                         equationfake2 = " "+fake2x + operateur + fake2y + " = ";
+                        if (fake1x + fake2y == MultResultat) fake1x = fake1x + 1;
+                        equationfake3 = " "+fake1x + operateur + fake2y + " = ";
                         equationok = " "+Multx + operateur + Multy + " = ";
                         return "" + MultResultat + "";
                 }
