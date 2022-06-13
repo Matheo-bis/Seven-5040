@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 ((TextView) findViewById(R.id.textView4)).setText(User.getDisplayName());
             }
             else{
-                ((TextView) findViewById(R.id.textView4)).setText(User.getEmail());
+                ((TextView) findViewById(R.id.textView4)).setText(User.getEmail().split("@")[0]);
             }
             Picasso.get().load(User.getPhotoUrl()).into((ImageView) findViewById(R.id.imageView));
         }
