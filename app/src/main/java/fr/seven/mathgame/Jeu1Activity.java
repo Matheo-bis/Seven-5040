@@ -22,8 +22,8 @@ public class Jeu1Activity extends Jeu {
     private String equation1;
     private String equation2;
     private String equation3;
-
-
+    private int jeu1et2;
+    public int jeu1ou2(){return jeu1et2=2;}
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {

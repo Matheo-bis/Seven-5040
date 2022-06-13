@@ -127,7 +127,7 @@
                 android:layout_margin="15dp"
                 android:layout_weight="1"
                 android:background="@drawable/button"
-                android:onClick="goto_wide"
+                android:onClick="goto_cours"
                 android:text="Cours" />
 
         </TableRow>
@@ -168,17 +168,6 @@
             android:onClick="goto_profil"
             app:srcCompat="@drawable/logo_shadow" />
     </androidx.cardview.widget.CardView>
-
-    <Button
-        android:id="@+id/cours"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="176dp"
-        android:onClick="goto_cours"
-        android:text="cours"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
