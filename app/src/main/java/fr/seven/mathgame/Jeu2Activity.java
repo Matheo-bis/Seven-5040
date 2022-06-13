@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import java.util.Random;
 
-public class Jeu2Activity extends AppCompatActivity {
+public class Jeu2Activity extends Jeu {
     private String equation;
     private String equation1;
     private String equation2;
@@ -21,6 +21,7 @@ public class Jeu2Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        numeroJeu=2;
         setContentView(R.layout.activity_jeu2);
         setQuestion(DebutantJeu2.equation());
         qcm();

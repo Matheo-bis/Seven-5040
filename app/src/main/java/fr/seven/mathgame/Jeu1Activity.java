@@ -16,7 +16,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Jeu1Activity extends AppCompatActivity {
+public class Jeu1Activity extends Jeu {
     private ArrayList<String> EquationHistory = new ArrayList<String>();
     private String equation;
     private String equation1;
@@ -27,6 +27,7 @@ public class Jeu1Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        numeroJeu=1;
         setContentView(R.layout.activity_jeu1);
         //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         //TEMPORAIRE
