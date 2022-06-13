@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goto_jeu2(View view){
-        Intent intent=new Intent(this, Jeu2Activity.class);
+        Intent intent=new Intent(this, LancementJeu2Activity.class);
         startActivity(intent);
     }
 
