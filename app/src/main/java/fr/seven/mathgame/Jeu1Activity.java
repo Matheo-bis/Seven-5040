@@ -23,6 +23,7 @@ public class Jeu1Activity extends AppCompatActivity {
     private String equation2;
     private String equation3;
 
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {

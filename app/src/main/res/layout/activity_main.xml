@@ -23,10 +23,20 @@
         app:layout_constraintEnd_toStartOf="@+id/cardView"
         app:layout_constraintTop_toTopOf="@+id/cardView" />
 
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:cropToPadding="false"
+        app:srcCompat="@drawable/_17955" />
+
     <TableLayout
         android:id="@+id/tableLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        android:backgroundTint="#00FFFFFF"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,6 +46,8 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="#00FFFFFF"
+            android:backgroundTint="#00FFFFFF"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
             android:weightSum="1">
@@ -47,9 +59,42 @@
                 android:layout_height="100dp"
                 android:layout_margin="15dp"
                 android:layout_weight="0.5"
-                android:background="@drawable/button"
+                android:background="@drawable/terre_3d_tra"
                 android:onClick="goto_jeu1"
                 android:text="Jeu 1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonjeu2"
+                style="@style/Widget.AppCompat.Button.Borderless"
+
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_margin="15dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/soleil_3d"
+                android:onClick="goto_jeu2"
+                android:text="Jeu 2" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#00FFFFFF"
+            android:backgroundTint="#00FFFFFF"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:weightSum="1">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonjeu3"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_margin="15dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/mars_3d"
+                android:onClick="goto_jeu3"
+                android:text="Jeu 3" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttoncalc"
@@ -59,45 +104,15 @@
                 android:layout_height="100dp"
                 android:layout_margin="15dp"
                 android:layout_weight="0.5"
-                android:background="@drawable/button"
+                android:background="@drawable/saturne_3d"
                 android:onClick="goto_calc"
-                android:text="Calc" />
+                android:text="calc" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:weightSum="1">
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/buttonjeu2"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_margin="15dp"
-                android:layout_weight="0.5"
-                android:background="@drawable/button"
-                android:onClick="goto_jeu2"
-                android:text="Jeu 2" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/buttonjeu3"
-                style="@style/Widget.AppCompat.Button.Borderless"
-
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_margin="15dp"
-                android:layout_weight="0.5"
-                android:background="@drawable/button"
-                android:onClick="goto_jeu3"
-                android:text="Jeu 3" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:background="#00FFFFFF"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
             android:weightSum="1">
@@ -112,7 +127,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/button"
                 android:onClick="goto_wide"
-                android:text="Troll" />
+                android:text="Cours" />
 
         </TableRow>
 
