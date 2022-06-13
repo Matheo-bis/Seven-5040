@@ -1,5 +1,6 @@
 package fr.seven.mathgame;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
@@ -150,5 +151,12 @@ public class ParametresActivity extends AppCompatActivity implements AdapterView
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://projet7-e3b8a-default-rtdb.europe-west1.firebasedatabase.app/");
         DatabaseReference reference = database.getReference("userdata").child(firebaseAuth.getCurrentUser().getUid());
         reference.child("difficulty").setValue(sharedPreferences.getString("Difficulty", "Débutant"));
+    }
+
+    public void a_propos(View view){
+        new AlertDialog.Builder(this)
+        .setTitle("Seven! (A.K.A 5040)")
+        .setMessage("Jeu créé par: Félix ASSELINO, Jean BISEL, Fode CISSOKHO, Nicolas COUDRILLIER, Mathéo MARCOUT et Justin SOTTILE")
+        .show();
     }
 }

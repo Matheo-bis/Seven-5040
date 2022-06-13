@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -114,7 +115,12 @@ public class StartActivity extends AppCompatActivity {
             FirebaseDatabase database = FirebaseDatabase.getInstance("https://projet7-e3b8a-default-rtdb.europe-west1.firebasedatabase.app/");
             FirebaseDatabase.getInstance("https://projet7-e3b8a-default-rtdb.europe-west1.firebasedatabase.app/").setPersistenceEnabled(true);
             DatabaseReference reference = database.getReference("userdata").child(firebaseAuth.getCurrentUser().getUid());
-            reference.child("username").setValue(firebaseAuth.getCurrentUser().getDisplayName());
+            if(firebaseAuth.getCurrentUser().getDisplayName()!=null && firebaseAuth.getCurrentUser().getDisplayName().compareTo("")!=0) {
+                reference.child("username").setValue(firebaseAuth.getCurrentUser().getDisplayName());
+            }
+            else{
+                reference.child("username").setValue(firebaseAuth.getCurrentUser().getEmail().split("@")[0]);
+            }
             ScoreActivity.initScore();
         }
         finish();
