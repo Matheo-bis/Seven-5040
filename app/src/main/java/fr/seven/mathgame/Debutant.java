@@ -3,34 +3,20 @@ package fr.seven.mathgame;
 import java.util.Random;
 
 public class Debutant extends Equation {
-    private static String toutresultat;
     private static int jeuequation = 0;
     private static String equationfake1;
     private static String equationfake2;
     private static String equationok;
 
-    static String resultat() {
-        return String.valueOf(toutresultat);
-    }
-
-    static int functequation() {
-        return jeuequation;
-    }
-
+    static String resultat() {return String.valueOf(toutresultat);}
+    static int functequation() {return jeuequation;}
     static String funcequationqcm(int i) {
-        if (i == 1) {
-            return equationfake1;
-        } else if (i == 2) {
-            return equationfake2;
-        } else if (i == 3) {
-            return equationok;
-        }
+        if (i == 1) {return equationfake1;}
+        else if (i == 2) {return equationfake2;}
+        else if (i == 3) {return equationok;}
         return "";
     }
-
-    static String bonneequation() {
-        return equationok;
-    }
+    static String bonneequation() {return equationok;}
 
     static String equation() {
         Random rand = new Random();
@@ -56,10 +42,10 @@ public class Debutant extends Equation {
                         int fake2x = rand.nextInt(20) + 1;
                         int fake2y = rand.nextInt(20) + 1;
                         if (fake1x + fake2x == SumResultat) fake1x = fake1x + 1;
-                        equationfake1 = fake1x + operateur + fake2x + "=";
+                        equationfake1 = " "+fake1x + operateur + fake2x + " = ";
                         if (fake2x + fake2y == SumResultat) fake2x = fake2x + 1;
-                        equationfake2 = fake2x + operateur + fake2y + "=";
-                        equationok = Sumx + operateur + Sumy + "=";
+                        equationfake2 = " "+fake2x + operateur + fake2y + " = ";
+                        equationok = " "+Sumx + operateur + Sumy + " = ";
                         return "" + SumResultat + "";
 
                 }
@@ -87,10 +73,10 @@ public class Debutant extends Equation {
                         int fake2x = rand.nextInt(20) + 1;
                         int fake2y = rand.nextInt(20) + 1;
                         if (fake1x - fake2x == MinResultat) fake1x = fake1x + 1;
-                        equationfake1 = fake1x + operateur + fake2x + "=";
+                        equationfake1 = "  "+fake1x + operateur + fake2x + " = ";
                         if (fake2x - fake2y == MinResultat) fake2x = fake2x + 1;
-                        equationfake2 = fake2x + operateur + fake2y + "=";
-                        equationok = Minx + operateur + Miny + "=";
+                        equationfake2 = " "+fake2x + operateur + fake2y + " = ";
+                        equationok = " "+Minx + operateur + Miny + " = ";
                         return "" + MinResultat + "";
                 }
             case 2:
@@ -112,10 +98,10 @@ public class Debutant extends Equation {
                         int fake2x = rand.nextInt(20) + 1;
                         int fake2y = rand.nextInt(20) + 1;
                         if (fake1x * fake2x == MultResultat) fake1x = fake1x + 1;
-                        equationfake1 = fake1x + operateur + fake2x + "=";
+                        equationfake1 = " "+fake1x + operateur + fake2x + " = ";
                         if (fake2x * fake2y == MultResultat) fake2x = fake2x + 1;
-                        equationfake2 = fake2x + operateur + fake2y + "=";
-                        equationok = Multx + operateur + Multy + "=";
+                        equationfake2 = " "+fake2x + operateur + fake2y + " = ";
+                        equationok = " "+Multx + operateur + Multy + " = ";
                         return "" + MultResultat + "";
                 }
             default:
