@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,11 +26,21 @@ public class ProfilActivity extends AppCompatActivity {
 
         try {
             FirebaseUser User = FirebaseAuth.getInstance().getCurrentUser();
-            ((TextView) findViewById(R.id.textView10)).setText(User.getDisplayName());
+            if(User.getDisplayName()!=null && User.getDisplayName().compareTo("")!=0) {
+                ((TextView) findViewById(R.id.textView10)).setText(User.getDisplayName());
+            }
+            else{
+                ((TextView) findViewById(R.id.textView10)).setText(User.getEmail().split("@")[0]);
+            }
             Picasso.get().load(User.getPhotoUrl()).into((ImageView) findViewById(R.id.imageView2));
         }
         catch(Exception e) {
             System.err.print(e);
+        }
+
+        if (FirebaseAuth.getInstance().getCurrentUser()==null){
+            Button button = findViewById(R.id.button);
+            button.setText("Se Connecter");
         }
     }
 

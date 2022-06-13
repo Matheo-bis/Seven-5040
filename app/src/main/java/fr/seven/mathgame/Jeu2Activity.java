@@ -23,6 +23,10 @@ public class Jeu2Activity extends Jeu {
         super.onCreate(savedInstanceState);
         numeroJeu=2;
         setContentView(R.layout.activity_jeu2);
+        Button qcmbutton1 = findViewById(R.id.buttonequation4);
+        Button qcmbutton2 = findViewById(R.id.buttonequation5);
+        Button qcmbutton3 = findViewById(R.id.buttonequation6);
+        Button qcmbutton4 = findViewById(R.id.buttonequation7);
         setQuestion(DebutantJeu2.equation());
         qcm();
     }
@@ -93,11 +97,13 @@ public class Jeu2Activity extends Jeu {
             if (comparaison == 0) {
                 Intent intent = new Intent(this, EcranFinActivity.class);
                 intent.putExtra("action", "win");
+                intent.putExtra("numero",numeroJeu);
                 startActivity(intent);
                 ScoreActivity.setScore(1);
             } else {
                 Intent intent = new Intent(this, EcranFinActivity.class);
                 intent.putExtra("action", "lose");
+                intent.putExtra("numero",numeroJeu);
                 startActivity(intent);
             }
         }
