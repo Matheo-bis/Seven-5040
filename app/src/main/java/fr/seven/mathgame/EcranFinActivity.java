@@ -2,6 +2,7 @@ package fr.seven.mathgame;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -42,10 +43,12 @@ public class EcranFinActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void win(View view){
-        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        long[] a = {0,50,50,50};
-        VibrationEffect V  = VibrationEffect.createWaveform(a,-1);
-        v.vibrate(V);
+        if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("Vibrations", true)){
+            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            long[] a = {0,50,50,50};
+            VibrationEffect V  = VibrationEffect.createWaveform(a,-1);
+            v.vibrate(V);
+        }
 
         VideoView videoView = findViewById(R.id.videoView);
         if((getApplicationContext().getResources().getConfiguration().uiMode& Configuration.UI_MODE_NIGHT_YES)!=0)
@@ -78,10 +81,12 @@ public class EcranFinActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void wide(View view){
-        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        long[] a = {500,500,500,500,500,500};
-        VibrationEffect V  = VibrationEffect.createWaveform(a,-1);
-        v.vibrate(V);
+        if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("Vibrations", true)) {
+            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            long[] a = {500, 500, 500, 500, 500, 500};
+            VibrationEffect V = VibrationEffect.createWaveform(a, -1);
+            v.vibrate(V);
+        }
 
         VideoView videoView = findViewById(R.id.videoView);
         if((getApplicationContext().getResources().getConfiguration().uiMode& Configuration.UI_MODE_NIGHT_YES)!=0)
@@ -111,10 +116,12 @@ public class EcranFinActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void lose(View view){
-        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        long[] a = {0,150,60,150};
-        VibrationEffect V  = VibrationEffect.createWaveform(a,-1);
-        v.vibrate(V);
+        if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("Vibrations", true)) {
+            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            long[] a = {0, 150, 60, 150};
+            VibrationEffect V = VibrationEffect.createWaveform(a, -1);
+            v.vibrate(V);
+        }
         VideoView videoView = findViewById(R.id.videoView);
 
         if((getApplicationContext().getResources().getConfiguration().uiMode& Configuration.UI_MODE_NIGHT_YES)!=0)
