@@ -103,4 +103,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent=new Intent(this, ParametresActivity.class);
         startActivity(intent);
     }
+
+    public void goto_cours(View view){
+        Intent intent=new Intent(this, CoursActivity.class);
+        startActivity(intent);
+    }
 }
