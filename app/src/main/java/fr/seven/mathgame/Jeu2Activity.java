@@ -22,24 +22,12 @@ public class Jeu2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jeu2);
-        setQuestion(Debutant.equation());
-        if (Debutant.functequation() == 1) {
-            qcm();
-        }
-        if (Debutant.functequation() == 0) {
-            Button qcmbutton1 = findViewById(R.id.buttonequation1);
-            Button qcmbutton2 = findViewById(R.id.buttonequation2);
-            Button qcmbutton3 = findViewById(R.id.buttonequation3);
-            View space = findViewById(R.id.Space);
-            //qcmbutton1.setVisibility(View.GONE);
-            //qcmbutton2.setVisibility(View.GONE);
-            //qcmbutton3.setVisibility(View.GONE);
-            //space.setVisibility(View.GONE);
-        }
+        setQuestion(DebutantJeu2.equation());
+        qcm();
     }
 
         public void qcm () {
-            setQuestion(Debutant.equation());
+            setQuestion(DebutantJeu2.equation());
             Random rand = new Random();
             Button qcmbutton1 = findViewById(R.id.buttonequation4);
             Button qcmbutton2 = findViewById(R.id.buttonequation5);
@@ -67,58 +55,52 @@ public class Jeu2Activity extends AppCompatActivity {
                     y = 4;
                     break;
             }
-            //space.setVisibility(View.VISIBLE);
-            //qcmbutton1.setVisibility(View.VISIBLE);
-            qcmbutton1.setText(Debutant.funcequationqcm(u));
-            equation1 = Debutant.funcequationqcm(u);
-            //qcmbutton2.setVisibility(View.VISIBLE);
-            qcmbutton2.setText(Debutant.funcequationqcm(x));
-            equation2 = Debutant.funcequationqcm(x);
-            //qcmbutton3.setVisibility(View.VISIBLE);
-            qcmbutton3.setText(Debutant.funcequationqcm(y));
-            equation3 = Debutant.funcequationqcm(y);
-            qcmbutton4.setText(Debutant.funcequationqcm(z));
-            equation4 = Debutant.funcequationqcm(z);
+            qcmbutton1.setText(DebutantJeu2.funcequationqcm(u));
+            equation1 = DebutantJeu2.funcequationqcm(u);
+            qcmbutton2.setText(DebutantJeu2.funcequationqcm(x));
+            equation2 = DebutantJeu2.funcequationqcm(x);
+            qcmbutton3.setText(DebutantJeu2.funcequationqcm(y));
+            equation3 = DebutantJeu2.funcequationqcm(y);
+            qcmbutton4.setText(DebutantJeu2.funcequationqcm(z));
+            equation4 = DebutantJeu2.funcequationqcm(z);
 
         }
     public void buttonclick(View view) {
         String viewName = view.getResources().getResourceName(view.getId());
         String button = "_";
         switch (viewName) {
-            case "fr.seven.mathapp:id/buttonequation1":
+            case "fr.seven.mathapp:id/buttonequation4":
                 button = equation1;
                 break;
-            case "fr.seven.mathapp:id/buttonequation2":
+            case "fr.seven.mathapp:id/buttonequation5":
                 button = equation2;
                 break;
-            case "fr.seven.mathapp:id/buttonequation3":
+            case "fr.seven.mathapp:id/buttonequation6":
                 button = equation3;
+                break;
+            case "fr.seven.mathapp:id/buttonequation7":
+                button = equation4;
                 break;
         }
 
-        if (Debutant.functequation() == 1) {
             Button qcmbutton1 = findViewById(R.id.buttonequation4);
             Button qcmbutton2 = findViewById(R.id.buttonequation5);
             Button qcmbutton3 = findViewById(R.id.buttonequation6);
             Button qcmbutton4 = findViewById(R.id.buttonequation7);
             View space = findViewById(R.id.Space);
-            int comparaison = button.compareTo(Debutant.bonneequation());
+            int comparaison = button.compareTo(DebutantJeu2.bonneequation());
             if (comparaison == 0) {
                 Intent intent = new Intent(this, EcranFinActivity.class);
                 intent.putExtra("action", "win");
                 startActivity(intent);
                 ScoreActivity.setScore(1);
-                //qcmbutton1.setVisibility(View.GONE);
-                //qcmbutton2.setVisibility(View.GONE);
-                //qcmbutton3.setVisibility(View.GONE);
-                //space.setVisibility(View.GONE);
             } else {
                 Intent intent = new Intent(this, EcranFinActivity.class);
                 intent.putExtra("action", "lose");
                 startActivity(intent);
             }
         }
-    }
+
 
         public void setQuestion (String str){
             ((TextView) findViewById(R.id.textView7)).setText(Html.fromHtml(str));
