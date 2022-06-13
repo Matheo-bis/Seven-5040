@@ -19,7 +19,7 @@
     </style>
     <color name="button_normal">#ECECEC</color>
     <color name="button_pressed">#DFDFDF</color>
-    <color name="colorText">@color/black</color>
+    <color name="colorText">#606060</color>
 
     <style name="Theme.TestApp.NoActionBar">
         <item name="windowActionBar">false</item>

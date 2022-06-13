@@ -1,5 +1,6 @@
 package fr.seven.mathgame;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
@@ -16,6 +17,10 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class ParametresActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, SeekBar.OnSeekBarChangeListener {
 
     private SharedPreferences sharedPreferences;
@@ -28,16 +33,6 @@ public class ParametresActivity extends AppCompatActivity implements AdapterView
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         editor = sharedPreferences.edit();
-        if (!sharedPreferences.contains("Initialized")){
-            editor.putBoolean("Initialized", true);
-            editor.putString("Difficulty", "Débutant");
-            editor.putInt("Volume", 100);
-            editor.putBoolean("Vibrations", true);
-            if(Build.VERSION.SDK_INT<29){
-                editor.putBoolean("Dark", false);
-            }
-            editor.apply();
-        }
 
         Spinner spinner = findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(this);
@@ -65,7 +60,11 @@ public class ParametresActivity extends AppCompatActivity implements AdapterView
                 pos=2;
                 selectiondifficultes=3;
                 break;
-                // probleme on doit avoir retourner une deuxieme fois pour que le mode se seletionne bien
+            case "ERREUR":
+                updateDifficultyInDatabase();
+                pos=0;
+                selectiondifficultes =1;
+                break;
         }
         spinner.setSelection(pos);
         System.out.println("La difficulté est: "+sharedPreferences.getString("Difficulty", "ERREUR"));
@@ -100,6 +99,10 @@ public class ParametresActivity extends AppCompatActivity implements AdapterView
         String string = (String) adapterView.getItemAtPosition(i);
         editor.putString("Difficulty", string);
         editor.apply();
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        if (firebaseAuth.getCurrentUser() != null) {
+            updateDifficultyInDatabase();
+        }
     }
 
     @Override
@@ -131,7 +134,19 @@ public class ParametresActivity extends AppCompatActivity implements AdapterView
         Intent intent=new Intent(this, ProfilActivity.class);
         startActivity(intent);
     }
-    public static int Selectiondiff(){
-        return selectiondifficultes;
+
+    public void updateDifficultyInDatabase(){
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://projet7-e3b8a-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference reference = database.getReference("userdata").child(firebaseAuth.getCurrentUser().getUid());
+        reference.child("difficulty").setValue(sharedPreferences.getString("Difficulty", "Débutant"));
+    }
+
+    public void a_propos(View view){
+        new AlertDialog.Builder(this)
+        .setTitle("Seven! (A.K.A 5040)")
+        .setMessage("Jeu créé par: Félix ASSELINO, Jean BISEL, Fode CISSOKHO, Nicolas COUDRILLIER, Mathéo MARCOUT et Justin SOTTILE")
+        .show();
     }
 }

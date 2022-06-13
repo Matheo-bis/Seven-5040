@@ -2,6 +2,7 @@ package fr.seven.mathgame;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -42,10 +43,12 @@ public class EcranFinActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void win(View view){
-        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        long[] a = {0,50,50,50};
-        VibrationEffect V  = VibrationEffect.createWaveform(a,-1);
-        v.vibrate(V);
+        if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("Vibrations", true)){
+            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            long[] a = {0,50,50,50};
+            VibrationEffect V  = VibrationEffect.createWaveform(a,-1);
+            v.vibrate(V);
+        }
 
         VideoView videoView = findViewById(R.id.videoView);
         if((getApplicationContext().getResources().getConfiguration().uiMode& Configuration.UI_MODE_NIGHT_YES)!=0)
@@ -65,6 +68,9 @@ public class EcranFinActivity extends AppCompatActivity {
         mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.victory_audio);
 
         mediaPlayer.seekTo(400);
+        float volume = (float) PreferenceManager.getDefaultSharedPreferences(this).getInt("Volume", 100)/100;
+        System.out.println("Le volume est: "+volume);
+        mediaPlayer.setVolume(volume, volume);
         mediaPlayer.start();
         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
@@ -78,10 +84,12 @@ public class EcranFinActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void wide(View view){
-        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        long[] a = {500,500,500,500,500,500};
-        VibrationEffect V  = VibrationEffect.createWaveform(a,-1);
-        v.vibrate(V);
+        if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("Vibrations", true)) {
+            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            long[] a = {500, 500, 500, 500, 500, 500};
+            VibrationEffect V = VibrationEffect.createWaveform(a, -1);
+            v.vibrate(V);
+        }
 
         VideoView videoView = findViewById(R.id.videoView);
         if((getApplicationContext().getResources().getConfiguration().uiMode& Configuration.UI_MODE_NIGHT_YES)!=0)
@@ -99,6 +107,9 @@ public class EcranFinActivity extends AppCompatActivity {
 
         MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.wide);
         mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.wide_audio);
+        float volume = (float) PreferenceManager.getDefaultSharedPreferences(this).getInt("Volume", 100)/100;
+        mediaPlayer.setVolume(volume, volume);
+        System.out.println("Le volume est: "+volume);
         mediaPlayer.start();
         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
@@ -111,10 +122,12 @@ public class EcranFinActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void lose(View view){
-        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        long[] a = {0,150,60,150};
-        VibrationEffect V  = VibrationEffect.createWaveform(a,-1);
-        v.vibrate(V);
+        if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("Vibrations", true)) {
+            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            long[] a = {0, 150, 60, 150};
+            VibrationEffect V = VibrationEffect.createWaveform(a, -1);
+            v.vibrate(V);
+        }
         VideoView videoView = findViewById(R.id.videoView);
 
         if((getApplicationContext().getResources().getConfiguration().uiMode& Configuration.UI_MODE_NIGHT_YES)!=0)
@@ -137,7 +150,9 @@ public class EcranFinActivity extends AppCompatActivity {
                 nextActivity();
             }
         });
-
+        float volume = (float) PreferenceManager.getDefaultSharedPreferences(this).getInt("Volume", 100)/100;
+        System.out.println("Le volume est: "+volume);
+        mediaPlayer.setVolume(volume, volume);
         mediaPlayer.start();
     }
 

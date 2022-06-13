@@ -6,4 +6,45 @@
     android:layout_height="match_parent"
     tools:context=".LancementJeu2Activity">
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="322dp"
+        android:layout_height="128dp"
+        android:fontFamily="sans-serif"
+        android:text="Il faut désarmorcer la bombe avant qu'elle n'explose en coupant le bon fil. Tu n'as que XX secondes"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.518" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="313dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="112dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Attention à l'explosion!"
+        android:textColor="#F44336"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonJouer"
+        android:layout_width="294dp"
+        android:layout_height="98dp"
+        android:background="#F44336"
+        android:backgroundTint="#F44336"
+        android:onClick="launchGame"
+        android:text="À toi de jouer!"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
