@@ -97,7 +97,9 @@ public class Jeu2Activity extends Jeu {
                 startActivity(intent);
             }
             if(ScoreActivity.getScore()==4){
-
+                Intent intent = new Intent(this, FinJeu2Activity.class);
+                intent.putExtra("action", "lose");
+                startActivity(intent);
             }
         }
 
