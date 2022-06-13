@@ -55,7 +55,6 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttoncalc"
                 style="@style/Widget.AppCompat.Button.Borderless"
-
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_margin="15dp"
@@ -95,7 +94,25 @@
                 android:onClick="goto_jeu3"
                 android:text="Jeu 3" />
         </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:weightSum="1">
 
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cours"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:background="@drawable/button"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_margin="15dp"
+                android:layout_weight="0.45"
+                android:onClick="goto_cours"
+                android:text="Cours" />
+
+        </TableRow>
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -152,18 +169,9 @@
             android:layout_marginEnd="0dp"
             android:onClick="goto_profil"
             app:srcCompat="@drawable/logo_shadow" />
-    </androidx.cardview.widget.CardView>
 
-    <Button
-        android:id="@+id/cours"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="176dp"
-        android:onClick="goto_cours"
-        android:text="cours"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.cardview.widget.CardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
