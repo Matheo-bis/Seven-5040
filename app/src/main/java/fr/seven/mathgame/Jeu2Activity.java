@@ -89,19 +89,16 @@ public class Jeu2Activity extends Jeu {
                 intent.putExtra("action", "win");
                 intent.putExtra("numero",numeroJeu);
                 startActivity(intent);
-                ScoreActivity.setScore(1);
             } else {
                 Intent intent = new Intent(this, EcranFinActivity.class);
                 intent.putExtra("action", "lose");
                 intent.putExtra("numero",numeroJeu);
                 startActivity(intent);
             }
-            if(ScoreActivity.getScore()==4){
                 Intent intent = new Intent(this, FinJeu2Activity.class);
                 intent.putExtra("action", "lose");
                 startActivity(intent);
             }
-        }
 
 
         public void setQuestion (String str){
@@ -109,27 +106,6 @@ public class Jeu2Activity extends Jeu {
             View textrouge = findViewById(R.id.textViewrouge);
             View textbleu = findViewById(R.id.textViewbleu);
             View textviolet = findViewById(R.id.textViewviolet);
-        switch (ScoreActivity.getScore()){
-                case 0:
-                    ((TextView) findViewById(R.id.textViewvert)).setText(Html.fromHtml(str));
-                    textvert.setVisibility(View.VISIBLE);
-                    break;
-                case 1:
-                    textvert.setVisibility(View.INVISIBLE);
-                    ((TextView) findViewById(R.id.textViewrouge)).setText(Html.fromHtml(str));
-                    textrouge.setVisibility(View.VISIBLE);
-                    break;
-                case 2:
-                    textrouge.setVisibility(View.INVISIBLE);
-                    ((TextView) findViewById(R.id.textViewbleu)).setText(Html.fromHtml(str));
-                    textbleu.setVisibility(View.VISIBLE);
-                    break;
-            default:
-                    textbleu.setVisibility(View.INVISIBLE);
-                    ((TextView) findViewById(R.id.textViewviolet)).setText(Html.fromHtml(str));
-                    textviolet.setVisibility(View.VISIBLE);
-                    break;
-            }
 
         }
     }
