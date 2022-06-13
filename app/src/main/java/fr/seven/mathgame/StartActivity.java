@@ -28,7 +28,7 @@ import java.util.Objects;
 
 public class StartActivity extends AppCompatActivity {
     static Boolean initialized = true;
-    static FirebaseAuth firebaseAuth;
+    private FirebaseAuth firebaseAuth;
 
     private SharedPreferences sharedPreferences;
 
@@ -112,6 +112,7 @@ public class StartActivity extends AppCompatActivity {
         startActivity(intent);
         if (firebaseAuth.getCurrentUser() != null) {
             FirebaseDatabase database = FirebaseDatabase.getInstance("https://projet7-e3b8a-default-rtdb.europe-west1.firebasedatabase.app/");
+            FirebaseDatabase.getInstance("https://projet7-e3b8a-default-rtdb.europe-west1.firebasedatabase.app/").setPersistenceEnabled(true);
             DatabaseReference reference = database.getReference("userdata").child(firebaseAuth.getCurrentUser().getUid());
             reference.child("username").setValue(firebaseAuth.getCurrentUser().getDisplayName());
             ScoreActivity.initScore();

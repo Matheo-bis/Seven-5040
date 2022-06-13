@@ -28,8 +28,8 @@ public class ParametresActivity extends AppCompatActivity implements AdapterView
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_parametres);
 
+        setContentView(R.layout.activity_parametres);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         editor = sharedPreferences.edit();
         if (!sharedPreferences.contains("Initialized")){
@@ -108,7 +108,8 @@ public class ParametresActivity extends AppCompatActivity implements AdapterView
         String string = (String) adapterView.getItemAtPosition(i);
         editor.putString("Difficulty", string);
         editor.apply();
-        if (StartActivity.firebaseAuth.getCurrentUser() != null) {
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        if (firebaseAuth.getCurrentUser() != null) {
             updateDifficultyInDatabase();
         }
     }
@@ -144,8 +145,10 @@ public class ParametresActivity extends AppCompatActivity implements AdapterView
     }
 
     public void updateDifficultyInDatabase(){
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://projet7-e3b8a-default-rtdb.europe-west1.firebasedatabase.app/");
-        DatabaseReference reference = database.getReference("userdata").child(StartActivity.firebaseAuth.getCurrentUser().getUid());
+        DatabaseReference reference = database.getReference("userdata").child(firebaseAuth.getCurrentUser().getUid());
         reference.child("difficulty").setValue(sharedPreferences.getString("Difficulty", "Débutant"));
     }
 }

@@ -37,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
         try {
-            FirebaseUser User = StartActivity.firebaseAuth.getCurrentUser();
+            FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+            FirebaseUser User = firebaseAuth.getCurrentUser();
             ((TextView) findViewById(R.id.textView4)).setText(User.getDisplayName());
             Picasso.get().load(User.getPhotoUrl()).into((ImageView) findViewById(R.id.imageView));
         }
