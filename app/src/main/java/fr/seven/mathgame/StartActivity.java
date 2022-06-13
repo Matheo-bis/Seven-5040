@@ -4,6 +4,7 @@ package fr.seven.mathgame;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -38,6 +39,17 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        if (!sharedPreferences.contains("Initialized")){
+            editor.putBoolean("Initialized", true);
+            editor.putString("Difficulty", "Débutant");
+            editor.putInt("Volume", 100);
+            editor.putBoolean("Vibrations", true);
+            if(Build.VERSION.SDK_INT<29){
+                editor.putBoolean("Dark", false);
+            }
+            editor.apply();
+        }
         FirebaseUser fUser;
         FirebaseApp.initializeApp(/*context=*/ this);
         FirebaseAppCheck firebaseAppCheck = FirebaseAppCheck.getInstance();

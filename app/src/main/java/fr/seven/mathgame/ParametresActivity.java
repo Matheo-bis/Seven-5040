@@ -33,16 +33,6 @@ public class ParametresActivity extends AppCompatActivity implements AdapterView
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         editor = sharedPreferences.edit();
-        if (!sharedPreferences.contains("Initialized")){
-            editor.putBoolean("Initialized", true);
-            editor.putString("Difficulty", "Débutant");
-            editor.putInt("Volume", 100);
-            editor.putBoolean("Vibrations", true);
-            if(Build.VERSION.SDK_INT<29){
-                editor.putBoolean("Dark", false);
-            }
-            editor.apply();
-        }
 
         Spinner spinner = findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(this);
