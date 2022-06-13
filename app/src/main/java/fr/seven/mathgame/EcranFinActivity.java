@@ -68,6 +68,9 @@ public class EcranFinActivity extends AppCompatActivity {
         mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.victory_audio);
 
         mediaPlayer.seekTo(400);
+        float volume = (float) PreferenceManager.getDefaultSharedPreferences(this).getInt("Volume", 100)/100;
+        System.out.println("Le volume est: "+volume);
+        mediaPlayer.setVolume(volume, volume);
         mediaPlayer.start();
         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
@@ -104,6 +107,9 @@ public class EcranFinActivity extends AppCompatActivity {
 
         MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.wide);
         mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.wide_audio);
+        float volume = (float) PreferenceManager.getDefaultSharedPreferences(this).getInt("Volume", 100)/100;
+        mediaPlayer.setVolume(volume, volume);
+        System.out.println("Le volume est: "+volume);
         mediaPlayer.start();
         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
@@ -144,7 +150,9 @@ public class EcranFinActivity extends AppCompatActivity {
                 nextActivity();
             }
         });
-
+        float volume = (float) PreferenceManager.getDefaultSharedPreferences(this).getInt("Volume", 100)/100;
+        System.out.println("Le volume est: "+volume);
+        mediaPlayer.setVolume(volume, volume);
         mediaPlayer.start();
     }
 
