@@ -23,6 +23,10 @@ public class Jeu2Activity extends Jeu {
         super.onCreate(savedInstanceState);
         numeroJeu=2;
         setContentView(R.layout.activity_jeu2);
+        Button qcmbutton1 = findViewById(R.id.buttonequation4);
+        Button qcmbutton2 = findViewById(R.id.buttonequation5);
+        Button qcmbutton3 = findViewById(R.id.buttonequation6);
+        Button qcmbutton4 = findViewById(R.id.buttonequation7);
         setQuestion(DebutantJeu2.equation());
         qcm();
     }

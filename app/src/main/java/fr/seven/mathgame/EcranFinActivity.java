@@ -173,9 +173,13 @@ public class EcranFinActivity extends Jeu {
                     intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent1);
                 case (2):
-                    Intent intent2 = new Intent(getApplicationContext(), Jeu1Activity.class);
+                    Intent intent2 = new Intent(getApplicationContext(), Jeu2Activity.class);
                     intent2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent2);
+                default:
+                    Intent intent0 = new Intent(getApplicationContext(), Jeu1Activity.class);
+                    intent0.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent0);
             }
             finish();
 
