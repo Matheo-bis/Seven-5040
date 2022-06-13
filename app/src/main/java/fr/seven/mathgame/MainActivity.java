@@ -39,7 +39,12 @@ public class MainActivity extends AppCompatActivity {
         try {
             FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
             FirebaseUser User = firebaseAuth.getCurrentUser();
-            ((TextView) findViewById(R.id.textView4)).setText(User.getDisplayName());
+            if(User.getDisplayName()!=null && User.getDisplayName().compareTo("")!=0) {
+                ((TextView) findViewById(R.id.textView4)).setText(User.getDisplayName());
+            }
+            else{
+                ((TextView) findViewById(R.id.textView4)).setText(User.getEmail());
+            }
             Picasso.get().load(User.getPhotoUrl()).into((ImageView) findViewById(R.id.imageView));
         }
         catch(Exception e) {
