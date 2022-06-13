@@ -94,9 +94,18 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void goto_profil(View view){
+        Intent intent=new Intent(this, ProfilActivity.class);
+        startActivity(intent);
+    }
 
     public void goto_settings(View view){
         Intent intent=new Intent(this, ParametresActivity.class);
+        startActivity(intent);
+    }
+
+    public void goto_cours(View view){
+        Intent intent=new Intent(this, CoursActivity.class);
         startActivity(intent);
     }
 }

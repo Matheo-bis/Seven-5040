@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="5dp"
+    android:layout_marginLeft="0dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginEnd="5dp"
+    android:layout_marginRight="0dp"
+    android:layout_marginBottom="5dp"
+    app:layout_marginBaseline="5dp"
+    tools:context=".activity_addition">
+
+    <TextView
+        android:id="@+id/explication_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:text="hello addition"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.155" />
+
+    <ImageView
+        android:id="@+id/addition_image"
+        android:layout_width="404dp"
+        android:layout_height="308dp"
+        android:layout_marginTop="16dp"
+        android:scaleX="0.5"
+        android:scaleY="0.5"
+        app:layout_constraintTop_toTopOf="@+id/titre"
+        app:srcCompat="@drawable/add"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:id="@+id/retenue"
+        android:layout_width="220dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="228dp"
+        android:background="#160D98"
+        android:fontFamily="cursive"
+        android:gravity="center"
+        android:text="La retenue"
+        android:textColor="#FBFBFB"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/titre"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:background="#1777A5"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center_horizontal"
+        android:text="Addition"
+        android:textColor="#04061E"
+        android:textSize="34sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="388dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/calcul" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
