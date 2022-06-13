@@ -19,7 +19,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.VideoView;
 
-public class EcranFinActivity extends AppCompatActivity {
+public class EcranFinActivity extends Jeu {
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -157,14 +157,21 @@ public class EcranFinActivity extends AppCompatActivity {
 
     }
 
-    public void nextActivity(){
-        if(getIntent().getStringExtra("action").compareTo("lose")!=0){
-            Intent intent=new Intent(getApplicationContext(), Jeu1Activity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-        }
-        finish();
+    public void nextActivity() {
+        if (getIntent().getStringExtra("action").compareTo("lose") != 0) {
+            switch (numeroJeu) {
+                case (1):
+                    Intent intent1 = new Intent(getApplicationContext(), Jeu1Activity.class);
+                    intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent1);
+                case (2):
+                    Intent intent2 = new Intent(getApplicationContext(), Jeu1Activity.class);
+                    intent2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent2);
+            }
+            finish();
 
+        }
     }
     public void next(View view){
         nextActivity();
