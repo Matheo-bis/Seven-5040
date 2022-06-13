@@ -6,4 +6,83 @@
     android:layout_height="match_parent"
     tools:context=".CoursActivity">
 
+    <TableLayout
+        android:layout_width="421dp"
+        android:layout_height="537dp"
+        android:layout_margin="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.84"
+        tools:layout_editor_absoluteX="4dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/addition"
+                android:layout_width="160dp"
+                android:layout_height="120dp"
+                android:layout_margin="20dp"
+                android:onClick="goto_addition"
+                android:text="addition" />
+
+            <Button
+                android:id="@+id/soustraction"
+                android:layout_width="160dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20sp"
+                android:layout_marginEnd="20dp"
+                android:onClick="goto_soustraction"
+                android:text="soustraction"
+                android:textSize="12sp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/multiplication"
+                android:layout_width="160dp"
+                android:layout_height="120dp"
+                android:layout_margin="20dp"
+                android:onClick="goto_multiplication"
+                android:text="multiplication" />
+
+            <Button
+                android:id="@+id/division"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_margin="20dp"
+                android:layout_marginEnd="20dp"
+                android:onClick="goto_division"
+                android:text="division" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/factoriel"
+                android:layout_width="160dp"
+                android:layout_height="120dp"
+                android:layout_margin="20dp"
+                android:onClick="goto_factorielle"
+                android:text="factoriel" />
+
+            <Button
+                android:id="@+id/puissance"
+                android:layout_width="170dp"
+                android:layout_height="120dp"
+                android:layout_margin="20dp"
+                android:layout_marginEnd="20dp"
+                android:onClick="goto_puissance"
+                android:text="puissance" />
+        </TableRow>
+
+    </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
