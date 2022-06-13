@@ -97,11 +97,13 @@ public class Jeu2Activity extends Jeu {
             if (comparaison == 0) {
                 Intent intent = new Intent(this, EcranFinActivity.class);
                 intent.putExtra("action", "win");
+                intent.putExtra("numero",numeroJeu);
                 startActivity(intent);
                 ScoreActivity.setScore(1);
             } else {
                 Intent intent = new Intent(this, EcranFinActivity.class);
                 intent.putExtra("action", "lose");
+                intent.putExtra("numero",numeroJeu);
                 startActivity(intent);
             }
         }
