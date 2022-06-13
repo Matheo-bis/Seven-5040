@@ -30,7 +30,7 @@
         android:onClick="goto_profil"
         android:text="_XxJustinDu13xX_"
         android:textAlignment="textEnd"
-        android:textColor="#FAF8F8"
+        android:textColor="@color/colorText"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="@+id/cardView"
