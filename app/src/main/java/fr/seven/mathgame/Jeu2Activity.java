@@ -83,11 +83,6 @@ public class Jeu2Activity extends Jeu {
                 break;
         }
 
-            Button qcmbutton1 = findViewById(R.id.buttonequation4);
-            Button qcmbutton2 = findViewById(R.id.buttonequation5);
-            Button qcmbutton3 = findViewById(R.id.buttonequation6);
-            Button qcmbutton4 = findViewById(R.id.buttonequation7);
-            View space = findViewById(R.id.Space);
             int comparaison = button.compareTo(DebutantJeu2.bonneequation());
             if (comparaison == 0) {
                 Intent intent = new Intent(this, EcranFinActivity.class);
@@ -101,6 +96,9 @@ public class Jeu2Activity extends Jeu {
                 intent.putExtra("numero",numeroJeu);
                 startActivity(intent);
             }
+            if(ScoreActivity.getScore()==4){
+
+            }
         }
 
 
@@ -109,30 +107,25 @@ public class Jeu2Activity extends Jeu {
             View textrouge = findViewById(R.id.textViewrouge);
             View textbleu = findViewById(R.id.textViewbleu);
             View textviolet = findViewById(R.id.textViewviolet);
-            int compte=0;
-        switch (compte){
+        switch (ScoreActivity.getScore()){
                 case 0:
                     ((TextView) findViewById(R.id.textViewvert)).setText(Html.fromHtml(str));
                     textvert.setVisibility(View.VISIBLE);
-                    compte++;
                     break;
                 case 1:
                     textvert.setVisibility(View.INVISIBLE);
                     ((TextView) findViewById(R.id.textViewrouge)).setText(Html.fromHtml(str));
                     textrouge.setVisibility(View.VISIBLE);
-                    compte++;
                     break;
                 case 2:
                     textrouge.setVisibility(View.INVISIBLE);
                     ((TextView) findViewById(R.id.textViewbleu)).setText(Html.fromHtml(str));
                     textbleu.setVisibility(View.VISIBLE);
-                    compte++;
                     break;
             default:
                     textbleu.setVisibility(View.INVISIBLE);
                     ((TextView) findViewById(R.id.textViewviolet)).setText(Html.fromHtml(str));
                     textviolet.setVisibility(View.VISIBLE);
-                    compte++;
                     break;
             }
 
