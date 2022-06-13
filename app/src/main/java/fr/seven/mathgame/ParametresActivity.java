@@ -108,10 +108,8 @@ public class ParametresActivity extends AppCompatActivity implements AdapterView
         String string = (String) adapterView.getItemAtPosition(i);
         editor.putString("Difficulty", string);
         editor.apply();
-        updateDifficultyInDatabase();
-
         if (StartActivity.firebaseAuth.getCurrentUser() != null) {
-
+            updateDifficultyInDatabase();
         }
     }
 
