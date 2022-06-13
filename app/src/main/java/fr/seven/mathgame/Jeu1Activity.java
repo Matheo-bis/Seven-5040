@@ -16,17 +16,19 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Jeu1Activity extends AppCompatActivity {
+public class Jeu1Activity extends Jeu {
     private ArrayList<String> EquationHistory = new ArrayList<String>();
     private String equation;
     private String equation1;
     private String equation2;
     private String equation3;
-
+    private int jeu1et2;
+    public int jeu1ou2(){return jeu1et2=2;}
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        numeroJeu=1;
         setContentView(R.layout.activity_jeu1);
         //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         //TEMPORAIRE
@@ -233,6 +235,7 @@ public class Jeu1Activity extends AppCompatActivity {
         View space = findViewById(R.id.Space);
         if (comparaison == 0) {
             Intent intent = new Intent(this, EcranFinActivity.class);
+            intent.putExtra("numero",numeroJeu);
             intent.putExtra("action", "win");
             startActivity(intent);
             ScoreActivity.setScore(1);
@@ -243,6 +246,8 @@ public class Jeu1Activity extends AppCompatActivity {
         } else {
             Intent intent = new Intent(this, EcranFinActivity.class);
             intent.putExtra("action", "lose");
+            intent.putExtra("numero",numeroJeu);
+
             startActivity(intent);
             buttonCE(null);
         }
@@ -265,12 +270,14 @@ public class Jeu1Activity extends AppCompatActivity {
         }
         if (comparaison == 0) {
             Intent intent = new Intent(this, EcranFinActivity.class);
+            intent.putExtra("numero",numeroJeu);
             intent.putExtra("action", "win");
             startActivity(intent);
             ScoreActivity.setScore(1);
         } else {
             Intent intent = new Intent(this, EcranFinActivity.class);
             intent.putExtra("action", "lose");
+            intent.putExtra("numero",numeroJeu);
             startActivity(intent);
             buttonCE(null);
         }

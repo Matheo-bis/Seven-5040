@@ -19,7 +19,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.VideoView;
 
-public class EcranFinActivity extends AppCompatActivity {
+public class EcranFinActivity extends Jeu {
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -165,14 +165,33 @@ public class EcranFinActivity extends AppCompatActivity {
 
     }
 
-    public void nextActivity(){
-        if(getIntent().getStringExtra("action").compareTo("lose")!=0){
-            Intent intent=new Intent(getApplicationContext(), Jeu1Activity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-        }
-        finish();
+    public void nextActivity() {
+        if (getIntent().getStringExtra("action").compareTo("lose") != 0) {
+            switch (getIntent().getIntExtra("numero",1)) {
+                case 1:
+                    Intent intent1 = new Intent(getApplicationContext(), Jeu1Activity.class);
+                    intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent1);
+                    break;
+                case 2:
+                    Intent intent2 = new Intent(getApplicationContext(), Jeu2Activity.class);
+                    intent2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent2);
+                    break;
+                case 4:
+                    Intent intent4 = new Intent(getApplicationContext(), CalculatriceActivity.class);
+                    intent4.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent4);
+                    break;
+                default:
+                    Intent intent0 = new Intent(getApplicationContext(), Jeu1Activity.class);
+                    intent0.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent0);
+                    break;
+            }
+            finish();
 
+        }
     }
     public void next(View view){
         nextActivity();
