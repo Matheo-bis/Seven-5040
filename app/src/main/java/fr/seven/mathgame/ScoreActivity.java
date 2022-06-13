@@ -31,7 +31,10 @@ public class ScoreActivity extends AppCompatActivity {
             reference.child("score").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<DataSnapshot> task) {
-                    score = (int) ((long) task.getResult().getValue());
+                    if(task.getResult().exists())
+                        score = (int) ((long) task.getResult().getValue());
+                    else
+                        score=0;
                 }
             });
         }
