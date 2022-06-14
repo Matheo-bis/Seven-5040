@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -25,6 +26,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.OAuthProvider;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -72,7 +74,28 @@ public class StartActivity extends AppCompatActivity {
         }
     }
 
+    public void connectAnonymously(View view){
+        Activity a = this;
+        firebaseAuth.signInAnonymously().addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            UserProfileChangeRequest.Builder builder = new UserProfileChangeRequest.Builder();
+                            builder.setDisplayName("Anonyme-"+ (Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid()).toString().substring(0,5));
+                            Objects.requireNonNull(firebaseAuth.getCurrentUser()).updateProfile(builder.build())
+                                    .addOnCompleteListener(a,new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                start_application(null);
+                                            }
+                                        }
+                            });
+                        }
+                    }
+                });
 
+    }
 
     public void connectViaGithub(View view){
         OAuthProvider.Builder provider = OAuthProvider.newBuilder("github.com");

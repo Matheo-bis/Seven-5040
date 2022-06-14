@@ -123,4 +123,8 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun goto_multi(view: View?){
+        val intent = Intent(this, MatchmakingActivity::class.java)
+        startActivity(intent)
+    }
 }
