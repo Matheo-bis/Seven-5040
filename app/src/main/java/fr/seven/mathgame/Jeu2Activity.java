@@ -89,7 +89,7 @@ public class Jeu2Activity extends Jeu {
                 intent.putExtra("numero",numeroJeu);
                 startActivity(intent);
             } else {
-                Intent intent = new Intent(this, EcranFinActivity.class);
+                Intent intent = new Intent(this, FinJeu2Activity.class);
                 intent.putExtra("action", "lose");
                 intent.putExtra("numero",numeroJeu);
                 startActivity(intent);
@@ -131,14 +131,10 @@ public class Jeu2Activity extends Jeu {
                     textviolet.setVisibility(View.VISIBLE);
                     compteur++;
                     break;
-                case 4:
-                    Intent intentwin = new Intent(this, FinJeu2Activity.class);
-                    intentwin.putExtra("action", "win");
-                    startActivity(intentwin);
                 default:
-                    Intent intentlose = new Intent(this, FinJeu2Activity.class);
-                    intentlose.putExtra("action", "lose");
-                    startActivity(intentlose);
+                    Intent intent = new Intent(this, FinJeu2Activity.class);
+                    intent.putExtra("action", "win");
+                    startActivity(intent);
             }
 
         }
