@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="fr.seven.mathgame" >
+    package="fr.seven.mathgame">
 
     <uses-permission android:name="android.permission.VIBRATE" />
 
@@ -14,24 +14,37 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TestApp"
-        tools:targetApi="31" >
+        tools:targetApi="31">
+        <activity
+            android:name=".FinJeu2Activity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".activity_factorielle"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".CoursActivity" />
         <activity
             android:name=".activity_puissance"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".CoursActivity" />
         <activity
             android:name=".activity_division"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".CoursActivity" />
         <activity
             android:name=".activity_multiplication"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".CoursActivity" />
         <activity
             android:name=".activity_soustraction"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".CoursActivity" />
         <activity
             android:name=".activity_addition"
+            android:exported="false"
+            android:parentActivityName=".CoursActivity" />
+        <activity
+            android:name=".RankingActivity"
             android:exported="false" />
         <activity
             android:name=".Jeu3Activity"
@@ -100,7 +113,7 @@
         <activity
             android:name=".StartActivity"
             android:exported="true"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -110,9 +123,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:screenOrientation="portrait">
-
-        </activity>
+            android:screenOrientation="portrait"></activity>
 
         <meta-data
             android:name="preloaded_fonts"

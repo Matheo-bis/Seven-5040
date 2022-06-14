@@ -238,7 +238,6 @@ public class Jeu1Activity extends Jeu {
             intent.putExtra("numero",numeroJeu);
             intent.putExtra("action", "win");
             startActivity(intent);
-            ScoreActivity.setScore(1);
             qcmbutton1.setVisibility(View.GONE);
             qcmbutton2.setVisibility(View.GONE);
             qcmbutton3.setVisibility(View.GONE);
@@ -273,7 +272,6 @@ public class Jeu1Activity extends Jeu {
             intent.putExtra("numero",numeroJeu);
             intent.putExtra("action", "win");
             startActivity(intent);
-            ScoreActivity.setScore(1);
         } else {
             Intent intent = new Intent(this, EcranFinActivity.class);
             intent.putExtra("action", "lose");
