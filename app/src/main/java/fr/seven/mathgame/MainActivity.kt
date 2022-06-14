@@ -71,12 +71,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun goto_jeu2(view: View?) {
-        val intent = Intent(this, Jeu2Activity::class.java)
+        val intent = Intent(this, LancementJeu2Activity::class.java)
         startActivity(intent)
     }
 
     fun goto_jeu3(view: View?) {
-        val intent = Intent(this, Jeu3Activity::class.java)
+        val intent = Intent(this, LancementJeu3Activity::class.java)
         startActivity(intent)
     }
 
