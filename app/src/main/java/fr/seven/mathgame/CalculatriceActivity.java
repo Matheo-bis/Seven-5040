@@ -282,6 +282,7 @@ public class CalculatriceActivity extends AppCompatActivity {
             num1= result;
             resultat.setText(String.valueOf(result));
             num2_exist=false;
+            calcul.setText("");
             deuxio.setText("");
         }
     }
@@ -311,8 +312,9 @@ public class CalculatriceActivity extends AppCompatActivity {
                     result = (float) Math.pow((double) num1, (double) num2);
                     break;
             }
-            num1=result;
+            num1=0;
             num2_exist = false;
+            num1_exist = false;
             ok=true;
             resultat.setText(String.valueOf(result));
             deuxio.setText("");
