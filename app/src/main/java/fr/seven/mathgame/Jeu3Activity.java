@@ -238,11 +238,14 @@ public class Jeu3Activity extends Jeu3Timer {
             qcmbutton3.setVisibility(View.GONE);
             space.setVisibility(View.GONE);
             Intent intent = new Intent(this, Jeu3Activity.class);
-            intent.putExtra("timer",((ProgressBar)findViewById(R.id.timebar)).getProgress()); //non reset de la barre
+            intent.putExtra("timer",((ProgressBar)findViewById(R.id.timebar)).getProgress()+200); //non reset de la barre
             startActivity(intent);
             finish();
         } else {                    //Mauvaise réponse
             buttonCE(null);
+            Intent intent = new Intent(this, Jeu3Activity.class);
+            intent.putExtra("timer",((ProgressBar)findViewById(R.id.timebar)).getProgress()-100);
+            startActivity(intent);
         }
     }
 
@@ -263,11 +266,14 @@ public class Jeu3Activity extends Jeu3Timer {
         }
         if (comparaison == 0) { //Bonne réponse
             Intent intent = new Intent(this, Jeu3Activity.class);
-            intent.putExtra("timer",((ProgressBar)findViewById(R.id.timebar)).getProgress());
+            intent.putExtra("timer",((ProgressBar)findViewById(R.id.timebar)).getProgress()+200);
             startActivity(intent);
             finish();
 
         } else {                //Mauvaise réponse
+            Intent intent = new Intent(this, Jeu3Activity.class);
+            intent.putExtra("timer",((ProgressBar)findViewById(R.id.timebar)).getProgress()-100);
+            startActivity(intent);
         }
     }
 

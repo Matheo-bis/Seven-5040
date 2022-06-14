@@ -45,6 +45,7 @@ public class Jeu3Timer extends Jeu{
             if(currentProgress[0] != 0){
                 new Handler().postDelayed(this, 10);
             }else
+                //Fin du jeu, écran de fin
                 new Handler().postDelayed(this, 10);
 
         }
