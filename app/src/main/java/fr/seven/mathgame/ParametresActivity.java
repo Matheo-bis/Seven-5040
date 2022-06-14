@@ -60,6 +60,10 @@ public class ParametresActivity extends AppCompatActivity implements AdapterView
                 pos=2;
                 selectiondifficultes=3;
                 break;
+            case "Adaptatif":
+                pos=3;
+                selectiondifficultes=4;
+                break;
             case "ERREUR":
                 updateDifficultyInDatabase();
                 pos=0;

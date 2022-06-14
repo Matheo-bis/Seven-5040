@@ -7,7 +7,9 @@ import androidx.preference.PreferenceManager;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.icu.text.SymbolTable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
@@ -18,6 +20,10 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.VideoView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class EcranFinActivity extends Jeu {
 
@@ -38,6 +44,10 @@ public class EcranFinActivity extends Jeu {
                 default:
                     wide(null);
             }
+        }
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        if(sharedPreferences.getString("Difficulty", "ERREUR").equals("Adaptatif")){
+            updateDifficulty();
         }
     }
 
@@ -189,13 +199,73 @@ public class EcranFinActivity extends Jeu {
                     startActivity(intent0);
                     break;
             }
-            finish();
-
         }
+        finish();
     }
     public void next(View view){
         nextActivity();
     }
 
+    public void updateDifficulty(){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String difficulty = sharedPreferences.getString("ADifficulty", "Débutant");
+        int value = sharedPreferences.getInt(difficulty+"-"+getIntent().getStringExtra("action"),0);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt(difficulty+"-"+getIntent().getStringExtra("action"),value+1);
+        editor.apply();
+
+        int win = sharedPreferences.getInt(difficulty+"-win",0);
+        int lose = sharedPreferences.getInt(difficulty+"-lose",0);
+        if((win+lose)>=10 && (win*10/(win+lose))>=8){
+            higherDifficulty(difficulty);
+        }
+        else if((win+lose)>=10 && (win*10/(win+lose))<=4){
+            lowerDifficulty(difficulty);
+        }
+        System.out.println("RESULT::"+difficulty+":"+(win+lose)+": : : :"+(win*10/(win+lose)));
+    }
+
+    public void lowerDifficulty(String difficulty){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt(difficulty+"-lose",0);
+        editor.putInt(difficulty+"-win",0);
+        editor.apply();
+        switch(difficulty) {
+            case "Débutant":
+                difficulty="Débutant";
+                break;
+            case "Intermédiaire":
+                difficulty="Débutant";
+
+                break;
+            case "Expert":
+                difficulty="Intermédiaire";
+                break;
+        }
+
+        editor.putString("ADifficulty",difficulty);
+        editor.apply();
+    }
+
+    public void higherDifficulty(String difficulty){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        switch(difficulty) {
+            case "Débutant":
+                difficulty="Intermédiaire";
+                break;
+            case "Intermédiaire":
+                difficulty="Expert";
+
+                break;
+            case "Expert":
+                difficulty="Expert";
+                break;
+        }
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        System.out.println("NEWDIFFICULTY: "+difficulty);
+        editor.putString("ADifficulty",difficulty);
+        editor.apply();
+    }
 
 }
