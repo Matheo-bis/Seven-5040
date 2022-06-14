@@ -1,18 +1,20 @@
 package fr.seven.mathgame
 
+import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.LinearInterpolator
 import android.widget.LinearLayout
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.annotation.Px
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.database.ChildEventListener
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import org.intellij.lang.annotations.JdkConstants
 import org.w3c.dom.Text
 import java.util.*
@@ -24,10 +26,23 @@ class RankingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ranking)
         showData()
-
+        sync();
     }
+
+
+
+
     var players : HashMap<String, Long> = HashMap<String, Long> ()
 
+    fun sync(){
+        val progressBar = findViewById<ProgressBar>(R.id.progressBar3)
+        val animation = ObjectAnimator.ofInt(progressBar, "progress", 0, 100)
+        animation.duration = 500
+        animation.interpolator = LinearInterpolator()
+        animation.repeatCount = Animation.INFINITE
+        animation.repeatMode = ValueAnimator.REVERSE
+        animation.start()
+    }
 
     fun showData(){
         val database = FirebaseDatabase.getInstance("https://projet7-e3b8a-default-rtdb.europe-west1.firebasedatabase.app/")
