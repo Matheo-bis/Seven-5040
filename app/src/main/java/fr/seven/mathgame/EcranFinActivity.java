@@ -26,7 +26,6 @@ public class EcranFinActivity extends Jeu {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ecran_fin);
-        ((TextView)findViewById(R.id.scoretext)).setText("Score: "+ ScoreActivity.getScore());
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             switch(getIntent().getStringExtra("action")){
                 case "lose":
@@ -167,19 +166,27 @@ public class EcranFinActivity extends Jeu {
 
     public void nextActivity() {
         if (getIntent().getStringExtra("action").compareTo("lose") != 0) {
-            switch (numeroJeu) {
-                case (1):
+            switch (getIntent().getIntExtra("numero",1)) {
+                case 1:
                     Intent intent1 = new Intent(getApplicationContext(), Jeu1Activity.class);
                     intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent1);
-                case (2):
+                    break;
+                case 2:
                     Intent intent2 = new Intent(getApplicationContext(), Jeu2Activity.class);
                     intent2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent2);
+                    break;
+                case 4:
+                    Intent intent4 = new Intent(getApplicationContext(), CalculatriceActivity.class);
+                    intent4.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent4);
+                    break;
                 default:
                     Intent intent0 = new Intent(getApplicationContext(), Jeu1Activity.class);
                     intent0.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent0);
+                    break;
             }
             finish();
 
