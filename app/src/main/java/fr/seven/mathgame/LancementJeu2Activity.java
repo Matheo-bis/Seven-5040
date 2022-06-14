@@ -16,7 +16,7 @@ public class LancementJeu2Activity extends AppCompatActivity {
         Button buttonJouer =(Button) findViewById(R.id.buttonJouer);
     }
     public void launchGame(View view){
-        Intent intent=new Intent(this, Jeu2Activity.class);
+        Intent intent=new Intent(this, Jeu2_1Activity.class);
         startActivity(intent);
     }
 }

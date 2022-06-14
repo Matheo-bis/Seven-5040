@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import java.util.Random;
 
-public class Jeu2Activity extends Jeu {
+public class Jeu2_1Activity extends Jeu {
     private String equation;
     private String equation1;
     private String equation2;
@@ -90,7 +90,7 @@ public class Jeu2Activity extends Jeu {
             View space = findViewById(R.id.Space);
             int comparaison = button.compareTo(DebutantJeu2.bonneequation());
             if (comparaison == 0) {
-                Intent intent = new Intent(this, EcranFinActivity.class);
+                Intent intent = new Intent(this, Jeu2_2Activity.class);
                 intent.putExtra("action", "win");
                 intent.putExtra("numero",numeroJeu);
                 startActivity(intent);
