@@ -19,18 +19,23 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Jeu3Timer extends Jeu3Activity{
+public class Jeu3Timer extends Jeu{
 
     @RequiresApi(api = Build.VERSION_CODES.O)
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_jeu3);
         ProgressBar timebar = findViewById(R.id.timebar);
-    setContentView(R.layout.activity_jeu3);
 
+        int maxtime = 1000;
+        int progresstime = getIntent().getIntExtra("timer",1000);
+        int currentprogresstime = getIntent().getIntExtra("timer",1000);
 
-    timebar.setMax(300);
-    timebar.setProgress(300);
-    int[] currentProgress = {300};
+        timebar.setMax(maxtime);
+        timebar.setProgress(progresstime);
+        int[] currentProgress = {currentprogresstime};
 
         new Handler().postDelayed(new Runnable() {
         @Override
@@ -40,11 +45,11 @@ public class Jeu3Timer extends Jeu3Activity{
             if(currentProgress[0] != 0){
                 new Handler().postDelayed(this, 10);
             }else
+                //Fin du jeu, écran de fin
                 new Handler().postDelayed(this, 10);
 
         }
     }, 0);
  }
-
 
 }
