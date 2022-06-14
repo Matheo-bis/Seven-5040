@@ -95,7 +95,7 @@
             android:weightSum="1">
 
             <Button
-                android:id="@+id/factoriel"
+                android:id="@+id/factorielle"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_margin="15dp"
