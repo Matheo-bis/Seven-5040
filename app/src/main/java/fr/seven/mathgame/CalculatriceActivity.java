@@ -120,13 +120,20 @@ public class CalculatriceActivity extends AppCompatActivity {
                     num1 = Double.parseDouble((String)calcul.getText().toString());
              }
                 else {
+                    int longueur = calcul.getText().length() - 1;
+                    String last_number = (String) calcul.getText().toString().substring(longueur);
+                    if (last_number.equals(signs[0])||last_number.equals(signs[1])||last_number.equals(signs[2])||last_number.equals(signs[3])||last_number.equals(signs[4])||last_number.equals(signs[5])){
+                        calcul.setText(calcul.getText().toString().substring(0,longueur));
+                    }
                     if(!num2_exist && op=="!"){
                         deuxio.setText("0");
+                        num2 = Double.parseDouble((String)deuxio.getText().toString());
                     }
                     if(ok){
                         deuxio.setText("0");
+                        num2 = Double.parseDouble((String)deuxio.getText().toString());
                     }
-                    num2 = Double.parseDouble((String)deuxio.getText().toString());
+
                 }
                 break;
             case "fr.seven.mathapp:id/buttonsub":
@@ -137,14 +144,21 @@ public class CalculatriceActivity extends AppCompatActivity {
                     num1 =Double.parseDouble((String)calcul.getText());
                 }
                 else {
+                    int longueur = calcul.getText().length() - 1;
+                    String last_number = (String) calcul.getText().toString().substring(longueur);
+                    if (last_number.equals(signs[0])||last_number.equals(signs[1])||last_number.equals(signs[2])||last_number.equals(signs[3])||last_number.equals(signs[4])||last_number.equals(signs[5])){
+                        calcul.setText(calcul.getText().toString().substring(0,longueur));
+                    }
                     if(!num2_exist && op=="!"){
+                        num2 = Double.parseDouble((String)deuxio.getText());
                         deuxio.setText("0");
                     }
                     if(ok){
                         //deuxio.setText("0");
+                        num2 = Double.parseDouble((String)deuxio.getText());
                         num2_exist=false;
+
                     }
-                    num2 = Double.parseDouble((String)deuxio.getText());
                 }
                 break;
             case "fr.seven.mathapp:id/buttondiv":
@@ -155,10 +169,15 @@ public class CalculatriceActivity extends AppCompatActivity {
                     num1 =Double.parseDouble((String)calcul.getText());
                 }
                 else {
+                    int longueur = calcul.getText().length() - 1;
+                    String last_number = (String) calcul.getText().toString().substring(longueur);
+                    if (last_number.equals(signs[0])||last_number.equals(signs[1])||last_number.equals(signs[2])||last_number.equals(signs[3])||last_number.equals(signs[4])||last_number.equals(signs[5])){
+                        calcul.setText(calcul.getText().toString().substring(0,longueur));
+                    }
                     if(!num2_exist && op=="!"){
                         deuxio.setText("1");
+                        num2 = Double.parseDouble((String)deuxio.getText());
                     }
-                    num2 = Double.parseDouble((String)deuxio.getText());
                 }
                 break;
             case "fr.seven.mathapp:id/buttonmult":
@@ -169,10 +188,15 @@ public class CalculatriceActivity extends AppCompatActivity {
                     num1 = Double.parseDouble((String)calcul.getText());
                 }
                 else {
+                    int longueur = calcul.getText().length() - 1;
+                    String last_number = (String) calcul.getText().toString().substring(longueur);
+                    if (last_number.equals(signs[0])||last_number.equals(signs[1])||last_number.equals(signs[2])||last_number.equals(signs[3])||last_number.equals(signs[4])||last_number.equals(signs[5])){
+                        calcul.setText(calcul.getText().toString().substring(0,longueur));
+                    }
                     if(!num2_exist && op=="!"){
                         deuxio.setText("1");
+                        num2 = Double.parseDouble((String)deuxio.getText());
                     }
-                    num2 = Double.parseDouble((String)deuxio.getText());
                 }
                 break;
             case "fr.seven.mathapp:id/buttondot":
@@ -198,8 +222,16 @@ public class CalculatriceActivity extends AppCompatActivity {
                     }
                 }
                 else{
-                    num2 = Double.parseDouble((String)deuxio.getText());
-                    num2= (float)(factorial((double)num2));}
+                    int longueur = calcul.getText().length() - 1;
+                    String last_number = (String) calcul.getText().toString().substring(longueur);
+                    if (last_number.equals(signs[0])||last_number.equals(signs[1])||last_number.equals(signs[2])||last_number.equals(signs[3])||last_number.equals(signs[4])||last_number.equals(signs[5])){
+                        calcul.setText(calcul.getText().toString().substring(0,longueur));
+                    }
+                    else {
+                        num2 = Double.parseDouble((String) deuxio.getText());
+                        num2 = (float) (factorial((double) num2));
+                    }
+                }
                 break;
             case "fr.seven.mathapp:id/buttonpow":
                 button = "^";
@@ -209,6 +241,11 @@ public class CalculatriceActivity extends AppCompatActivity {
                     num1 = Double.parseDouble((String)calcul.getText());
                 }
                 else {
+                    int longueur = calcul.getText().length() - 1;
+                    String last_number = (String) calcul.getText().toString().substring(longueur);
+                    if (last_number.equals(signs[0])||last_number.equals(signs[1])||last_number.equals(signs[2])||last_number.equals(signs[3])||last_number.equals(signs[4])||last_number.equals(signs[5])){
+                        calcul.setText(calcul.getText().toString().substring(0,longueur));
+                    }
                     num2 = Double.parseDouble((String)deuxio.getText());
                 }
                 break;

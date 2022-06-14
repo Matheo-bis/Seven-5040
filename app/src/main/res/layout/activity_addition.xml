@@ -18,20 +18,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
+        android:layout_marginTop="48dp"
         android:layout_marginRight="5dp"
         android:text="hello addition"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.155" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/addition_image"
         android:layout_width="404dp"
         android:layout_height="308dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
         android:scaleX="0.5"
         android:scaleY="0.5"
         app:layout_constraintTop_toTopOf="@+id/titre"
@@ -42,7 +40,7 @@
         android:id="@+id/retenue"
         android:layout_width="220dp"
         android:layout_height="65dp"
-        android:layout_marginTop="228dp"
+        android:layout_marginTop="236dp"
         android:background="#160D98"
         android:fontFamily="cursive"
         android:gravity="center"
@@ -70,10 +68,9 @@
         android:id="@+id/imageView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="388dp"
+        android:layout_marginTop="428dp"
+        android:layout_marginEnd="116dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/calcul" />
 

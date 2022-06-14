@@ -24,7 +24,7 @@ public class activity_soustraction extends AppCompatActivity {
                 "La soustraction est une opération qui consiste à enlever une quantité à une autre, à trouver une quantité manquante ou à comparer des quantités entre elles.\n"+
                 "Ces quantités qui forment la soustraction se nomment des termes.\n"+
                 "La différence est le résultat de cette opération."+
-                "\n \n \n \n \n \n \n \n \n \n \n \n \n"+
+                "\n \n \n \n \n \n \n \n \n  \n \n"+
                 "Dans une soustraction, un emprunt consiste à enlever une dizaine et à la transformer en 10 unités lorsque la valeur du chiffre au-dessus est plus petite que la valeur du chiffre à soustraire." + "\n" +
                 "Remarque : on utilise la même technique si on doit emprunter aux centaines, aux unités de mille, etc.)..";
 

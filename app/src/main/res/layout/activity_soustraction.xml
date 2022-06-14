@@ -29,6 +29,7 @@
         android:id="@+id/emprunt"
         android:layout_width="220dp"
         android:layout_height="65dp"
+        android:layout_marginStart="68dp"
         android:layout_marginTop="256dp"
         android:background="#160D98"
         android:fontFamily="cursive"
@@ -37,7 +38,6 @@
         android:textColor="#FBFBFB"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,48 +45,32 @@
         android:id="@+id/soustr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="124dp"
+        android:layout_marginBottom="80dp"
         android:scaleX="0.5"
         android:scaleY="0.5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:srcCompat="@drawable/sous"
-        tools:layout_editor_absoluteX="0dp" />
+        tools:layout_editor_absoluteX="16dp" />
 
     <TextView
         android:id="@+id/explication_sous"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginTop="12dp"
         android:text="hello Soustraction"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.468"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.155" />
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="396dp"
-        android:layout_marginEnd="60dp"
-        android:scaleX="0.60"
-        android:scaleY="0.60"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/calculs1" />
+        app:layout_constraintTop_toBottomOf="@+id/titre"
+        tools:layout_editor_absoluteX="124dp" />
 
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="540dp"
+        android:layout_marginTop="352dp"
         android:scaleX="0.60"
         android:scaleY="0.60"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titre"
         app:srcCompat="@drawable/calculs2"
-        tools:layout_editor_absoluteX="15dp" />
+        tools:layout_editor_absoluteX="16dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
