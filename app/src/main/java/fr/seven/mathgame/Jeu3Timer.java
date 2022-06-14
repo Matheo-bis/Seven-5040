@@ -44,10 +44,12 @@ public class Jeu3Timer extends Jeu{
             timebar.setProgress(currentProgress[0]);
             if(currentProgress[0] != 0){
                 new Handler().postDelayed(this, 10);
-            }else
+            }else {
+                currentProgress[0]=1000;
                 //Fin du jeu, écran de fin
                 new Handler().postDelayed(this, 10);
 
+            }
         }
     }, 0);
  }

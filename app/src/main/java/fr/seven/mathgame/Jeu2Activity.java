@@ -24,6 +24,11 @@ public class Jeu2Activity extends Jeu {
         numeroJeu=2;
         setContentView(R.layout.activity_jeu2);
         qcm();
+        if(compteur==4){
+            Intent intent = new Intent(this, FinJeu2Activity.class);
+            intent.putExtra("action", "lose");
+            startActivity(intent);
+        }
     }
 
         public void qcm () {
@@ -82,18 +87,18 @@ public class Jeu2Activity extends Jeu {
                 break;
         }
 
-            int comparaison = button.compareTo(DebutantJeu2.bonneequation());
-            if (comparaison == 0) {
-                Intent intent = new Intent(this, EcranFinActivity.class);
-                intent.putExtra("action", "win");
-                intent.putExtra("numero",numeroJeu);
-                startActivity(intent);
-            } else {
-                Intent intent = new Intent(this, EcranFinActivity.class);
-                intent.putExtra("action", "lose");
-                intent.putExtra("numero",numeroJeu);
-                startActivity(intent);
-            }
+        int comparaison = button.compareTo(DebutantJeu2.bonneequation());
+        if (comparaison == 0) {
+            Intent intent = new Intent(this, Jeu2Activity.class);
+            intent.putExtra("action", "win");
+            intent.putExtra("numero",numeroJeu);
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent(this, FinJeu2Activity.class);
+            intent.putExtra("action", "lose");
+            intent.putExtra("numero",numeroJeu);
+            startActivity(intent);
+        }
             /**if(compteur==4) {
                 Intent intent = new Intent(this, FinJeu2Activity.class);
                 intent.putExtra("action", "lose");
@@ -133,7 +138,7 @@ public class Jeu2Activity extends Jeu {
                     break;
                 default:
                     Intent intent = new Intent(this, FinJeu2Activity.class);
-                    intent.putExtra("action", "lose");
+                    intent.putExtra("action", "win");
                     startActivity(intent);
             }
 
