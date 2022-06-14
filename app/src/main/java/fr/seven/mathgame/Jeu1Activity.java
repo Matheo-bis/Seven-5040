@@ -37,7 +37,11 @@ public class Jeu1Activity extends Jeu {
         Button qcmbutton3 = findViewById(R.id.buttonequation3);
         View space = findViewById(R.id.Space);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        switch (sharedPreferences.getString("Difficulty", "ERREUR")) {
+        String difficulty = sharedPreferences.getString("Difficulty", "ERREUR");
+        if(difficulty.equals("Adaptatif")) {
+            difficulty = sharedPreferences.getString("ADifficulty", "ERREUR");
+        }
+        switch (difficulty) {
             case "Intermédiaire":
                 setQuestion(Intermédiaire.equation());
                 if (Intermédiaire.functequation() == 1) {
@@ -258,7 +262,11 @@ public class Jeu1Activity extends Jeu {
         String text = ((TextView) findViewById(R.id.textView)).getText().toString();
         int comparaison;
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        switch (sharedPreferences.getString("Difficulty", "ERREUR")) {
+        String difficulty = sharedPreferences.getString("Difficulty", "ERREUR");
+        if(difficulty.equals("Adaptatif")) {
+            difficulty = sharedPreferences.getString("ADifficulty", "ERREUR");
+        }
+        switch (difficulty) {
             case "Intermédiaire":
                 comparaison = (Intermédiaire.resultat()).compareTo(text);
                 break;

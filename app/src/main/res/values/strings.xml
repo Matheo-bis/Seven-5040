@@ -14,6 +14,7 @@
         <item>Débutant</item>
         <item>Intermédiaire</item>
         <item>Expert</item>
+        <item>Adaptatif</item>
     </string-array>
 
 </resources>
