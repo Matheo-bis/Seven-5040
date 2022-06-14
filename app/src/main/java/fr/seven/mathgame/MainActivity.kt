@@ -40,27 +40,27 @@ class MainActivity : AppCompatActivity() {
         val editor = sharedPreferences.edit()
         val tuto_5 = AlertDialog.Builder(this)
                 .setTitle("Bienvenue!")
-                .setMessage("Le bouton en haut à droite permet d'accéder aux paramètres, et la photo de profil (ainsi que le nom) permet d'accéder au profil")
+                .setMessage("Le bouton en haut à gauche permet d'accéder aux paramètres, et la photo de profil (ainsi que le nom) permet d'accéder au profil")
                 .setPositiveButton("Fini!") { dialogInterface: DialogInterface?, i: Int -> }
         val tuto_4 = AlertDialog.Builder(this)
                 .setTitle("Bienvenue!")
                 .setMessage("Il y a aussi une calculatrice, des cours et un classement")
-                .setPositiveButton("Suivent") { dialogInterface: DialogInterface?, i: Int -> tuto_5.show() }
+                .setPositiveButton("Suivant") { dialogInterface: DialogInterface?, i: Int -> tuto_5.show() }
         val tuto_3 = AlertDialog.Builder(this)
                 .setTitle("Bienvenue!")
                 .setMessage("... Et le jeu 3 est un duel en multijoueur!")
-                .setPositiveButton("Suivent") { dialogInterface: DialogInterface?, i: Int -> tuto_4.show() }
+                .setPositiveButton("Suivant") { dialogInterface: DialogInterface?, i: Int -> tuto_4.show() }
         val tuto_2 = AlertDialog.Builder(this)
                 .setTitle("Bienvenue!")
-                .setMessage("... Le jeu 2 est un déamorçage en temps limité (oui oui)...")
-                .setPositiveButton("Suivent") { dialogInterface: DialogInterface?, i: Int -> tuto_3.show() }
+                .setMessage("... Le jeu 2 est un désamorçage en temps limité (oui oui)...")
+                .setPositiveButton("Suivant") { dialogInterface: DialogInterface?, i: Int -> tuto_3.show() }
         if (!sharedPreferences.getBoolean("Tuto_fini", false)) {
             editor.putBoolean("Tuto_fini", true)
             editor.apply()
             AlertDialog.Builder(this)
                     .setTitle("Bienvenue!")
                     .setMessage("Voici le menu principal, Le jeu 1 est un quiz d'entraînement...")
-                    .setPositiveButton("Suivent") { dialogInterface: DialogInterface?, i: Int -> tuto_2.show() }
+                    .setPositiveButton("Suivant") { dialogInterface: DialogInterface?, i: Int -> tuto_2.show() }
                     .show()
         }
     }
