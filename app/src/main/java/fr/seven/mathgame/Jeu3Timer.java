@@ -48,6 +48,7 @@ public class Jeu3Timer extends Jeu{
                 currentProgress[0]=1000;
                 //Fin du jeu, écran de fin
                 new Handler().postDelayed(this, 10);
+
             }
         }
     }, 0);
