@@ -13,7 +13,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 
 public class Jeu1Activity extends Jeu {
@@ -216,23 +221,23 @@ public class Jeu1Activity extends Jeu {
 
         if (Intermédiaire.functequation() == 1) {
             comparaison = button.compareTo(Intermédiaire.bonneequation());
-            verif(comparaison);
+            verif(comparaison,Intermédiaire.bonneequation()+((TextView) findViewById(R.id.textView)).getText().toString());
         }
 
         if (Expert.functequation() == 1) {
             comparaison = button.compareTo(Expert.bonneequation());
-            verif(comparaison);
+            verif(comparaison,Expert.bonneequation()+((TextView) findViewById(R.id.textView)).getText().toString());
         }
 
         if (Debutant.functequation() == 1) {
             comparaison = button.compareTo(Debutant.bonneequation());
-            verif(comparaison);
+            verif(comparaison,Debutant.bonneequation()+((TextView) findViewById(R.id.textView)).getText().toString());
         }
 
 
     }
 
-    public void verif(int comparaison) {
+    public void verif(int comparaison,String eq) {
         Button qcmbutton1 = findViewById(R.id.buttonequation1);
         Button qcmbutton2 = findViewById(R.id.buttonequation2);
         Button qcmbutton3 = findViewById(R.id.buttonequation3);
@@ -242,6 +247,16 @@ public class Jeu1Activity extends Jeu {
             Intent intent = new Intent(this, EcranFinActivity.class);
             intent.putExtra("numero",numeroJeu);
             intent.putExtra("action", "win");
+            try {
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance("https://projet7-e3b8a-default-rtdb.europe-west1.firebasedatabase.app/")
+                        .getReference("userdata").child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("equations").push();
+                databaseReference.child("content").setValue(eq);
+                databaseReference.child("status").setValue(true);
+
+            }
+            catch(Exception e){
+                System.out.println(e);
+            }
             startActivity(intent);
             qcmbutton1.setVisibility(View.GONE);
             qcmbutton2.setVisibility(View.GONE);
@@ -251,7 +266,16 @@ public class Jeu1Activity extends Jeu {
             Intent intent = new Intent(this, EcranFinActivity.class);
             intent.putExtra("action", "lose");
             intent.putExtra("numero",numeroJeu);
+            try {
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance("https://projet7-e3b8a-default-rtdb.europe-west1.firebasedatabase.app/")
+                        .getReference("userdata").child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("equations").push();
+                databaseReference.child("content").setValue(eq);
+                databaseReference.child("status").setValue(false);
 
+            }
+            catch(Exception e){
+                System.out.println(e);
+            }
             startActivity(intent);
             buttonCE(null);
         }
@@ -266,26 +290,51 @@ public class Jeu1Activity extends Jeu {
         if(difficulty.equals("Adaptatif")) {
             difficulty = sharedPreferences.getString("ADifficulty", "ERREUR");
         }
+        String result;
         switch (difficulty) {
             case "Intermédiaire":
                 comparaison = (Intermédiaire.resultat()).compareTo(text);
+                result=Intermédiaire.resultat();
                 break;
             case "Expert":
                 comparaison = (Expert.resultat()).compareTo(text);
+                result=Expert.resultat();
                 break;
             default:
                 comparaison = (Debutant.resultat()).compareTo(text);
+                result=Debutant.resultat();
+
         }
         if (comparaison == 0) {
             ScoreActivity.setScore(1);
             Intent intent = new Intent(this, EcranFinActivity.class);
             intent.putExtra("numero",numeroJeu);
             intent.putExtra("action", "win");
+            try {
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance("https://projet7-e3b8a-default-rtdb.europe-west1.firebasedatabase.app/")
+                        .getReference("userdata").child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("equations").push();
+                databaseReference.child("content").setValue(result);
+                databaseReference.child("status").setValue(true);
+
+            }
+            catch(Exception e){
+                System.out.println(e);
+            }
             startActivity(intent);
         } else {
             Intent intent = new Intent(this, EcranFinActivity.class);
             intent.putExtra("action", "lose");
             intent.putExtra("numero",numeroJeu);
+            try {
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance("https://projet7-e3b8a-default-rtdb.europe-west1.firebasedatabase.app/")
+                        .getReference("userdata").child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("equations").push();
+                databaseReference.child("content").setValue(result);
+                databaseReference.child("status").setValue(false);
+
+            }
+            catch(Exception e){
+                System.out.println(e);
+            }
             startActivity(intent);
             buttonCE(null);
         }
@@ -300,6 +349,11 @@ public class Jeu1Activity extends Jeu {
 
     public void buttonCE(View view) {
         setQuestion(EquationHistory.get(0));
+    }
+
+    public void goto_history(View view){
+        Intent intent = new Intent(getApplicationContext(), HistoriqueJeu1Activity.class);
+        startActivity(intent);
     }
 
 
