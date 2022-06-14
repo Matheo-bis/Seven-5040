@@ -188,6 +188,11 @@ public class EcranFinActivity extends Jeu {
                     intent2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent2);
                     break;
+                case 3:
+                    Intent intent3 = new Intent(getApplicationContext(), Jeu3Activity.class);
+                    intent3.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent3);
+                    break;
                 case 4:
                     Intent intent4 = new Intent(getApplicationContext(), CalculatriceActivity.class);
                     intent4.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
