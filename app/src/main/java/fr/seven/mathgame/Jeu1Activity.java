@@ -234,6 +234,7 @@ public class Jeu1Activity extends Jeu {
         Button qcmbutton3 = findViewById(R.id.buttonequation3);
         View space = findViewById(R.id.Space);
         if (comparaison == 0) {
+            ScoreActivity.setScore(1);
             Intent intent = new Intent(this, EcranFinActivity.class);
             intent.putExtra("numero",numeroJeu);
             intent.putExtra("action", "win");
@@ -268,6 +269,7 @@ public class Jeu1Activity extends Jeu {
                 comparaison = (Debutant.resultat()).compareTo(text);
         }
         if (comparaison == 0) {
+            ScoreActivity.setScore(1);
             Intent intent = new Intent(this, EcranFinActivity.class);
             intent.putExtra("numero",numeroJeu);
             intent.putExtra("action", "win");
