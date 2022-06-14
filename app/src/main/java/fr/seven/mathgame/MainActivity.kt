@@ -1,5 +1,7 @@
 package fr.seven.mathgame
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -9,6 +11,7 @@ import android.widget.TextView
 import android.widget.VideoView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.preference.PreferenceManager
 import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
 
@@ -31,6 +34,34 @@ class MainActivity : AppCompatActivity() {
         }
         //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         val videoView = findViewById<VideoView>(R.id.videoView)
+
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val editor = sharedPreferences.edit()
+        val tuto_5 = AlertDialog.Builder(this)
+                .setTitle("Bienvenue!")
+                .setMessage("Le bouton en haut à droite permet d'accéder aux paramètres, et la photo de profil (ainsi que le nom) permet d'accéder au profil")
+                .setPositiveButton("Fini!") { dialogInterface: DialogInterface?, i: Int -> }
+        val tuto_4 = AlertDialog.Builder(this)
+                .setTitle("Bienvenue!")
+                .setMessage("Il y a aussi une calculatrice, des cours et un classement")
+                .setPositiveButton("Suivent") { dialogInterface: DialogInterface?, i: Int -> tuto_5.show() }
+        val tuto_3 = AlertDialog.Builder(this)
+                .setTitle("Bienvenue!")
+                .setMessage("... Et le jeu 3 est un duel en multijoueur!")
+                .setPositiveButton("Suivent") { dialogInterface: DialogInterface?, i: Int -> tuto_4.show() }
+        val tuto_2 = AlertDialog.Builder(this)
+                .setTitle("Bienvenue!")
+                .setMessage("... Le jeu 2 est un déamorçage en temps limité (oui oui)...")
+                .setPositiveButton("Suivent") { dialogInterface: DialogInterface?, i: Int -> tuto_3.show() }
+        if (!sharedPreferences.getBoolean("Tuto_fini", false)) {
+            editor.putBoolean("Tuto_fini", true)
+            editor.apply()
+            AlertDialog.Builder(this)
+                    .setTitle("Bienvenue!")
+                    .setMessage("Voici le menu principal, Le jeu 1 est un quiz d'entraînement...")
+                    .setPositiveButton("Suivent") { dialogInterface: DialogInterface?, i: Int -> tuto_2.show() }
+                    .show()
+        }
     }
 
     fun goto_jeu1(view: View?) {
