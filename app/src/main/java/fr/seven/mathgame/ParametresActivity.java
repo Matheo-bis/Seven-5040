@@ -143,6 +143,13 @@ public class ParametresActivity extends AppCompatActivity implements AdapterView
         reference.child("difficulty").setValue(sharedPreferences.getString("Difficulty", "Débutant"));
     }
 
+    public void redo_tuto(View view){
+        editor.putBoolean("Tuto_fini", false);
+        editor.apply();
+        Intent intent=new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
     public void a_propos(View view){
         new AlertDialog.Builder(this)
         .setTitle("Seven! (A.K.A 5040)")

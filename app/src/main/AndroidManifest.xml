@@ -93,6 +93,11 @@
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".RankingActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".ProfilActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity"

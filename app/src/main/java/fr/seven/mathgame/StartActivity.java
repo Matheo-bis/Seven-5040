@@ -2,6 +2,8 @@ package fr.seven.mathgame;
 
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -49,6 +51,11 @@ public class StartActivity extends AppCompatActivity {
                 editor.putBoolean("Dark", false);
             }
             editor.apply();
+            new AlertDialog.Builder(this)
+                    .setTitle("Bienvenue!")
+                    .setMessage("Pour continuer, merci de vous connecter ou choisir de rester annonyme")
+                    .setPositiveButton("OK", (dialogInterface, i) -> {})
+                    .show();
         }
         FirebaseUser fUser;
         FirebaseApp.initializeApp(/*context=*/ this);
