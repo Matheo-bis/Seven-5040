@@ -84,7 +84,7 @@ public class Jeu2Activity extends Jeu {
 
             int comparaison = button.compareTo(DebutantJeu2.bonneequation());
             if (comparaison == 0) {
-                Intent intent = new Intent(this, Jeu2_2Activity.class);
+                Intent intent = new Intent(this, Jeu2Activity.class);
                 intent.putExtra("action", "win");
                 intent.putExtra("numero",numeroJeu);
                 startActivity(intent);
@@ -131,10 +131,14 @@ public class Jeu2Activity extends Jeu {
                     textviolet.setVisibility(View.VISIBLE);
                     compteur++;
                     break;
+                case 4:
+                    Intent intentwin = new Intent(this, FinJeu2Activity.class);
+                    intentwin.putExtra("action", "win");
+                    startActivity(intentwin);
                 default:
-                    Intent intent = new Intent(this, FinJeu2Activity.class);
-                    intent.putExtra("action", "lose");
-                    startActivity(intent);
+                    Intent intentlose = new Intent(this, FinJeu2Activity.class);
+                    intentlose.putExtra("action", "lose");
+                    startActivity(intentlose);
             }
 
         }
