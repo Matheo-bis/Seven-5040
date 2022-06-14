@@ -5,6 +5,7 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#00FFFFFF"
     tools:context=".MainActivity">
 
 
@@ -19,7 +20,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/_17955" />
+        app:srcCompat="@drawable/fond" />
 
     <TextView
         android:id="@+id/textView4"
@@ -59,28 +60,26 @@
             android:paddingRight="15dp"
             android:weightSum="1">
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/buttonjeu1"
-                style="@style/Widget.AppCompat.Button.Borderless"
+            <ImageButton
+                android:id="@+id/buttoncalc2"
+
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_margin="15dp"
                 android:layout_weight="0.5"
-                android:background="@drawable/terre_3d_tra"
-                android:onClick="goto_jeu1"
-                android:text="Jeu 1" />
+                android:background="@drawable/terre_3d_entrblanc"
+                android:onClick="goto_jeu1" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <ImageButton
                 android:id="@+id/buttonjeu2"
-                style="@style/Widget.AppCompat.Button.Borderless"
 
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_margin="15dp"
                 android:layout_weight="0.5"
-                android:background="@drawable/soleil_3d"
-                android:onClick="goto_jeu2"
-                android:text="Jeu 2" />
+                android:background="@drawable/explosion_solaire"
+                android:onClick="goto_jeu2" />
+
         </TableRow>
 
         <TableRow
@@ -92,28 +91,24 @@
             android:paddingRight="15dp"
             android:weightSum="1">
 
-            <androidx.appcompat.widget.AppCompatButton
+            <ImageButton
                 android:id="@+id/buttonjeu3"
-                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_margin="15dp"
                 android:layout_weight="0.5"
-                android:background="@drawable/mars_3d"
-                android:onClick="goto_jeu3"
-                android:text="Jeu 3" />
+                android:background="@drawable/rush_martien"
+                android:onClick="goto_jeu3" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <ImageButton
                 android:id="@+id/buttoncalc"
-                style="@style/Widget.AppCompat.Button.Borderless"
 
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_margin="15dp"
                 android:layout_weight="0.5"
-                android:background="@drawable/saturne_3d"
-                android:onClick="goto_calc"
-                android:text="calc" />
+                android:background="@drawable/saturnel"
+                android:onClick="goto_calc" />
         </TableRow>
 
         <TableRow
@@ -124,29 +119,25 @@
             android:paddingRight="15dp"
             android:weightSum="1">
 
-            <androidx.appcompat.widget.AppCompatButton
+            <ImageButton
                 android:id="@+id/buttontroll"
-                style="@style/Widget.AppCompat.Button.Borderless"
 
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_margin="15dp"
                 android:layout_weight="0.5"
-                android:background="@drawable/button"
-                android:onClick="goto_cours"
-                android:text="Cours" />
+                android:background="@drawable/mercure3"
+                android:onClick="goto_cours" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <ImageButton
                 android:id="@+id/buttonranking"
-                style="@style/Widget.AppCompat.Button.Borderless"
 
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_margin="15dp"
                 android:layout_weight="0.5"
-                android:background="@drawable/button"
-                android:onClick="goto_ranking"
-                android:text="Classement" />
+                android:background="@drawable/venus1"
+                android:onClick="goto_ranking" />
         </TableRow>
 
     </TableLayout>

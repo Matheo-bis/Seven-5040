@@ -22,36 +22,41 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:backgroundTint="#830000FF"
+            android:backgroundTint="@color/colorText"
             android:onClick="buttonclick"
-            android:text="Button" />
+            android:text="Button"
+            android:textColor="@color/colorText"
+            app:iconTint="@color/colorText" />
 
         <Button
             android:id="@+id/buttonequation5"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:backgroundTint="#830000FF"
+            android:backgroundTint="@color/colorText"
             android:onClick="buttonclick"
-            android:text="Button" />
+            android:text="Button"
+            android:textColor="@color/colorText" />
 
         <Button
             android:id="@+id/buttonequation6"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:backgroundTint="#830000FF"
+            android:backgroundTint="@color/colorText"
             android:onClick="buttonclick"
-            android:text="Button" />
+            android:text="Button"
+            android:textColor="@color/colorText" />
 
         <Button
             android:id="@+id/buttonequation7"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:backgroundTint="#830000FF"
+            android:backgroundTint="@color/colorText"
             android:onClick="buttonclick"
-            android:text="Button" />
+            android:text="Button"
+            android:textColor="@color/colorText" />
 
     </LinearLayout>
 
@@ -99,6 +104,7 @@
         android:layout_height="25dp"
         android:backgroundTint="#EC0B0B"
         android:text="TextView"
+        android:textAlignment="center"
         android:textSize="20sp"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
@@ -114,6 +120,7 @@
         android:layout_height="25dp"
         android:backgroundTint="#1933C3"
         android:text="TextView"
+        android:textAlignment="center"
         android:textSize="20sp"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
@@ -130,6 +137,7 @@
         android:layout_marginBottom="116dp"
         android:backgroundTint="#A312BC"
         android:text="TextView"
+        android:textAlignment="center"
         android:textSize="20sp"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
