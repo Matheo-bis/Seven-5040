@@ -202,13 +202,7 @@ public class Jeu3Activity extends Jeu3Timer {
         }
         TextView textView = findViewById(R.id.textView);
         String text = EquationHistory.get(EquationHistory.size() - 1);
-
-        if (text.contains("_")) {
-            EquationHistory.add(text.replaceFirst("_", button));
-            textView.setText(Html.fromHtml(EquationHistory.get(EquationHistory.size() - 1)));
-        }
         int comparaison;
-
         if (Intermédiaire.functequation() == 1) {
             comparaison = button.compareTo(Intermédiaire.bonneequation());
             verif(comparaison);
@@ -222,6 +216,32 @@ public class Jeu3Activity extends Jeu3Timer {
         if (Debutant.functequation() == 1) {
             comparaison = button.compareTo(Debutant.bonneequation());
             verif(comparaison);
+        }
+        if (text.contains("_")) {
+            EquationHistory.add(text.replaceFirst("_", button));
+            textView.setText(Html.fromHtml(EquationHistory.get(EquationHistory.size() - 1)));
+        }
+        else{
+            Button qcmbutton1 = findViewById(R.id.buttonequation1);
+            Button qcmbutton2 = findViewById(R.id.buttonequation2);
+            Button qcmbutton3 = findViewById(R.id.buttonequation3);
+            View space = findViewById(R.id.Space);
+            comparaison= text.compareTo(Debutant.bonneequation());
+            if (comparaison == 0) {     //Bonne réponse
+                qcmbutton1.setVisibility(View.GONE);
+                qcmbutton2.setVisibility(View.GONE);
+                qcmbutton3.setVisibility(View.GONE);
+                space.setVisibility(View.GONE);
+                Intent intent = new Intent(this, Jeu3Activity.class);
+                intent.putExtra("timer",((ProgressBar)findViewById(R.id.timebar)).getProgress()+200); //non reset de la barre
+                startActivity(intent);
+                finish();
+            } else {                    //Mauvaise réponse
+                buttonCE(null);
+                Intent intent = new Intent(this, Jeu3Activity.class);
+                intent.putExtra("timer",((ProgressBar)findViewById(R.id.timebar)).getProgress()-100);
+                startActivity(intent);
+            }
         }
 
 

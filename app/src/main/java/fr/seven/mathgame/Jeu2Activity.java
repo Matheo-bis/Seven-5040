@@ -17,7 +17,7 @@ public class Jeu2Activity extends Jeu {
     private String equation2;
     private String equation3;
     private String equation4;
-    private static int jeu1et2;
+    private static int compteur =0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +25,6 @@ public class Jeu2Activity extends Jeu {
         setContentView(R.layout.activity_jeu2);
         qcm();
     }
-    public static int jeu1ou2(){return jeu1et2=2;}
 
         public void qcm () {
             setQuestion(DebutantJeu2.equation());
@@ -95,9 +94,11 @@ public class Jeu2Activity extends Jeu {
                 intent.putExtra("numero",numeroJeu);
                 startActivity(intent);
             }
+            /**if(compteur==4) {
                 Intent intent = new Intent(this, FinJeu2Activity.class);
                 intent.putExtra("action", "lose");
                 startActivity(intent);
+            }**/
             }
 
 
@@ -106,6 +107,35 @@ public class Jeu2Activity extends Jeu {
             View textrouge = findViewById(R.id.textViewrouge);
             View textbleu = findViewById(R.id.textViewbleu);
             View textviolet = findViewById(R.id.textViewviolet);
+            switch (compteur){
+                case 0:
+                    ((TextView) findViewById(R.id.textViewvert)).setText(Html.fromHtml(str));
+                    textvert.setVisibility(View.VISIBLE);
+                    compteur++;
+                    break;
+                case 1:
+                    textvert.setVisibility(View.GONE);
+                    ((TextView) findViewById(R.id.textViewrouge)).setText(Html.fromHtml(str));
+                    textrouge.setVisibility(View.VISIBLE);
+                    compteur++;
+                    break;
+                case 2:
+                    textrouge.setVisibility(View.GONE);
+                    ((TextView) findViewById(R.id.textViewbleu)).setText(Html.fromHtml(str));
+                    textbleu.setVisibility(View.VISIBLE);
+                    compteur++;
+                    break;
+                case 3:
+                    textbleu.setVisibility(View.GONE);
+                    ((TextView) findViewById(R.id.textViewviolet)).setText(Html.fromHtml(str));
+                    textviolet.setVisibility(View.VISIBLE);
+                    compteur++;
+                    break;
+                default:
+                    Intent intent = new Intent(this, FinJeu2Activity.class);
+                    intent.putExtra("action", "lose");
+                    startActivity(intent);
+            }
 
         }
     }
