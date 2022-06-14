@@ -48,18 +48,18 @@ class MainActivity : AppCompatActivity() {
                 .setPositiveButton("Suivant") { dialogInterface: DialogInterface?, i: Int -> tuto_5.show() }
         val tuto_3 = AlertDialog.Builder(this)
                 .setTitle("Bienvenue!")
-                .setMessage("... Et le jeu 3 est un duel en multijoueur!")
+                .setMessage("... Et le Rush Martien est un duel en multijoueur!")
                 .setPositiveButton("Suivant") { dialogInterface: DialogInterface?, i: Int -> tuto_4.show() }
         val tuto_2 = AlertDialog.Builder(this)
                 .setTitle("Bienvenue!")
-                .setMessage("... Le jeu 2 est un désamorçage en temps limité (oui oui)...")
+                .setMessage("... L'explosion Solaire est un désamorçage en temps limité (oui oui)...")
                 .setPositiveButton("Suivant") { dialogInterface: DialogInterface?, i: Int -> tuto_3.show() }
         if (!sharedPreferences.getBoolean("Tuto_fini", false)) {
             editor.putBoolean("Tuto_fini", true)
             editor.apply()
             AlertDialog.Builder(this)
                     .setTitle("Bienvenue!")
-                    .setMessage("Voici le menu principal, Le jeu 1 est un quiz d'entraînement...")
+                    .setMessage("Voici le menu principal, Il y a un quiz d'entraînement...")
                     .setPositiveButton("Suivant") { dialogInterface: DialogInterface?, i: Int -> tuto_2.show() }
                     .show()
         }

@@ -4,7 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".RankingActivity">
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/fond3" />
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -13,6 +20,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="10dp"
+        android:background="#00FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,6 +30,8 @@
             android:id="@+id/linearlayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#00FFFFFF"
+            android:backgroundTint="#00FFFFFF"
             android:orientation="vertical" />
     </ScrollView>
 
@@ -29,6 +39,7 @@
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
         android:fontFamily="sans-serif-thin"
         android:text="Classement global"
         android:textSize="34sp"
@@ -44,6 +55,7 @@
         android:layout_width="225dp"
         android:layout_height="40dp"
         android:layout_marginEnd="3dp"
+        android:background="#00FFFFFF"
         android:max="100"
         android:progressTint="#FF0077"
         app:layout_constraintEnd_toEndOf="parent"

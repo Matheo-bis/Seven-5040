@@ -190,7 +190,7 @@ public class Expert extends Equation {
                         String operate = operateur1;
                         operateur1=operateur2;
                         operateur2 =operate;
-                        toutresultat = Summultx+operateur2+Summulty +operateur1+Summultz+"="+ Resultat2;
+                        toutresultat = Summultx+operateur1+Summulty +operateur2+Summultz+"="+ Resultat2;
                         break;
                 }
                 switch (rand.nextInt(2)) {

@@ -4,11 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#00FFFFFF"
     tools:context=".CoursActivity">
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/fond2" />
 
     <TableLayout
         android:layout_width="fill_parent"
         android:layout_height="499dp"
+        android:backgroundTint="#00FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -16,6 +24,7 @@
         <TableRow
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:background="#00FFFFFF"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
             android:weightSum="2">
@@ -26,8 +35,11 @@
                 android:layout_height="100dp"
                 android:layout_margin="15dp"
                 android:layout_weight="1"
+                android:background="#65FF0000"
+                android:backgroundTint="#FF0000"
                 android:onClick="goto_addition"
-                android:text="addition" />
+                android:text="addition"
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/soustraction"
@@ -35,8 +47,10 @@
                 android:layout_height="100dp"
                 android:layout_margin="15dp"
                 android:layout_weight="1"
+                android:background="#66DFC0C0"
                 android:onClick="goto_soustraction"
                 android:text="soustraction"
+                android:textColor="@color/white"
                 android:textSize="12sp" />
 
         </TableRow>
@@ -44,6 +58,7 @@
         <TableRow
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:background="#00FFFFFF"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
             android:weightSum="1">
@@ -54,8 +69,10 @@
                 android:layout_height="100dp"
                 android:layout_margin="15dp"
                 android:layout_weight="0.5"
+                android:background="#66FFFFFF"
                 android:onClick="goto_multiplication"
-                android:text="produit" />
+                android:text="produit"
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/division"
@@ -63,13 +80,16 @@
                 android:layout_height="100dp"
                 android:layout_margin="15dp"
                 android:layout_weight="0.5"
+                android:background="#33FFFFFF"
                 android:onClick="goto_division"
-                android:text="division" />
+                android:text="division"
+                android:textColor="@color/white" />
         </TableRow>
 
         <TableRow
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:background="#00FFFFFF"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
             android:weightSum="1">
@@ -80,8 +100,10 @@
                 android:layout_height="100dp"
                 android:layout_margin="15dp"
                 android:layout_weight="0.5"
+                android:background="#66FFFFFF"
                 android:onClick="goto_factorielle"
-                android:text="factoriel" />
+                android:text="factoriel"
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/puissance"
@@ -89,8 +111,10 @@
                 android:layout_height="100dp"
                 android:layout_margin="15dp"
                 android:layout_weight="0.5"
+                android:background="#66FFFFFF"
                 android:onClick="goto_puissance"
-                android:text="puissance" />
+                android:text="puissance"
+                android:textColor="@color/white" />
         </TableRow>
 
     </TableLayout>
