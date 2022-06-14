@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceManager
 import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
+import java.lang.annotation.Native
 
 class MainActivity : AppCompatActivity() {
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -121,4 +122,5 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, CoursActivity::class.java)
         startActivity(intent)
     }
+
 }
