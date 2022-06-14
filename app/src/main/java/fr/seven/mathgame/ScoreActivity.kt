@@ -49,5 +49,7 @@ class ScoreActivity : AppCompatActivity() {
             score = score + x
             if (firebaseAuth.currentUser != null) reference!!.child("score").setValue(score)
         }
+
+
     }
 }
