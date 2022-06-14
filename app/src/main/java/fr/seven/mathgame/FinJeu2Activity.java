@@ -29,11 +29,11 @@ public class FinJeu2Activity extends AppCompatActivity {
     public void goto_jeu2(View view){
         Intent intent=new Intent(this, LancementJeu2Activity.class);
         startActivity(intent);
+        finish();
     }
 
     public void goto_menu(View view){
-        Intent intent=new Intent(this, MainActivity.class);
-        startActivity(intent);
+        finish();
     }
     public void win(View view){
         View imagelose = findViewById(R.id.imageView14);

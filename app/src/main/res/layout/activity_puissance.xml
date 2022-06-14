@@ -52,6 +52,7 @@
                 android:id="@+id/imageView17"
                 android:layout_width="wrap_content"
                 android:layout_height="190dp"
+                android:backgroundTint="#00FFFFFF"
                 app:srcCompat="@drawable/puiss"
                 tools:layout_editor_absoluteX="-16dp" />
 
@@ -78,6 +79,7 @@
                 android:layout_width="482dp"
                 android:layout_height="253dp"
                 android:layout_marginTop="15dp"
+                android:backgroundTint="#00FFFFFF"
                 android:scaleX="1.5"
                 android:scaleY="1.5"
                 app:srcCompat="@drawable/proprietes_puissances" />
