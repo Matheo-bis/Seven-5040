@@ -14,8 +14,10 @@
         android:text="Rejouer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button15"
+        app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.862" />
 
     <Button
         android:id="@+id/button15"
@@ -26,5 +28,23 @@
         android:text="Revenir au menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.862" />
+
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/fus_e3d"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <TextView
+        android:id="@+id/textViewfin2jeu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="oisdoflskd"
+        android:textStyle="italic"
+        tools:layout_editor_absoluteX="155dp"
+        tools:layout_editor_absoluteY="91dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

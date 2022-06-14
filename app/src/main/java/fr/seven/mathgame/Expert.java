@@ -162,7 +162,7 @@ public class Expert extends Equation {
                         String operate = operateur1;
                         operateur1=operateur2;
                         operateur2 =operate;
-                        toutresultat = Summinx+operateur2+Summiny +operateur1+Summinz+"="+ Resultat;
+                        toutresultat = Summinx+operateur1+Summiny +operateur2+Summinz+"="+ Resultat;
                         break;
                 }
                 switch (rand.nextInt(2)) {

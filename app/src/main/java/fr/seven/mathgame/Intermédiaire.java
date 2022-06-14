@@ -150,7 +150,7 @@ public class Intermédiaire extends Equation{
                         String operate = operateur1;
                         operateur1=operateur2;
                         operateur2 =operate;
-                        toutresultat = x+operateur2+y +operateur1+z+"="+ Resultat;
+                        toutresultat = x+operateur1+y +operateur2+z+"="+ Resultat;
                         break;
                 }
 
