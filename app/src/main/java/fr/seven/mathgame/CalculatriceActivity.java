@@ -20,9 +20,10 @@ public class CalculatriceActivity extends AppCompatActivity {
     boolean ok=false;
     private boolean num1_exist = false;
     private boolean num2_exist = false;
+    boolean ispoint=false;
     private float result;
     private String operation;
-    private String [] signs = {"+","-","×","÷","!","^"};
+    private String [] signs = {"+","-","×","÷","!","^","."};
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,16 @@ public class CalculatriceActivity extends AppCompatActivity {
         }
         return result;
 
+    }
+
+    public boolean isoperator(String word){
+        int n =0;
+        for (int i =0; i<7;i++){
+            if(word.equals(signs[i])){
+                n++;
+            }
+        }
+        return n==1;
     }
 
     public void buttonclick(View view){
@@ -124,7 +135,7 @@ public class CalculatriceActivity extends AppCompatActivity {
                 else {
                     int longueur = calcul.getText().length() - 1;
                     String last_number = (String) calcul.getText().toString().substring(longueur);
-                    if (last_number.equals(signs[0])||last_number.equals(signs[1])||last_number.equals(signs[2])||last_number.equals(signs[3])||last_number.equals(signs[4])||last_number.equals(signs[5])){
+                    if (isoperator(last_number)){
                         calcul.setText(calcul.getText().toString().substring(0,longueur));
                     }
                     if(!num2_exist && op=="!"){
@@ -150,7 +161,7 @@ public class CalculatriceActivity extends AppCompatActivity {
                 else {
                     int longueur = calcul.getText().length() - 1;
                     String last_number = (String) calcul.getText().toString().substring(longueur);
-                    if (last_number.equals(signs[0])||last_number.equals(signs[1])||last_number.equals(signs[2])||last_number.equals(signs[3])||last_number.equals(signs[4])||last_number.equals(signs[5])){
+                    if (isoperator(last_number)){
                         calcul.setText(calcul.getText().toString().substring(0,longueur));
                     }
                     if(!num2_exist && op=="!"){
@@ -177,7 +188,7 @@ public class CalculatriceActivity extends AppCompatActivity {
                 else {
                     int longueur = calcul.getText().length() - 1;
                     String last_number = (String) calcul.getText().toString().substring(longueur);
-                    if (last_number.equals(signs[0])||last_number.equals(signs[1])||last_number.equals(signs[2])||last_number.equals(signs[3])||last_number.equals(signs[4])||last_number.equals(signs[5])){
+                    if (isoperator(last_number)){
                         calcul.setText(calcul.getText().toString().substring(0,longueur));
                     }
                     if(!num2_exist && op=="!"){
@@ -198,7 +209,7 @@ public class CalculatriceActivity extends AppCompatActivity {
                 else {
                     int longueur = calcul.getText().length() - 1;
                     String last_number = (String) calcul.getText().toString().substring(longueur);
-                    if (last_number.equals(signs[0])||last_number.equals(signs[1])||last_number.equals(signs[2])||last_number.equals(signs[3])||last_number.equals(signs[4])||last_number.equals(signs[5])){
+                    if (isoperator(last_number)){
                         calcul.setText(calcul.getText().toString().substring(0,longueur));
                     }
                     if(!num2_exist && op=="!"){
@@ -209,9 +220,10 @@ public class CalculatriceActivity extends AppCompatActivity {
                 break;
             case "fr.seven.mathapp:id/buttondot":
                 button = ".";
-                if (num1_exist && !num2_exist){
+                if (num1_exist && !num2_exist) {
                     // deuxio.setText(deuxio.getText().toString() + button);
                 }
+
                 break;
             case "fr.seven.mathapp:id/buttonfac":
                 button = "!";
@@ -235,7 +247,7 @@ public class CalculatriceActivity extends AppCompatActivity {
                 else{
                     int longueur = calcul.getText().length() - 1;
                     String last_number = (String) calcul.getText().toString().substring(longueur);
-                    if (last_number.equals(signs[0])||last_number.equals(signs[1])||last_number.equals(signs[2])||last_number.equals(signs[3])||last_number.equals(signs[4])||last_number.equals(signs[5])){
+                    if (isoperator(last_number)){
                         calcul.setText(calcul.getText().toString().substring(0,longueur));
                     }
                     else {
@@ -256,15 +268,37 @@ public class CalculatriceActivity extends AppCompatActivity {
                 else {
                     int longueur = calcul.getText().length() - 1;
                     String last_number = (String) calcul.getText().toString().substring(longueur);
-                    if (last_number.equals(signs[0])||last_number.equals(signs[1])||last_number.equals(signs[2])||last_number.equals(signs[3])||last_number.equals(signs[4])||last_number.equals(signs[5])){
+                    if (isoperator(last_number)){
                         calcul.setText(calcul.getText().toString().substring(0,longueur));
                     }
-                    num2 = Double.parseDouble((String)deuxio.getText());
+                    else {
+                        num2 = Double.parseDouble((String) deuxio.getText());
+                    }
                 }
                 break;
         }
-        if ((calcul.getText().toString().length()!=0) &&(button != signs[0] && button != signs[1] && button != signs[2] && button != signs[3]&& button != signs[4] &&button != signs[5])){
-            calcul.setText(calcul.getText().toString() + button);
+        if (calcul.getText().length()==0){
+            if (!button.equals(signs[0]) && !button.equals(signs[1]) &&!button.equals(signs[2])&&!button.equals(signs[3])&&!button.equals(signs[4])&&!button.equals(signs[5])&&!button.equals(".")){
+                calcul.setText(calcul.getText().toString()+button);
+            }
+        }
+        else{
+            int longueur = calcul.getText().length() - 1;
+            String last_number = (String) calcul.getText().toString().substring(longueur);
+            if (isoperator(button)&&isoperator(last_number)){
+               calcul.setText(calcul.getText().toString().substring(0,longueur));
+            }
+            if (ispoint){
+                if (button.equals(".")) {
+                    button="";
+                    ispoint=false;
+                }
+            }
+            else{
+
+                ispoint=true;
+            }
+            calcul.setText(calcul.getText().toString()+button);
         }
         if (num1_exist) {
             if (button != signs[0] && button != signs[1] && button != signs[2] && button != signs[3]&& button != signs[4] &&button != signs[5]) {
@@ -297,7 +331,6 @@ public class CalculatriceActivity extends AppCompatActivity {
             num1= result;
             resultat.setText(String.valueOf(result));
             num2_exist=false;
-            calcul.setText("");
             deuxio.setText("");
         }
     }
@@ -353,6 +386,7 @@ public class CalculatriceActivity extends AppCompatActivity {
         num2_exist=false;
         num2 = 0;
         deuxio.setText("");
+        ispoint=false;
     }
 
 
