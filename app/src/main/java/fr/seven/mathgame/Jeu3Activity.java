@@ -28,7 +28,9 @@ public class Jeu3Activity extends Jeu3Timer {
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_jeu3);
         super.onCreate(savedInstanceState);
-        numeroJeu=1;
+        System.out.println("/::::::::::/"+"Score: "+Integer.toString(scorejeu3));
+        ((TextView)findViewById(R.id.textscore3)).setText("Score: "+Integer.toString(scorejeu3));
+        numeroJeu=3;
         //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         //TEMPORAIRE
         Button qcmbutton1 = findViewById(R.id.buttonequation1);
@@ -233,13 +235,11 @@ public class Jeu3Activity extends Jeu3Timer {
                 qcmbutton3.setVisibility(View.GONE);
                 space.setVisibility(View.GONE);
                 Intent intent = new Intent(this, Jeu3Activity.class);
-                intent.putExtra("timer",((ProgressBar)findViewById(R.id.timebar)).getProgress()+200); //non reset de la barre
                 startActivity(intent);
                 finish();
             } else {                    //Mauvaise réponse
                 buttonCE(null);
                 Intent intent = new Intent(this, Jeu3Activity.class);
-                intent.putExtra("timer",((ProgressBar)findViewById(R.id.timebar)).getProgress()-100);
                 startActivity(intent);
             }
         }
@@ -253,19 +253,24 @@ public class Jeu3Activity extends Jeu3Timer {
         Button qcmbutton3 = findViewById(R.id.buttonequation3);
         View space = findViewById(R.id.Space);
         if (comparaison == 0) {     //Bonne réponse
+            multiscorejeu3 += 1;  //set du multiplicateur
+            AddScoreJeu3();
+            Intent intent = new Intent(this, Jeu3Activity.class);
+            intent.putExtra("timer",Math.min(((ProgressBar)findViewById(R.id.timebar)).getProgress()+300,1000));
+            startActivity(intent);
             qcmbutton1.setVisibility(View.GONE);
             qcmbutton2.setVisibility(View.GONE);
             qcmbutton3.setVisibility(View.GONE);
             space.setVisibility(View.GONE);
-            Intent intent = new Intent(this, Jeu3Activity.class);
-            intent.putExtra("timer",((ProgressBar)findViewById(R.id.timebar)).getProgress()+200); //non reset de la barre
-            startActivity(intent);
             finish();
         } else {                    //Mauvaise réponse
-            buttonCE(null);
+            if (multiscorejeu3 <1){ multiscorejeu3 -= 1; } //set du multiplicateur
+            AddScoreJeu3();
             Intent intent = new Intent(this, Jeu3Activity.class);
-            intent.putExtra("timer",((ProgressBar)findViewById(R.id.timebar)).getProgress()-100);
+            intent.putExtra("timer",((ProgressBar)findViewById(R.id.timebar)).getProgress()-300);
             startActivity(intent);
+        buttonCE(null);
+
         }
     }
 
@@ -285,14 +290,18 @@ public class Jeu3Activity extends Jeu3Timer {
                 comparaison = (Debutant.resultat()).compareTo(text);
         }
         if (comparaison == 0) { //Bonne réponse
+            multiscorejeu3 += 1;
+            AddScoreJeu3();
             Intent intent = new Intent(this, Jeu3Activity.class);
-            intent.putExtra("timer",((ProgressBar)findViewById(R.id.timebar)).getProgress()+200);
+            intent.putExtra("timer",Math.min(((ProgressBar)findViewById(R.id.timebar)).getProgress()+300,1000));
             startActivity(intent);
             finish();
 
-        } else {                //Mauvaise réponse
+        } else {                //Mauvaise reponse
+            if (multiscorejeu3 <1){ multiscorejeu3 -= 1; } //set du multiplicateur
+            AddScoreJeu3();
             Intent intent = new Intent(this, Jeu3Activity.class);
-            intent.putExtra("timer",((ProgressBar)findViewById(R.id.timebar)).getProgress()-100);
+            intent.putExtra("timer",((ProgressBar)findViewById(R.id.timebar)).getProgress()-300);
             startActivity(intent);
         }
     }
@@ -308,5 +317,12 @@ public class Jeu3Activity extends Jeu3Timer {
         setQuestion(EquationHistory.get(0));
     }
 
+    int scorejeu3 = 1;
+    int addscorejeu3 = 1;
+    int multiscorejeu3 = 1;
+    public void AddScoreJeu3(){
+        addscorejeu3 *= multiscorejeu3;
+        scorejeu3 = scorejeu3 + addscorejeu3;
+    }
 
 }
