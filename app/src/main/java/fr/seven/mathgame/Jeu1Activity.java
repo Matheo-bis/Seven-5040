@@ -22,7 +22,8 @@ public class Jeu1Activity extends Jeu {
     private String equation1;
     private String equation2;
     private String equation3;
-
+    private int jeu1et2;
+    public int jeu1ou2(){return jeu1et2=2;}
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -234,9 +235,9 @@ public class Jeu1Activity extends Jeu {
         View space = findViewById(R.id.Space);
         if (comparaison == 0) {
             Intent intent = new Intent(this, EcranFinActivity.class);
+            intent.putExtra("numero",numeroJeu);
             intent.putExtra("action", "win");
             startActivity(intent);
-            ScoreActivity.setScore(1);
             qcmbutton1.setVisibility(View.GONE);
             qcmbutton2.setVisibility(View.GONE);
             qcmbutton3.setVisibility(View.GONE);
@@ -244,6 +245,8 @@ public class Jeu1Activity extends Jeu {
         } else {
             Intent intent = new Intent(this, EcranFinActivity.class);
             intent.putExtra("action", "lose");
+            intent.putExtra("numero",numeroJeu);
+
             startActivity(intent);
             buttonCE(null);
         }
@@ -266,12 +269,13 @@ public class Jeu1Activity extends Jeu {
         }
         if (comparaison == 0) {
             Intent intent = new Intent(this, EcranFinActivity.class);
+            intent.putExtra("numero",numeroJeu);
             intent.putExtra("action", "win");
             startActivity(intent);
-            ScoreActivity.setScore(1);
         } else {
             Intent intent = new Intent(this, EcranFinActivity.class);
             intent.putExtra("action", "lose");
+            intent.putExtra("numero",numeroJeu);
             startActivity(intent);
             buttonCE(null);
         }

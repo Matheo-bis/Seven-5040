@@ -17,19 +17,15 @@ public class Jeu2Activity extends Jeu {
     private String equation2;
     private String equation3;
     private String equation4;
-
+    private static int jeu1et2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         numeroJeu=2;
         setContentView(R.layout.activity_jeu2);
-        Button qcmbutton1 = findViewById(R.id.buttonequation4);
-        Button qcmbutton2 = findViewById(R.id.buttonequation5);
-        Button qcmbutton3 = findViewById(R.id.buttonequation6);
-        Button qcmbutton4 = findViewById(R.id.buttonequation7);
-        setQuestion(DebutantJeu2.equation());
         qcm();
     }
+    public static int jeu1ou2(){return jeu1et2=2;}
 
         public void qcm () {
             setQuestion(DebutantJeu2.equation());
@@ -68,7 +64,6 @@ public class Jeu2Activity extends Jeu {
             equation3 = DebutantJeu2.funcequationqcm(y);
             qcmbutton4.setText(DebutantJeu2.funcequationqcm(z));
             equation4 = DebutantJeu2.funcequationqcm(z);
-
         }
     public void buttonclick(View view) {
         String viewName = view.getResources().getResourceName(view.getId());
@@ -88,26 +83,29 @@ public class Jeu2Activity extends Jeu {
                 break;
         }
 
-            Button qcmbutton1 = findViewById(R.id.buttonequation4);
-            Button qcmbutton2 = findViewById(R.id.buttonequation5);
-            Button qcmbutton3 = findViewById(R.id.buttonequation6);
-            Button qcmbutton4 = findViewById(R.id.buttonequation7);
-            View space = findViewById(R.id.Space);
             int comparaison = button.compareTo(DebutantJeu2.bonneequation());
             if (comparaison == 0) {
                 Intent intent = new Intent(this, EcranFinActivity.class);
                 intent.putExtra("action", "win");
+                intent.putExtra("numero",numeroJeu);
                 startActivity(intent);
-                ScoreActivity.setScore(1);
             } else {
                 Intent intent = new Intent(this, EcranFinActivity.class);
                 intent.putExtra("action", "lose");
+                intent.putExtra("numero",numeroJeu);
                 startActivity(intent);
             }
-        }
+                Intent intent = new Intent(this, FinJeu2Activity.class);
+                intent.putExtra("action", "lose");
+                startActivity(intent);
+            }
 
 
         public void setQuestion (String str){
-            ((TextView) findViewById(R.id.textView7)).setText(Html.fromHtml(str));
+            View textvert = findViewById(R.id.textViewvert);
+            View textrouge = findViewById(R.id.textViewrouge);
+            View textbleu = findViewById(R.id.textViewbleu);
+            View textviolet = findViewById(R.id.textViewviolet);
+
         }
     }
