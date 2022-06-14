@@ -116,9 +116,11 @@ public class CalculatriceActivity extends AppCompatActivity {
                 button = "+";
                 operation = button;
                 if (!num1_exist){
-                    num1_exist=true;
-                    num1 = Double.parseDouble((String)calcul.getText().toString());
-             }
+                    if (calcul.getText().toString().length()!=0) {
+                        num1_exist = true;
+                        num1 = Double.parseDouble((String) calcul.getText().toString());
+                    }
+                }
                 else {
                     int longueur = calcul.getText().length() - 1;
                     String last_number = (String) calcul.getText().toString().substring(longueur);
@@ -140,8 +142,10 @@ public class CalculatriceActivity extends AppCompatActivity {
                 button = "-";
                 operation =button;
                 if (!num1_exist){
-                    num1_exist=true;
-                    num1 =Double.parseDouble((String)calcul.getText());
+                    if (calcul.getText().toString().length()!=0) {
+                        num1_exist = true;
+                        num1 = Double.parseDouble((String) calcul.getText().toString());
+                    }
                 }
                 else {
                     int longueur = calcul.getText().length() - 1;
@@ -165,8 +169,10 @@ public class CalculatriceActivity extends AppCompatActivity {
                 button = "÷";
                 operation =button;
                 if (!num1_exist){
-                    num1_exist=true;
-                    num1 =Double.parseDouble((String)calcul.getText());
+                    if (calcul.getText().toString().length()!=0) {
+                        num1_exist = true;
+                        num1 = Double.parseDouble((String) calcul.getText().toString());
+                    }
                 }
                 else {
                     int longueur = calcul.getText().length() - 1;
@@ -184,8 +190,10 @@ public class CalculatriceActivity extends AppCompatActivity {
                 button = "×";
                 operation =button;
                 if (!num1_exist){
-                    num1_exist=true;
-                    num1 = Double.parseDouble((String)calcul.getText());
+                    if (calcul.getText().toString().length()!=0) {
+                        num1_exist = true;
+                        num1 = Double.parseDouble((String) calcul.getText().toString());
+                    }
                 }
                 else {
                     int longueur = calcul.getText().length() - 1;
@@ -209,11 +217,14 @@ public class CalculatriceActivity extends AppCompatActivity {
                 button = "!";
                 operation = button;
                 if (!num1_exist){
-                    num1_exist=true;
-                    num1 =Double.parseDouble((String)calcul.getText());
-                    result=(float)factorial((double)num1);
-                    resultat.setText(String.valueOf(result));
-                    num1=result;
+                    if (calcul.getText().toString().length()!=0) {
+                        num1_exist=true;
+                        num1 =Double.parseDouble((String)calcul.getText());
+                        result=(float)factorial((double)num1);
+                        resultat.setText(String.valueOf(result));
+                        num1=result;
+                    }
+
                     if (num1==5040){
                         Intent intent=new Intent(this, EcranFinActivity.class);
                         intent.putExtra("action","wide");
@@ -237,8 +248,10 @@ public class CalculatriceActivity extends AppCompatActivity {
                 button = "^";
                 operation =button;
                 if (!num1_exist){
-                    num1_exist=true;
-                    num1 = Double.parseDouble((String)calcul.getText());
+                    if (calcul.getText().toString().length()!=0) {
+                        num1_exist = true;
+                        num1 = Double.parseDouble((String) calcul.getText().toString());
+                    }
                 }
                 else {
                     int longueur = calcul.getText().length() - 1;
@@ -250,7 +263,9 @@ public class CalculatriceActivity extends AppCompatActivity {
                 }
                 break;
         }
-        calcul.setText(calcul.getText().toString() + button);
+        if ((calcul.getText().toString().length()!=0) &&(button != signs[0] && button != signs[1] && button != signs[2] && button != signs[3]&& button != signs[4] &&button != signs[5])){
+            calcul.setText(calcul.getText().toString() + button);
+        }
         if (num1_exist) {
             if (button != signs[0] && button != signs[1] && button != signs[2] && button != signs[3]&& button != signs[4] &&button != signs[5]) {
                 deuxio.setText(deuxio.getText().toString() + button);
