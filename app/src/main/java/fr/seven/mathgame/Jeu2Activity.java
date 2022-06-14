@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import java.util.Random;
 
-public class Jeu2_1Activity extends Jeu {
+public class Jeu2Activity extends Jeu {
     private String equation;
     private String equation1;
     private String equation2;
