@@ -34,6 +34,7 @@ public class Jeu3Activity extends Jeu3Timer {
         numeroJeu = 3;
         init();
     }
+
     protected void init(){
         //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         //TEMPORAIRE

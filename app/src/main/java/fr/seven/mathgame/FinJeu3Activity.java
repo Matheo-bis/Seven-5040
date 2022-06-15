@@ -31,7 +31,7 @@ public class FinJeu3Activity extends AppCompatActivity {
         finish();
     }
 
-    public void goto_jeu2(View view){
+    public void goto_menu(View view){
         finish();
     }
     public void win(View view){
