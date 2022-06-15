@@ -4,7 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#00FFFFFF"
     tools:context=".MatchmakingActivity">
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/fondmulti" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttoncreatematch"
@@ -14,6 +21,7 @@
         android:layout_margin="4dp"
 
         android:background="@drawable/button"
+        android:backgroundTint="#59FFFFFF"
         android:fontFamily="monospace"
         android:onClick="create_match"
         android:text="Créer une partie"
@@ -32,6 +40,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="10dp"
+        android:background="#00FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,6 +50,7 @@
             android:id="@+id/linearlayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#00FFFFFF"
             android:orientation="vertical" />
     </ScrollView>
 
@@ -49,7 +59,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
-        android:fontFamily="sans-serif-thin"
+        android:backgroundTint="#00FFFFFF"
+        android:fontFamily="sans-serif-medium"
         android:padding="30dp"
         android:text="Multijoueur"
         android:textSize="34sp"
