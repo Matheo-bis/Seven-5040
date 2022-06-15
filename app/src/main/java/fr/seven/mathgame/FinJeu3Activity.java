@@ -35,8 +35,8 @@ public class FinJeu3Activity extends AppCompatActivity {
         finish();
     }
     public void win(View view){
-        View imagelose = findViewById(R.id.explosion2);
-        View imagewin = findViewById(R.id.pouce2);
+        View imagelose = findViewById(R.id.pouce_bas3);
+        View imagewin = findViewById(R.id.pouce_haut2);
         View textewin = findViewById(R.id.felicitation2);
         View textelose = findViewById(R.id.oh_non2);
         imagewin.setVisibility(View.VISIBLE);
@@ -46,8 +46,8 @@ public class FinJeu3Activity extends AppCompatActivity {
 
     }
     public void lose(View view){
-        View imagelose = findViewById(R.id.explosion2);
-        View imagewin = findViewById(R.id.pouce2);
+        View imagelose = findViewById(R.id.pouce_bas3);
+        View imagewin = findViewById(R.id.pouce_haut2);
         View textewin = findViewById(R.id.felicitation2);
         View textelose = findViewById(R.id.oh_non2);
         imagelose.setVisibility(View.VISIBLE);
