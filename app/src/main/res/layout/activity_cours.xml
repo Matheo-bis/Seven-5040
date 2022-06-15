@@ -11,6 +11,7 @@
         android:id="@+id/imageView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
         app:srcCompat="@drawable/fond2" />
 
     <TableLayout
@@ -19,7 +20,8 @@
         android:backgroundTint="#00FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView11">
 
         <TableRow
             android:layout_width="fill_parent"
@@ -29,28 +31,33 @@
             android:paddingRight="15dp"
             android:weightSum="2">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/addition"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_margin="15dp"
                 android:layout_weight="1"
-                android:background="#65FF0000"
-                android:backgroundTint="#FF0000"
+                android:alpha="0.7"
+                android:background="@drawable/button"
                 android:onClick="goto_addition"
                 android:text="addition"
-                android:textColor="@color/white" />
 
-            <Button
+                android:textColor="@color/colorText" />
+
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/soustraction"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_margin="15dp"
                 android:layout_weight="1"
-                android:background="#66DFC0C0"
+                android:alpha="0.7"
+                android:background="@drawable/button"
                 android:onClick="goto_soustraction"
                 android:text="soustraction"
-                android:textColor="@color/white"
+                android:textColor="@color/colorText"
+
                 android:textSize="12sp" />
 
         </TableRow>
@@ -63,27 +70,34 @@
             android:paddingRight="15dp"
             android:weightSum="1">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/multiplication"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_margin="15dp"
                 android:layout_weight="0.5"
-                android:background="#66FFFFFF"
+                android:alpha="0.7"
+                android:background="@drawable/button"
                 android:onClick="goto_multiplication"
                 android:text="produit"
-                android:textColor="@color/white" />
+                android:textColor="@color/colorText"/>
 
-            <Button
+
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/division"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_margin="15dp"
                 android:layout_weight="0.5"
-                android:background="#33FFFFFF"
+                android:alpha="0.7"
+                android:background="@drawable/button"
                 android:onClick="goto_division"
                 android:text="division"
-                android:textColor="@color/white" />
+                android:textColor="@color/colorText"
+
+                />
         </TableRow>
 
         <TableRow
@@ -94,27 +108,33 @@
             android:paddingRight="15dp"
             android:weightSum="1">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/factorielle"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_margin="15dp"
                 android:layout_weight="0.5"
-                android:background="#66FFFFFF"
+                android:alpha="0.7"
+                android:background="@drawable/button"
                 android:onClick="goto_factorielle"
                 android:text="factoriel"
-                android:textColor="@color/white" />
+                android:textColor="@color/colorText"
 
-            <Button
+                />
+
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/puissance"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_margin="15dp"
                 android:layout_weight="0.5"
-                android:background="#66FFFFFF"
+                android:alpha="0.7"
+                android:background="@drawable/button"
                 android:onClick="goto_puissance"
                 android:text="puissance"
-                android:textColor="@color/white" />
+                android:textColor="@color/colorText" />
         </TableRow>
 
     </TableLayout>

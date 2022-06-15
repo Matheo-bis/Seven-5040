@@ -91,6 +91,7 @@ public class Jeu2Activity extends Jeu {
                 intent.putExtra("numero",numeroJeu);
                 intent.putExtra("compteur",compteur);
                 startActivity(intent);
+                finish();
             } else {
                 Intent intent = new Intent(this, FinJeu2Activity.class);
                 intent.putExtra("action", "lose");

@@ -6,40 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".FinJeu2Activity">
 
-    <Button
-        android:id="@+id/revenir_au_menu2"
-        android:layout_width="137dp"
-        android:layout_height="68dp"
-        android:onClick="goto_jeu2"
-        android:text="Rejouer"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/explosion2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.888" />
-
-    <ImageView
-        android:id="@+id/explosion2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="visible"
-        app:srcCompat="@drawable/fus_e3d"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+        app:srcCompat="@drawable/fus_e3d" />
 
     <TextView
         android:id="@+id/felicitation2"
         android:layout_width="324dp"
         android:layout_height="205dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="100dp"
         android:text="Félicitations!"
         android:textAlignment="center"
         android:textSize="48sp"
         android:textStyle="italic"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/explosion2" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/oh_non2"
@@ -49,19 +40,61 @@
         android:text="Oh non!"
         android:textAlignment="center"
         android:textSize="34sp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/pouce2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="152dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/explosion2"
+        app:layout_constraintTop_toTopOf="@+id/felicitation2"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/pouce" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="50dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:background="@drawable/button"
+            android:textColor="@color/colorText"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:id="@+id/rejouer2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:onClick="restart"
+            android:text="Rejouer"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/revenir_au_menu2"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/button"
+            android:onClick="goto_menu"
+            android:text="Revenir au menu"
+            android:textColor="@color/colorText" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

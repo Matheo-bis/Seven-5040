@@ -2,6 +2,7 @@ package fr.seven.mathgame;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -23,19 +24,21 @@ public class FinJeu3Activity extends AppCompatActivity {
         }
     }
 
-    //public void goto_jeu2(View view){
-    //Intent intent=new Intent(this, LancementJeu2Activity.class);
-    //startActivity(intent);
-    //}
+    public void restart(View view){
+        Intent intent=new Intent(this, Jeu3Activity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
+    }
 
     public void goto_jeu2(View view){
         finish();
     }
     public void win(View view){
-        View imagelose = findViewById(R.id.explosion3);
-        View imagewin = findViewById(R.id.pouce3);
-        View textewin = findViewById(R.id.felicitation3);
-        View textelose = findViewById(R.id.oh_non3);
+        View imagelose = findViewById(R.id.explosion2);
+        View imagewin = findViewById(R.id.pouce2);
+        View textewin = findViewById(R.id.felicitation2);
+        View textelose = findViewById(R.id.oh_non2);
         imagewin.setVisibility(View.VISIBLE);
         imagelose.setVisibility(View.GONE);
         textewin.setVisibility(View.VISIBLE);
@@ -43,10 +46,10 @@ public class FinJeu3Activity extends AppCompatActivity {
 
     }
     public void lose(View view){
-        View textewin = findViewById(R.id.felicitation3);
-        View textelose = findViewById(R.id.oh_non3);
-        View imagelose = findViewById(R.id.explosion3);
-        View imagewin = findViewById(R.id.pouce3);
+        View imagelose = findViewById(R.id.explosion2);
+        View imagewin = findViewById(R.id.pouce2);
+        View textewin = findViewById(R.id.felicitation2);
+        View textelose = findViewById(R.id.oh_non2);
         imagelose.setVisibility(View.VISIBLE);
         imagewin.setVisibility(View.GONE);
         textewin.setVisibility(View.GONE);
