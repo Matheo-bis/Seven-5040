@@ -94,6 +94,11 @@
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".FinJeu3Activity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".CalculatriceActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity"

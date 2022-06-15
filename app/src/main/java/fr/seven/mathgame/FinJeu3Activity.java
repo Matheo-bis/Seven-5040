@@ -2,11 +2,8 @@ package fr.seven.mathgame;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.Html;
 import android.view.View;
-import android.widget.TextView;
 
 public class FinJeu3Activity extends AppCompatActivity {
 
@@ -35,10 +32,10 @@ public class FinJeu3Activity extends AppCompatActivity {
         finish();
     }
     public void win(View view){
-        View imagelose = findViewById(R.id.imageView14);
-        View imagewin = findViewById(R.id.imageView6);
-        View textewin = findViewById(R.id.textViewfin2jeu);
-        View textelose = findViewById(R.id.textView11);
+        View imagelose = findViewById(R.id.explosion3);
+        View imagewin = findViewById(R.id.pouce3);
+        View textewin = findViewById(R.id.felicitation3);
+        View textelose = findViewById(R.id.oh_non3);
         imagewin.setVisibility(View.VISIBLE);
         imagelose.setVisibility(View.GONE);
         textewin.setVisibility(View.VISIBLE);
@@ -46,10 +43,10 @@ public class FinJeu3Activity extends AppCompatActivity {
 
     }
     public void lose(View view){
-        View textewin = findViewById(R.id.textViewfin2jeu);
-        View textelose = findViewById(R.id.textView11);
-        View imagelose = findViewById(R.id.imageView14);
-        View imagewin = findViewById(R.id.imageView6);
+        View textewin = findViewById(R.id.felicitation3);
+        View textelose = findViewById(R.id.oh_non3);
+        View imagelose = findViewById(R.id.explosion3);
+        View imagewin = findViewById(R.id.pouce3);
         imagelose.setVisibility(View.VISIBLE);
         imagewin.setVisibility(View.GONE);
         textewin.setVisibility(View.GONE);
