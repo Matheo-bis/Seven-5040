@@ -1,19 +1,29 @@
 package fr.seven.mathgame;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.preference.PreferenceManager;
-
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.text.Html;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.preference.PreferenceManager;
+
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -21,20 +31,123 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
 
-public class Jeu1Activity extends Jeu {
+public class JeuMultiActivity extends Jeu {
     private ArrayList<String> EquationHistory = new ArrayList<String>();
     private String equation;
     private String equation1;
     private String equation2;
     private String equation3;
     private int jeu1et2;
+    public String self_identifier;
+    public String enemy_identifier;
+    private ProgressBar progress;
     public int jeu1ou2(){return jeu1et2=2;}
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        numeroJeu=1;
-        setContentView(R.layout.activity_jeu1);
+        numeroJeu = 1;
+        setContentView(R.layout.activity_jeumulti);
+        ((TextView)findViewById(R.id.textView12)).setText(getIntent().getStringExtra("enemy"));
+        ((TextView)findViewById(R.id.textView13)).setText(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getDisplayName());
+        self_identifier = getIntent().getBooleanExtra("server",false)?"host":"guest";
+        enemy_identifier = getIntent().getBooleanExtra("server",false)?"guest":"host";
+        progress = findViewById(R.id.progressBar);
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://projet7-e3b8a-default-rtdb.europe-west1.firebasedatabase.app/");
+        ChildEventListener enemyEventListener = new ChildEventListener() {
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {}
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {}
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {}
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
+                lose_points();
+            }
+        };
+        ChildEventListener selfEventListener = new ChildEventListener() {
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {}
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {}
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {}
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
+                gain_points();
+            }
+        };
+        database
+                .getReference("match")
+                .child(getIntent()
+                        .getStringExtra("MatchID"))
+                .child(self_identifier)
+                .addChildEventListener(selfEventListener);
+        database
+                .getReference("match")
+                .child(getIntent()
+                        .getStringExtra("MatchID"))
+                .child(enemy_identifier)
+                        .addChildEventListener(enemyEventListener);
+
+        loadQuestion();
+    }
+    private void good(){
+        loadQuestion();
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://projet7-e3b8a-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference databaseReference = database
+                .getReference("match")
+                .child(getIntent().getStringExtra("MatchID"))
+                .child(self_identifier)
+                .push();
+        databaseReference.setValue(1);
+    }
+    private void bad(){
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://projet7-e3b8a-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference databaseReference = database
+                .getReference("match")
+                .child(getIntent().getStringExtra("MatchID"))
+                .child(enemy_identifier)
+                .push();
+        databaseReference.setValue(1);
+        Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
+        View textview = findViewById(R.id.textView);
+        textview.startAnimation(shake);
+        buttonCE(null);
+    }
+    public void lose_points(){
+        if(progress.getProgress()-10<=0) {
+            Intent intent = new Intent(this, EcranFinActivity.class);
+            intent.putExtra("action","lose");
+            startActivity(intent);
+            finish();
+        }
+        ObjectAnimator animator = ObjectAnimator.ofInt(progress, "progress", progress.getProgress(), Math.max(progress.getProgress()-10,0));
+        animator.setDuration(100);
+        animator.setAutoCancel(true);
+        animator.setInterpolator(new DecelerateInterpolator());
+        animator.start();    }
+    public void gain_points(){
+        if(progress.getProgress()+10>=100) {
+            Intent intent = new Intent(this, EcranFinActivity.class);
+            intent.putExtra("action","wide");
+            intent.putExtra("numero",5);
+
+            startActivity(intent);
+            finish();
+        }
+        ObjectAnimator animator = ObjectAnimator.ofInt(progress, "progress", progress.getProgress(), Math.min(progress.getProgress()+10,100));
+        animator.setDuration(100);
+        animator.setAutoCancel(true);
+        animator.setInterpolator(new DecelerateInterpolator());
+        animator.start();
+    }
+    protected void loadQuestion(){
         //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         //TEMPORAIRE
         Button qcmbutton1 = findViewById(R.id.buttonequation1);
@@ -83,7 +196,6 @@ public class Jeu1Activity extends Jeu {
                     space.setVisibility(View.GONE);
                 }
         }
-
     }
 
     public void qcm() {
@@ -243,10 +355,7 @@ public class Jeu1Activity extends Jeu {
         Button qcmbutton3 = findViewById(R.id.buttonequation3);
         View space = findViewById(R.id.Space);
         if (comparaison == 0) {
-            ScoreActivity.setScore(1);
-            Intent intent = new Intent(this, EcranFinActivity.class);
-            intent.putExtra("numero",numeroJeu);
-            intent.putExtra("action", "win");
+
             try {
                 DatabaseReference databaseReference = FirebaseDatabase.getInstance("https://projet7-e3b8a-default-rtdb.europe-west1.firebasedatabase.app/")
                         .getReference("userdata").child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("equations").push();
@@ -257,15 +366,14 @@ public class Jeu1Activity extends Jeu {
             catch(Exception e){
                 System.out.println(e);
             }
-            startActivity(intent);
+
             qcmbutton1.setVisibility(View.GONE);
             qcmbutton2.setVisibility(View.GONE);
             qcmbutton3.setVisibility(View.GONE);
             space.setVisibility(View.GONE);
+            good();
         } else {
-            Intent intent = new Intent(this, EcranFinActivity.class);
-            intent.putExtra("action", "lose");
-            intent.putExtra("numero",numeroJeu);
+
             try {
                 DatabaseReference databaseReference = FirebaseDatabase.getInstance("https://projet7-e3b8a-default-rtdb.europe-west1.firebasedatabase.app/")
                         .getReference("userdata").child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("equations").push();
@@ -276,8 +384,7 @@ public class Jeu1Activity extends Jeu {
             catch(Exception e){
                 System.out.println(e);
             }
-            startActivity(intent);
-            buttonCE(null);
+            bad();
         }
     }
 
@@ -306,10 +413,6 @@ public class Jeu1Activity extends Jeu {
 
         }
         if (comparaison == 0) {
-            ScoreActivity.setScore(1);
-            Intent intent = new Intent(this, EcranFinActivity.class);
-            intent.putExtra("numero",numeroJeu);
-            intent.putExtra("action", "win");
             try {
                 DatabaseReference databaseReference = FirebaseDatabase.getInstance("https://projet7-e3b8a-default-rtdb.europe-west1.firebasedatabase.app/")
                         .getReference("userdata").child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("equations").push();
@@ -320,11 +423,9 @@ public class Jeu1Activity extends Jeu {
             catch(Exception e){
                 System.out.println(e);
             }
-            startActivity(intent);
+            good();
         } else {
-            Intent intent = new Intent(this, EcranFinActivity.class);
-            intent.putExtra("action", "lose");
-            intent.putExtra("numero",numeroJeu);
+
             try {
                 DatabaseReference databaseReference = FirebaseDatabase.getInstance("https://projet7-e3b8a-default-rtdb.europe-west1.firebasedatabase.app/")
                         .getReference("userdata").child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("equations").push();
@@ -335,8 +436,7 @@ public class Jeu1Activity extends Jeu {
             catch(Exception e){
                 System.out.println(e);
             }
-            startActivity(intent);
-            buttonCE(null);
+            bad();
         }
     }
 

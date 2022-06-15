@@ -139,7 +139,32 @@
                 android:background="@drawable/venus1"
                 android:onClick="goto_ranking" />
         </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#00FFFFFF"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:weightSum="1">
 
+            <ImageButton
+                android:id="@+id/buttonMulti"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_margin="15dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/mercure3"
+                android:onClick="goto_multi" />
+
+            <ImageButton
+                android:id="@+id/buttonwide"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_margin="15dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/venus1"
+                android:onClick="goto_wide" />
+        </TableRow>
     </TableLayout>
 
     <ImageButton

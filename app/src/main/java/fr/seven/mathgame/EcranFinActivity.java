@@ -198,6 +198,9 @@ public class EcranFinActivity extends Jeu {
                     intent4.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent4);
                     break;
+                case 5:
+                    finish();
+                    break;
                 default:
                     Intent intent0 = new Intent(getApplicationContext(), Jeu1Activity.class);
                     intent0.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

@@ -31,7 +31,7 @@
 
             android:background="@drawable/button"
             android:fontFamily="monospace"
-            android:onClick="start_application"
+            android:onClick="connectAnonymously"
             android:text="Anonyme"
             android:textColor="#808080"
             android:textSize="24sp"
