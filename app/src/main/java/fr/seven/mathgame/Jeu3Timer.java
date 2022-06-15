@@ -4,6 +4,7 @@ import static java.lang.Math.max;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.preference.PreferenceManager;
 
 import android.content.Intent;
@@ -39,24 +40,30 @@ public class Jeu3Timer extends Jeu{
         new Handler().postDelayed(new Runnable() {
         @Override
         public void run() {
-            timebar.setProgress(max(timebar.getProgress()-1,0));
-            if(timebar.getProgress() != 0){
-                new Handler().postDelayed(this, 10);
-            }else {
-                timebar.setProgress(1000);
-                //Fin du jeu, écran de fin
-                ((ViewGroup)timebar.getParent()).removeView(timebar);
-                //new Handler().postDelayed(this, 10);
-                Intent intent = new Intent(getApplicationContext(), FinJeu3Activity.class);
-                intent.putExtra("action", "lose");
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("numero",numeroJeu);
-                startActivity(intent);
-                finish();
+            try {
+                timebar.setProgress(max(timebar.getProgress() - 1, 0));
+                if (timebar.getProgress() > 0) {
+                    new Handler().postDelayed(this, 10);
+                } else {
+                    timebar.setProgress(1000);
+                    //Fin du jeu, écran de fin
+                    ((ViewGroup) timebar.getParent()).removeView(timebar);
+                    //new Handler().postDelayed(this, 10);
+                    Intent intent = new Intent(getApplicationContext(), FinJeu3Activity.class);
+                    intent.putExtra("action", "lose");
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("numero", numeroJeu);
+                    startActivity(intent);
+                    finish();
 
+                }
+            }
+            catch(Exception e){
+                System.out.println(e);
             }
         }
     }, 0);
+
  }
 
 }

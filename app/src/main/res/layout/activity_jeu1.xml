@@ -53,18 +53,18 @@
             android:visibility="gone" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/buttonequation2"
+            android:background="@drawable/button"
             style="@style/Widget.AppCompat.Button.Borderless"
+            android:textColor="@color/colorText"
+            android:id="@+id/buttonequation2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="4dp"
             android:layout_weight="0.2"
 
-            android:background="@drawable/button"
             android:fontFamily="monospace"
             android:onClick="buttonclick"
             android:text="1"
-            android:textColor="@color/colorText"
             android:textSize="24sp"
             android:typeface="sans"
             android:visibility="gone" />

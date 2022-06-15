@@ -1,11 +1,10 @@
 package fr.seven.mathgame;
 
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.preference.PreferenceManager;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
@@ -33,6 +32,7 @@ public class Jeu3Activity extends Jeu3Timer {
         numeroJeu = 3;
         init();
     }
+
     protected void init(){
         //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         //TEMPORAIRE
@@ -43,11 +43,11 @@ public class Jeu3Activity extends Jeu3Timer {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         switch (sharedPreferences.getString("Difficulty", "ERREUR")) {
             case "Intermédiaire":
-                setQuestion(Intermédiaire.equation());
-                if (Intermédiaire.functequation() == 1) {
+                setQuestion(Intermediaire.equation());
+                if (Intermediaire.functequation() == 1) {
                     qcm();
                 }
-                if (Intermédiaire.functequation() == 0) {
+                if (Intermediaire.functequation() == 0) {
                     qcmbutton1.setVisibility(View.GONE);
                     qcmbutton2.setVisibility(View.GONE);
                     qcmbutton3.setVisibility(View.GONE);
@@ -108,13 +108,13 @@ public class Jeu3Activity extends Jeu3Timer {
         qcmbutton1.setVisibility(View.VISIBLE);
         qcmbutton2.setVisibility(View.VISIBLE);
         qcmbutton3.setVisibility(View.VISIBLE);
-        if (Intermédiaire.functequation() == 1) {
-            qcmbutton1.setText(Intermédiaire.funcequationqcm(u));
-            equation1 = Intermédiaire.funcequationqcm(u);
-            qcmbutton2.setText(Intermédiaire.funcequationqcm(x));
-            equation2 = Intermédiaire.funcequationqcm(x);
-            qcmbutton3.setText(Intermédiaire.funcequationqcm(y));
-            equation3 = Intermédiaire.funcequationqcm(y);
+        if (Intermediaire.functequation() == 1) {
+            qcmbutton1.setText(Intermediaire.funcequationqcm(u));
+            equation1 = Intermediaire.funcequationqcm(u);
+            qcmbutton2.setText(Intermediaire.funcequationqcm(x));
+            equation2 = Intermediaire.funcequationqcm(x);
+            qcmbutton3.setText(Intermediaire.funcequationqcm(y));
+            equation3 = Intermediaire.funcequationqcm(y);
         }
         if (Expert.functequation() == 1) {
             qcmbutton1.setText(Expert.funcequationqcm(u));
@@ -208,8 +208,8 @@ public class Jeu3Activity extends Jeu3Timer {
         TextView textView = findViewById(R.id.textView);
         String text = EquationHistory.get(EquationHistory.size() - 1);
         int comparaison;
-        if (Intermédiaire.functequation() == 1) {
-            comparaison = button.compareTo(Intermédiaire.bonneequation());
+        if (Intermediaire.functequation() == 1) {
+            comparaison = button.compareTo(Intermediaire.bonneequation());
             verif(comparaison);
         }
 
@@ -235,16 +235,17 @@ public class Jeu3Activity extends Jeu3Timer {
         Button qcmbutton2 = findViewById(R.id.buttonequation2);
         Button qcmbutton3 = findViewById(R.id.buttonequation3);
         View space = findViewById(R.id.Space);
+        TextView text = findViewById(R.id.textView);
         if (comparaison == 0) {     //Bonne réponse
             addscorejeu3 += 1;  //set du multiplicateur
             AddScoreJeu3();
             ProgressBar timebar = findViewById(R.id.timebar);
             timebar.setProgress(Math.min(1000,timebar.getProgress()+100));
-            init();
             qcmbutton1.setVisibility(View.GONE);
             qcmbutton2.setVisibility(View.GONE);
             qcmbutton3.setVisibility(View.GONE);
             space.setVisibility(View.GONE);
+            init();
         } else {                    //Mauvaise réponse
             ProgressBar timebar = findViewById(R.id.timebar);
             timebar.setProgress(Math.min(1000,timebar.getProgress()-100));
@@ -263,7 +264,7 @@ public class Jeu3Activity extends Jeu3Timer {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         switch (sharedPreferences.getString("Difficulty", "ERREUR")) {
             case "Intermédiaire":
-                comparaison = (Intermédiaire.resultat()).compareTo(text);
+                comparaison = (Intermediaire.resultat()).compareTo(text);
                 break;
             case "Expert":
                 comparaison = (Expert.resultat()).compareTo(text);
@@ -310,7 +311,11 @@ public class Jeu3Activity extends Jeu3Timer {
 
     @Override
     public void onBackPressed(){
+        ProgressBar timebar = findViewById(R.id.timebar);
+        ConstraintLayout layout = (ConstraintLayout) timebar.getParent();
+        layout.removeView(timebar);
         finish();
     }
+
 
 }

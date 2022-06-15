@@ -61,10 +61,9 @@ public class ProfilActivity extends AppCompatActivity {
                 .setPositiveButton("Oui", (dialogInterface, i) -> {
                     if(FirebaseAuth.getInstance().getCurrentUser() != null){
                         FirebaseDatabase database = FirebaseDatabase.getInstance("https://projet7-e3b8a-default-rtdb.europe-west1.firebasedatabase.app/");
-                        DatabaseReference reference = database.getReference("userdata").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                        reference.removeValue();
+                        DatabaseReference reference = database.getReference("userdata").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("score");
+                        reference.setValue(0);
                     }
-                    goto_start(null);
                 })
                 .setNegativeButton("Non", (dialogInterface, i) -> {
 

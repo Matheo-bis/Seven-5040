@@ -1,7 +1,6 @@
 package fr.seven.mathgame;
 
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
 import android.content.Intent;
@@ -22,13 +21,11 @@ import java.util.Objects;
 import java.util.Random;
 
 public class Jeu1Activity extends Jeu {
-    private ArrayList<String> EquationHistory = new ArrayList<String>();
-    private String equation;
+    private final ArrayList<String> EquationHistory = new ArrayList<>();
     private String equation1;
     private String equation2;
     private String equation3;
-    private int jeu1et2;
-    public int jeu1ou2(){return jeu1et2=2;}
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +45,11 @@ public class Jeu1Activity extends Jeu {
         }
         switch (difficulty) {
             case "Intermédiaire":
-                setQuestion(Intermédiaire.equation());
-                if (Intermédiaire.functequation() == 1) {
+                setQuestion(Intermediaire.equation());
+                if (Intermediaire.functequation() == 1) {
                     qcm();
                 }
-                if (Intermédiaire.functequation() == 0) {
+                if (Intermediaire.functequation() == 0) {
                     qcmbutton1.setVisibility(View.GONE);
                     qcmbutton2.setVisibility(View.GONE);
                     qcmbutton3.setVisibility(View.GONE);
@@ -113,13 +110,13 @@ public class Jeu1Activity extends Jeu {
         qcmbutton1.setVisibility(View.VISIBLE);
         qcmbutton2.setVisibility(View.VISIBLE);
         qcmbutton3.setVisibility(View.VISIBLE);
-        if (Intermédiaire.functequation() == 1) {
-            qcmbutton1.setText(Intermédiaire.funcequationqcm(u));
-            equation1 = Intermédiaire.funcequationqcm(u);
-            qcmbutton2.setText(Intermédiaire.funcequationqcm(x));
-            equation2 = Intermédiaire.funcequationqcm(x);
-            qcmbutton3.setText(Intermédiaire.funcequationqcm(y));
-            equation3 = Intermédiaire.funcequationqcm(y);
+        if (Intermediaire.functequation() == 1) {
+            qcmbutton1.setText(Intermediaire.funcequationqcm(u));
+            equation1 = Intermediaire.funcequationqcm(u);
+            qcmbutton2.setText(Intermediaire.funcequationqcm(x));
+            equation2 = Intermediaire.funcequationqcm(x);
+            qcmbutton3.setText(Intermediaire.funcequationqcm(y));
+            equation3 = Intermediaire.funcequationqcm(y);
         }
         if (Expert.functequation() == 1) {
             qcmbutton1.setText(Expert.funcequationqcm(u));
@@ -219,9 +216,9 @@ public class Jeu1Activity extends Jeu {
         }
         int comparaison;
 
-        if (Intermédiaire.functequation() == 1) {
-            comparaison = button.compareTo(Intermédiaire.bonneequation());
-            verif(comparaison,Intermédiaire.bonneequation()+((TextView) findViewById(R.id.textView)).getText().toString());
+        if (Intermediaire.functequation() == 1) {
+            comparaison = button.compareTo(Intermediaire.bonneequation());
+            verif(comparaison, Intermediaire.bonneequation()+((TextView) findViewById(R.id.textView)).getText().toString());
         }
 
         if (Expert.functequation() == 1) {
@@ -255,7 +252,7 @@ public class Jeu1Activity extends Jeu {
 
             }
             catch(Exception e){
-                System.out.println(e);
+                e.printStackTrace();
             }
             startActivity(intent);
             qcmbutton1.setVisibility(View.GONE);
@@ -274,7 +271,7 @@ public class Jeu1Activity extends Jeu {
 
             }
             catch(Exception e){
-                System.out.println(e);
+                e.printStackTrace();
             }
             startActivity(intent);
             buttonCE(null);
@@ -293,8 +290,8 @@ public class Jeu1Activity extends Jeu {
         String result;
         switch (difficulty) {
             case "Intermédiaire":
-                comparaison = (Intermédiaire.resultat()).compareTo(text);
-                result=Intermédiaire.resultat();
+                comparaison = (Intermediaire.resultat()).compareTo(text);
+                result= Intermediaire.resultat();
                 break;
             case "Expert":
                 comparaison = (Expert.resultat()).compareTo(text);
@@ -318,7 +315,7 @@ public class Jeu1Activity extends Jeu {
 
             }
             catch(Exception e){
-                System.out.println(e);
+                e.printStackTrace();
             }
             startActivity(intent);
         } else {
@@ -333,7 +330,7 @@ public class Jeu1Activity extends Jeu {
 
             }
             catch(Exception e){
-                System.out.println(e);
+                e.printStackTrace();
             }
             startActivity(intent);
             buttonCE(null);

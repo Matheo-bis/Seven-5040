@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.text.Html;
 import android.view.View;
 import android.view.animation.Animation;
@@ -161,11 +160,11 @@ public class JeuMultiActivity extends Jeu {
         }
         switch (difficulty) {
             case "Intermédiaire":
-                setQuestion(Intermédiaire.equation());
-                if (Intermédiaire.functequation() == 1) {
+                setQuestion(Intermediaire.equation());
+                if (Intermediaire.functequation() == 1) {
                     qcm();
                 }
-                if (Intermédiaire.functequation() == 0) {
+                if (Intermediaire.functequation() == 0) {
                     qcmbutton1.setVisibility(View.GONE);
                     qcmbutton2.setVisibility(View.GONE);
                     qcmbutton3.setVisibility(View.GONE);
@@ -225,13 +224,13 @@ public class JeuMultiActivity extends Jeu {
         qcmbutton1.setVisibility(View.VISIBLE);
         qcmbutton2.setVisibility(View.VISIBLE);
         qcmbutton3.setVisibility(View.VISIBLE);
-        if (Intermédiaire.functequation() == 1) {
-            qcmbutton1.setText(Intermédiaire.funcequationqcm(u));
-            equation1 = Intermédiaire.funcequationqcm(u);
-            qcmbutton2.setText(Intermédiaire.funcequationqcm(x));
-            equation2 = Intermédiaire.funcequationqcm(x);
-            qcmbutton3.setText(Intermédiaire.funcequationqcm(y));
-            equation3 = Intermédiaire.funcequationqcm(y);
+        if (Intermediaire.functequation() == 1) {
+            qcmbutton1.setText(Intermediaire.funcequationqcm(u));
+            equation1 = Intermediaire.funcequationqcm(u);
+            qcmbutton2.setText(Intermediaire.funcequationqcm(x));
+            equation2 = Intermediaire.funcequationqcm(x);
+            qcmbutton3.setText(Intermediaire.funcequationqcm(y));
+            equation3 = Intermediaire.funcequationqcm(y);
         }
         if (Expert.functequation() == 1) {
             qcmbutton1.setText(Expert.funcequationqcm(u));
@@ -331,9 +330,9 @@ public class JeuMultiActivity extends Jeu {
         }
         int comparaison;
 
-        if (Intermédiaire.functequation() == 1) {
-            comparaison = button.compareTo(Intermédiaire.bonneequation());
-            verif(comparaison,Intermédiaire.bonneequation()+((TextView) findViewById(R.id.textView)).getText().toString());
+        if (Intermediaire.functequation() == 1) {
+            comparaison = button.compareTo(Intermediaire.bonneequation());
+            verif(comparaison, Intermediaire.bonneequation()+((TextView) findViewById(R.id.textView)).getText().toString());
         }
 
         if (Expert.functequation() == 1) {
@@ -400,8 +399,8 @@ public class JeuMultiActivity extends Jeu {
         String result;
         switch (difficulty) {
             case "Intermédiaire":
-                comparaison = (Intermédiaire.resultat()).compareTo(text);
-                result=Intermédiaire.resultat();
+                comparaison = (Intermediaire.resultat()).compareTo(text);
+                result= Intermediaire.resultat();
                 break;
             case "Expert":
                 comparaison = (Expert.resultat()).compareTo(text);
