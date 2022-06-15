@@ -1,5 +1,7 @@
 package fr.seven.mathgame;
 
+import static java.lang.Math.max;
+
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
@@ -29,23 +31,18 @@ public class Jeu3Timer extends Jeu{
         setContentView(R.layout.activity_jeu3);
         ProgressBar timebar = findViewById(R.id.timebar);
 
-        int maxtime = 1000;
-        int progresstime = getIntent().getIntExtra("timer",1000);
-        int currentprogresstime = getIntent().getIntExtra("timer",1000);
-
-        timebar.setMax(maxtime);
-        timebar.setProgress(progresstime);
-        int[] currentProgress = {currentprogresstime};
+        timebar.setMax(1000);
+        timebar.setProgress(1000);
+        int[] currentProgress = {1000};
 
         new Handler().postDelayed(new Runnable() {
         @Override
         public void run() {
-            currentProgress[0] -= 1;
-            timebar.setProgress(currentProgress[0]);
-            if(currentProgress[0] != 0){
+            timebar.setProgress(max(timebar.getProgress()-1,0));
+            if(timebar.getProgress() != 0){
                 new Handler().postDelayed(this, 10);
             }else {
-                currentProgress[0]=1000;
+                timebar.setProgress(1000);
                 //Fin du jeu, écran de fin
                 new Handler().postDelayed(this, 10);
                 Intent intent = new Intent(getApplicationContext(), FinJeu3Activity.class);

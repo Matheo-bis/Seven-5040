@@ -31,7 +31,7 @@ public class EcranFinActivity extends Jeu {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ecran_fin);
+        setContentView(R.layout.activity_fin_jeu3);
         ((TextView)findViewById(R.id.textscore)).setText("Score: "+ScoreActivity.getScore());
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             switch(getIntent().getStringExtra("action")){

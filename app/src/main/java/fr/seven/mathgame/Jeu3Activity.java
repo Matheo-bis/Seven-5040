@@ -226,22 +226,6 @@ public class Jeu3Activity extends Jeu3Timer {
             EquationHistory.add(text.replaceFirst("_", button));
             textView.setText(Html.fromHtml(EquationHistory.get(EquationHistory.size() - 1)));
         }
-        else{
-            Button qcmbutton1 = findViewById(R.id.buttonequation1);
-            Button qcmbutton2 = findViewById(R.id.buttonequation2);
-            Button qcmbutton3 = findViewById(R.id.buttonequation3);
-            View space = findViewById(R.id.Space);
-            comparaison= text.compareTo(Debutant.bonneequation());
-            if (comparaison == 0) {
-                qcmbutton1.setVisibility(View.GONE);
-                qcmbutton2.setVisibility(View.GONE);
-                qcmbutton3.setVisibility(View.GONE);
-                space.setVisibility(View.GONE);
-                init();
-            } else {
-                init();
-            }
-        }
 
 
     }
@@ -252,16 +236,20 @@ public class Jeu3Activity extends Jeu3Timer {
         Button qcmbutton3 = findViewById(R.id.buttonequation3);
         View space = findViewById(R.id.Space);
         if (comparaison == 0) {     //Bonne réponse
-            multiscorejeu3 += 1;  //set du multiplicateur
+            addscorejeu3 += 1;  //set du multiplicateur
             AddScoreJeu3();
+            ProgressBar timebar = findViewById(R.id.timebar);
+            timebar.setProgress(Math.min(1000,timebar.getProgress()+100));
             init();
             qcmbutton1.setVisibility(View.GONE);
             qcmbutton2.setVisibility(View.GONE);
             qcmbutton3.setVisibility(View.GONE);
             space.setVisibility(View.GONE);
         } else {                    //Mauvaise réponse
-            if (multiscorejeu3 <1){ multiscorejeu3 -= 1; } //set du multiplicateur
-            AddScoreJeu3();
+            ProgressBar timebar = findViewById(R.id.timebar);
+            timebar.setProgress(Math.min(1000,timebar.getProgress()-100));
+            if (addscorejeu3 >3){ addscorejeu3 -= 1; } //set du multiplicateur
+            RetScoreJeu3();
             init();
         buttonCE(null);
 
@@ -284,12 +272,16 @@ public class Jeu3Activity extends Jeu3Timer {
                 comparaison = (Debutant.resultat()).compareTo(text);
         }
         if (comparaison == 0) { //Bonne réponse
-            multiscorejeu3 += 1;
+            addscorejeu3 += 1;
             AddScoreJeu3();
+            ProgressBar timebar = findViewById(R.id.timebar);
+            timebar.setProgress(Math.min(1000,timebar.getProgress()+100));
             init();
         } else {                //Mauvaise reponse
-            if (multiscorejeu3 <1){ multiscorejeu3 -= 1; } //set du multiplicateur
-            AddScoreJeu3();
+            if (addscorejeu3 >3){ addscorejeu3 -= 1; } //set du multiplicateur
+            RetScoreJeu3();
+            ProgressBar timebar = findViewById(R.id.timebar);
+            timebar.setProgress(Math.min(1000,timebar.getProgress()-100));
             init();
         }
     }
@@ -310,7 +302,10 @@ public class Jeu3Activity extends Jeu3Timer {
     public void AddScoreJeu3(){
         addscorejeu3 *= multiscorejeu3;
         scorejeu3 = scorejeu3 + addscorejeu3;
-        scorejeu3 += 1;
+    }
+    public void RetScoreJeu3(){
+        addscorejeu3 *= multiscorejeu3;
+        scorejeu3 = scorejeu3 - addscorejeu3;
     }
 
     @Override
