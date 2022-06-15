@@ -7,15 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class LancementJeu2Activity extends AppCompatActivity {
+public class LancementJeu3Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lancement_jeu2);
+        setContentView(R.layout.activity_lancement_jeu3);
     }
-    public void launchGame2(View v) {
-        Intent intent=new Intent(this, Jeu2Activity.class);
+    public void launchGame3(View v) {
+        Intent intent=new Intent(this, Jeu3Activity.class);
         startActivity(intent);
     }
 }

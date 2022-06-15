@@ -8,12 +8,12 @@ import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
 
-public class FinJeu2Activity extends AppCompatActivity {
+public class FinJeu3Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fin_jeu2);
+        setContentView(R.layout.activity_fin_jeu3);
         switch(getIntent().getStringExtra("action")){
             case "lose":
                 lose(null);
@@ -22,13 +22,13 @@ public class FinJeu2Activity extends AppCompatActivity {
                 win(null);
                 break;
             default:
-               // wide(null);
+                // wide(null);
         }
     }
 
     //public void goto_jeu2(View view){
-        //Intent intent=new Intent(this, LancementJeu2Activity.class);
-        //startActivity(intent);
+    //Intent intent=new Intent(this, LancementJeu2Activity.class);
+    //startActivity(intent);
     //}
 
     public void goto_menu(View view){

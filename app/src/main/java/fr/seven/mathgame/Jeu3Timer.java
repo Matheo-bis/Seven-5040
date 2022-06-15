@@ -48,6 +48,12 @@ public class Jeu3Timer extends Jeu{
                 currentProgress[0]=1000;
                 //Fin du jeu, écran de fin
                 new Handler().postDelayed(this, 10);
+                Intent intent = new Intent(getApplicationContext(), FinJeu3Activity.class);
+                intent.putExtra("action", "lose");
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("numero",numeroJeu);
+                startActivity(intent);
+                finish();
 
             }
         }
