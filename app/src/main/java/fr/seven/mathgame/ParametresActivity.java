@@ -21,11 +21,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Objects;
+
 public class ParametresActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, SeekBar.OnSeekBarChangeListener {
 
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
-    public static int selectiondifficultes;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,24 +51,19 @@ public class ParametresActivity extends AppCompatActivity implements AdapterView
         switch (sharedPreferences.getString("Difficulty", "ERREUR")){
             case "Débutant":
                 pos=0;
-                selectiondifficultes =1;
                 break;
             case "Intermédiaire":
                 pos=1;
-                selectiondifficultes =2;
                 break;
             case "Expert":
                 pos=2;
-                selectiondifficultes=3;
                 break;
             case "Adaptatif":
                 pos=3;
-                selectiondifficultes=4;
                 break;
             case "ERREUR":
                 updateDifficultyInDatabase();
                 pos=0;
-                selectiondifficultes =1;
                 break;
         }
         spinner.setSelection(pos);
@@ -143,7 +139,7 @@ public class ParametresActivity extends AppCompatActivity implements AdapterView
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://projet7-e3b8a-default-rtdb.europe-west1.firebasedatabase.app/");
-        DatabaseReference reference = database.getReference("userdata").child(firebaseAuth.getCurrentUser().getUid());
+        DatabaseReference reference = database.getReference("userdata").child(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid());
         reference.child("difficulty").setValue(sharedPreferences.getString("Difficulty", "Débutant"));
     }
 
