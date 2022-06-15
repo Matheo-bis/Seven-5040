@@ -33,5 +33,5 @@ jobs:
           prerelease: true
           title: "dev build"
           files: |
-            app/build/outputs/apk/release/*.jar
+            app/build/outputs/apk/release/*.apk
             
