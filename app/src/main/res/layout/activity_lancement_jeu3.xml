@@ -8,14 +8,15 @@
 
     <TextView
         android:id="@+id/textView12"
-        android:layout_width="411dp"
-        android:layout_height="388dp"
+        android:layout_width="352dp"
+        android:layout_height="404dp"
         android:layout_marginTop="116dp"
         android:text="Répond aux questions le plus rapidement possible. Chaque bonne réponse te rajoute du temps et chaque mauvaise réponse t'en enlève."
         android:textAlignment="center"
         android:textSize="34sp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="2dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:background="@drawable/button"

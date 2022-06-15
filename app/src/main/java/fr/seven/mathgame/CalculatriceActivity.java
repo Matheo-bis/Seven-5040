@@ -171,11 +171,9 @@ public class CalculatriceActivity extends AppCompatActivity {
                         num2 = Double.parseDouble((String)deuxio.getText());
                         deuxio.setText("0");
                     }
-                    if(ok){
-                        //deuxio.setText("0");
-                        num2 = Double.parseDouble((String)deuxio.getText());
-                        num2_exist=false;
-
+                    if(ok || deuxio.getText().length()==0){
+                        deuxio.setText("0");
+                        num2 = Double.parseDouble((String)deuxio.getText().toString());
                     }
                 }
                 break;
@@ -199,6 +197,10 @@ public class CalculatriceActivity extends AppCompatActivity {
                         deuxio.setText("1");
                         num2 = Double.parseDouble((String)deuxio.getText());
                     }
+                    if(ok || deuxio.getText().length()==0){
+                        deuxio.setText("0");
+                        num2 = Double.parseDouble((String)deuxio.getText().toString());
+                    }
                 }
                 break;
             case "fr.seven.mathapp:id/buttonmult":
@@ -220,6 +222,10 @@ public class CalculatriceActivity extends AppCompatActivity {
                     if(!num2_exist && op=="!"){
                         deuxio.setText("1");
                         num2 = Double.parseDouble((String)deuxio.getText());
+                    }
+                    if(ok || deuxio.getText().length()==0){
+                        deuxio.setText("0");
+                        num2 = Double.parseDouble((String)deuxio.getText().toString());
                     }
                 }
                 break;
@@ -256,6 +262,10 @@ public class CalculatriceActivity extends AppCompatActivity {
                         if (isoperator(last_number)){
                             button="";                        }
                         else {
+                            if(ok || deuxio.getText().length()==0){
+                                deuxio.setText("0");
+                                num2 = Double.parseDouble((String)deuxio.getText().toString());
+                            }
                             num2 = Double.parseDouble((String) deuxio.getText());
                             num2 = (float) (factorial((double) num2));
                         }
@@ -280,7 +290,10 @@ public class CalculatriceActivity extends AppCompatActivity {
                             button="";
                         }
                         else {
-                            num2 = Double.parseDouble((String) deuxio.getText());
+                            if(ok || deuxio.getText().length()==0){
+                                deuxio.setText("0");
+                                num2 = Double.parseDouble((String)deuxio.getText().toString());
+                            }
                         }
                     }
 
