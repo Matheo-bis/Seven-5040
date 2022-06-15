@@ -43,12 +43,14 @@ public class Debutant extends Equation {
                         int fake1y = rand.nextInt(20) + 1;
                         int fake2x = rand.nextInt(20) + 1;
                         int fake2y = rand.nextInt(20) + 1;
+                        int fake3x = rand.nextInt(20) + 1;
+                        int fake3y = rand.nextInt(20) + 1;
                         if (fake1x + fake2x == SumResultat) fake1x = fake1x + 1;
                         equationfake1 = " "+fake1x + operateur + fake2x + " = ";
                         if (fake2x + fake2y == SumResultat) fake2x = fake2x + 1;
                         equationfake2 = " "+fake2x + operateur + fake2y + " = ";
-                        if (fake1x + fake2y == SumResultat) fake1x = fake1x + 1;
-                        equationfake3 = " "+fake1x + operateur + fake2y + " = ";
+                        if (fake3x + fake3y == SumResultat) fake3x = fake3x + 1;
+                        equationfake3 = " "+fake3x + operateur + fake3y + " = ";
                         equationok = " "+Sumx + operateur + Sumy + " = ";
                         return "" + SumResultat + "";
 
@@ -76,12 +78,26 @@ public class Debutant extends Equation {
                         int fake1y = rand.nextInt(20) + 1;
                         int fake2x = rand.nextInt(20) + 1;
                         int fake2y = rand.nextInt(20) + 1;
+                        int fake3x = rand.nextInt(20) + 1;
+                        int fake3y = rand.nextInt(20) + 1;
                         if (fake1x - fake2x == MinResultat) fake1x = fake1x + 1;
-                        equationfake1 = "  "+fake1x + operateur + fake2x + " = ";
                         if (fake2x - fake2y == MinResultat) fake2x = fake2x + 1;
+                        if (fake3x + fake3y == MinResultat) fake3x = fake3x + 1;
+                        equationfake1 = " "+fake1x + operateur + fake2x + " = ";
                         equationfake2 = " "+fake2x + operateur + fake2y + " = ";
-                        if (fake1x + fake2y == MinResultat) fake1x = fake1x + 1;
-                        equationfake3 = " "+fake1x + operateur + fake2y + " = ";
+                        equationfake3 = " "+fake3x + operateur + fake3y + " = ";
+                        if(equationfake1==equationfake2){
+                            fake1x++;
+                            fake1y--;
+                        }
+                        if(equationfake1==equationfake3){
+                            fake3x++;
+                            fake1y--;
+                        }
+                        if(equationfake2==equationfake3){
+                            fake2x++;
+                            fake3y--;
+                        }
                         equationok = " "+Minx + operateur + Miny + " = ";
                         return "" + MinResultat + "";
                 }
@@ -90,6 +106,7 @@ public class Debutant extends Equation {
                 jeuequation = 0;
                 int Multx = rand.nextInt(5) + 1;
                 int Multy = rand.nextInt(5) + 1;
+                if(Multx==Multy){Multx++;}
                 int MultResultat = Multx * Multy;
                 toutresultat = Multx + operateur + Multy + "=" + MultResultat;
                 switch (rand.nextInt(3)) {
@@ -103,12 +120,29 @@ public class Debutant extends Equation {
                         int fake1y = rand.nextInt(20) + 1;
                         int fake2x = rand.nextInt(20) + 1;
                         int fake2y = rand.nextInt(20) + 1;
+                        int fake3x = rand.nextInt(20) + 1;
+                        int fake3y = rand.nextInt(20) + 1;
                         if (fake1x * fake2x == MultResultat) fake1x = fake1x + 1;
-                        equationfake1 = " "+fake1x + operateur + fake2x + " = ";
                         if (fake2x * fake2y == MultResultat) fake2x = fake2x + 1;
+                        if (fake3x + fake3y == MultResultat) fake3x = fake3x + 1;
+                        equationfake1 = " "+fake1x + operateur + fake2x + " = ";
                         equationfake2 = " "+fake2x + operateur + fake2y + " = ";
-                        if (fake1x + fake2y == MultResultat) fake1x = fake1x + 1;
-                        equationfake3 = " "+fake1x + operateur + fake2y + " = ";
+                        equationfake3 = " "+fake3x + operateur + fake3y + " = ";
+                        if(equationfake1==equationfake2){
+                            fake1x++;
+                            fake1y--;
+                        }
+                        if(equationfake1==equationfake3){
+                            fake3x++;
+                            fake1y--;
+                        }
+                        if(equationfake2==equationfake3){
+                            fake2x++;
+                            fake3y--;
+                        }
+                        equationfake1 = " "+fake1x + operateur + fake2x + " = ";
+                        equationfake2 = " "+fake2x + operateur + fake2y + " = ";
+                        equationfake3 = " "+fake3x + operateur + fake3y + " = ";
                         equationok = " "+Multx + operateur + Multy + " = ";
                         return "" + MultResultat + "";
                 }
