@@ -34,6 +34,7 @@ public class Jeu3Activity extends Jeu3Timer {
         numeroJeu = 3;
         init();
     }
+
     protected void init(){
         //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         //TEMPORAIRE
@@ -79,7 +80,7 @@ public class Jeu3Activity extends Jeu3Timer {
                     space.setVisibility(View.GONE);
                 }
         }
-        ((TextView)findViewById(R.id.textscore3)).setText("Score: "+ scorejeu3);//TESTES
+        ((TextView)findViewById(R.id.textscore3)).setText("Score: "+ scorejeu3);
     }
 
     public void qcm() {
@@ -316,6 +317,10 @@ public class Jeu3Activity extends Jeu3Timer {
         ConstraintLayout layout = (ConstraintLayout) timebar.getParent();
         layout.removeView(timebar);
         finish();
+    }
+
+    public int getScorejeu3(){
+        return scorejeu3;
     }
 
 
