@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.Html;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -44,7 +45,8 @@ public class Jeu3Timer extends Jeu{
             }else {
                 timebar.setProgress(1000);
                 //Fin du jeu, écran de fin
-                new Handler().postDelayed(this, 10);
+                ((ViewGroup)timebar.getParent()).removeView(timebar);
+                //new Handler().postDelayed(this, 10);
                 Intent intent = new Intent(getApplicationContext(), FinJeu3Activity.class);
                 intent.putExtra("action", "lose");
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
