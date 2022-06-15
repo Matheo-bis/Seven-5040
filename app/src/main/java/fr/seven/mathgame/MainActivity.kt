@@ -14,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceManager
 import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
-import java.lang.annotation.Native
 
 class MainActivity : AppCompatActivity() {
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -34,21 +33,25 @@ class MainActivity : AppCompatActivity() {
             System.err.print(e)
         }
         //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        val videoView = findViewById<VideoView>(R.id.videoView)
+        findViewById<VideoView>(R.id.videoView)
 
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         val editor = sharedPreferences.edit()
-        val tuto_5 = AlertDialog.Builder(this)
+        val tuto_6 = AlertDialog.Builder(this)
                 .setTitle("Bienvenue!")
                 .setMessage("Le bouton en haut à gauche permet d'accéder aux paramètres, et la photo de profil (ainsi que le nom) permet d'accéder au profil")
                 .setPositiveButton("Fini!") { dialogInterface: DialogInterface?, i: Int -> }
-        val tuto_4 = AlertDialog.Builder(this)
+        val tuto_5 = AlertDialog.Builder(this)
                 .setTitle("Bienvenue!")
                 .setMessage("Il y a aussi une calculatrice, des cours et un classement")
+                .setPositiveButton("Suivant") { dialogInterface: DialogInterface?, _: Int -> tuto_6.show() }
+        val tuto_4 = AlertDialog.Builder(this)
+                .setTitle("Bienvenue!")
+                .setMessage("Et le Clash Orbital permet de jouer à plusieurs.")
                 .setPositiveButton("Suivant") { dialogInterface: DialogInterface?, i: Int -> tuto_5.show() }
         val tuto_3 = AlertDialog.Builder(this)
                 .setTitle("Bienvenue!")
-                .setMessage("... Et le Rush Martien est un duel en multijoueur!")
+                .setMessage("... Le Rush Martien est ... un rush? (j'en sait rien j'ai pas dev ça)")
                 .setPositiveButton("Suivant") { dialogInterface: DialogInterface?, i: Int -> tuto_4.show() }
         val tuto_2 = AlertDialog.Builder(this)
                 .setTitle("Bienvenue!")
@@ -71,29 +74,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun goto_jeu2(view: View?) {
-        val intent = Intent(this, Jeu2Activity::class.java)
+        val intent = Intent(this, LancementJeu2Activity::class.java)
         startActivity(intent)
     }
 
     fun goto_jeu3(view: View?) {
-        val intent = Intent(this, Jeu3Activity::class.java)
+        val intent = Intent(this, LancementJeu3Activity::class.java)
         startActivity(intent)
     }
 
     fun goto_calc(view: View?) {
         val intent = Intent(this, CalculatriceActivity::class.java)
-        startActivity(intent)
-    }
-
-    fun goto_win(view: View?) {
-        val intent = Intent(this, EcranFinActivity::class.java)
-        intent.putExtra("action", "win")
-        startActivity(intent)
-    }
-
-    fun goto_lose(view: View?) {
-        val intent = Intent(this, EcranFinActivity::class.java)
-        intent.putExtra("action", "lose")
         startActivity(intent)
     }
 

@@ -4,6 +4,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -18,19 +19,21 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Jeu3Activity extends Jeu3Timer {
-    private ArrayList<String> EquationHistory = new ArrayList<String>();
+    private final ArrayList<String> EquationHistory = new ArrayList<String>();
     private String equation;
     private String equation1;
     private String equation2;
     private String equation3;
+    @SuppressLint("SetTextI18n")
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_jeu3);
         super.onCreate(savedInstanceState);
-        System.out.println("/::::::::::/"+"Score: "+Integer.toString(scorejeu3));
-        ((TextView)findViewById(R.id.textscore3)).setText("Score: "+Integer.toString(scorejeu3));
-        numeroJeu=3;
+        numeroJeu = 3;
+        init();
+    }
+    protected void init(){
         //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         //TEMPORAIRE
         Button qcmbutton1 = findViewById(R.id.buttonequation1);
@@ -75,7 +78,7 @@ public class Jeu3Activity extends Jeu3Timer {
                     space.setVisibility(View.GONE);
                 }
         }
-
+        ((TextView)findViewById(R.id.textscore3)).setText("Score: "+ scorejeu3);//TESTES
     }
 
     public void qcm() {
@@ -223,26 +226,6 @@ public class Jeu3Activity extends Jeu3Timer {
             EquationHistory.add(text.replaceFirst("_", button));
             textView.setText(Html.fromHtml(EquationHistory.get(EquationHistory.size() - 1)));
         }
-        else{
-            Button qcmbutton1 = findViewById(R.id.buttonequation1);
-            Button qcmbutton2 = findViewById(R.id.buttonequation2);
-            Button qcmbutton3 = findViewById(R.id.buttonequation3);
-            View space = findViewById(R.id.Space);
-            comparaison= text.compareTo(Debutant.bonneequation());
-            if (comparaison == 0) {     //Bonne réponse
-                qcmbutton1.setVisibility(View.GONE);
-                qcmbutton2.setVisibility(View.GONE);
-                qcmbutton3.setVisibility(View.GONE);
-                space.setVisibility(View.GONE);
-                Intent intent = new Intent(this, Jeu3Activity.class);
-                startActivity(intent);
-                finish();
-            } else {                    //Mauvaise réponse
-                buttonCE(null);
-                Intent intent = new Intent(this, Jeu3Activity.class);
-                startActivity(intent);
-            }
-        }
 
 
     }
@@ -253,22 +236,21 @@ public class Jeu3Activity extends Jeu3Timer {
         Button qcmbutton3 = findViewById(R.id.buttonequation3);
         View space = findViewById(R.id.Space);
         if (comparaison == 0) {     //Bonne réponse
-            multiscorejeu3 += 1;  //set du multiplicateur
+            addscorejeu3 += 1;  //set du multiplicateur
             AddScoreJeu3();
-            Intent intent = new Intent(this, Jeu3Activity.class);
-            intent.putExtra("timer",Math.min(((ProgressBar)findViewById(R.id.timebar)).getProgress()+300,1000));
-            startActivity(intent);
+            ProgressBar timebar = findViewById(R.id.timebar);
+            timebar.setProgress(Math.min(1000,timebar.getProgress()+100));
+            init();
             qcmbutton1.setVisibility(View.GONE);
             qcmbutton2.setVisibility(View.GONE);
             qcmbutton3.setVisibility(View.GONE);
             space.setVisibility(View.GONE);
-            finish();
         } else {                    //Mauvaise réponse
-            if (multiscorejeu3 <1){ multiscorejeu3 -= 1; } //set du multiplicateur
-            AddScoreJeu3();
-            Intent intent = new Intent(this, Jeu3Activity.class);
-            intent.putExtra("timer",((ProgressBar)findViewById(R.id.timebar)).getProgress()-300);
-            startActivity(intent);
+            ProgressBar timebar = findViewById(R.id.timebar);
+            timebar.setProgress(Math.min(1000,timebar.getProgress()-100));
+            if (addscorejeu3 >3){ addscorejeu3 -= 1; } //set du multiplicateur
+            RetScoreJeu3();
+            init();
         buttonCE(null);
 
         }
@@ -290,22 +272,19 @@ public class Jeu3Activity extends Jeu3Timer {
                 comparaison = (Debutant.resultat()).compareTo(text);
         }
         if (comparaison == 0) { //Bonne réponse
-            multiscorejeu3 += 1;
+            addscorejeu3 += 1;
             AddScoreJeu3();
-            Intent intent = new Intent(this, Jeu3Activity.class);
-            intent.putExtra("timer",Math.min(((ProgressBar)findViewById(R.id.timebar)).getProgress()+300,1000));
-            startActivity(intent);
-            finish();
-
+            ProgressBar timebar = findViewById(R.id.timebar);
+            timebar.setProgress(Math.min(1000,timebar.getProgress()+100));
+            init();
         } else {                //Mauvaise reponse
-            if (multiscorejeu3 <1){ multiscorejeu3 -= 1; } //set du multiplicateur
-            AddScoreJeu3();
-            Intent intent = new Intent(this, Jeu3Activity.class);
-            intent.putExtra("timer",((ProgressBar)findViewById(R.id.timebar)).getProgress()-300);
-            startActivity(intent);
+            if (addscorejeu3 >3){ addscorejeu3 -= 1; } //set du multiplicateur
+            RetScoreJeu3();
+            ProgressBar timebar = findViewById(R.id.timebar);
+            timebar.setProgress(Math.min(1000,timebar.getProgress()-100));
+            init();
         }
     }
-
     public void buttonDEL(View view) {
         if (EquationHistory.size() > 1)
             EquationHistory.remove(EquationHistory.size() - 1);
@@ -317,12 +296,21 @@ public class Jeu3Activity extends Jeu3Timer {
         setQuestion(EquationHistory.get(0));
     }
 
-    int scorejeu3 = 1;
+    int scorejeu3 = 0;
     int addscorejeu3 = 1;
     int multiscorejeu3 = 1;
     public void AddScoreJeu3(){
         addscorejeu3 *= multiscorejeu3;
         scorejeu3 = scorejeu3 + addscorejeu3;
+    }
+    public void RetScoreJeu3(){
+        addscorejeu3 *= multiscorejeu3;
+        scorejeu3 = scorejeu3 - addscorejeu3;
+    }
+
+    @Override
+    public void onBackPressed(){
+        finish();
     }
 
 }

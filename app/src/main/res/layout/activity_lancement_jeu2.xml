@@ -11,7 +11,8 @@
         android:layout_width="322dp"
         android:layout_height="128dp"
         android:fontFamily="sans-serif"
-        android:text="Il faut désarmorcer la bombe avant qu'elle n'explose en coupant le bon fil. Tu n'as que XX secondes"
+        android:text="Il faut désamorcer la bombe en coupant le bon fil sans la faire exploser!"
+        android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -27,6 +28,7 @@
         android:layout_marginTop="112dp"
         android:fontFamily="sans-serif-smallcaps"
         android:text="Attention à l'explosion!"
+        android:textAlignment="center"
         android:textColor="#F44336"
         android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,10 +42,12 @@
         android:layout_height="98dp"
         android:background="#F44336"
         android:backgroundTint="#F44336"
+        android:onClick="launchGame2"
         android:text="À toi de jouer!"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

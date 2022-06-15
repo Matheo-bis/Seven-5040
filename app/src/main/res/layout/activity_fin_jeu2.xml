@@ -7,32 +7,19 @@
     tools:context=".FinJeu2Activity">
 
     <Button
-        android:id="@+id/button12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/revenir_au_menu2"
+        android:layout_width="137dp"
+        android:layout_height="68dp"
         android:onClick="goto_jeu2"
         android:text="Rejouer"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button15"
-        app:layout_constraintHorizontal_bias="0.551"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.862" />
-
-    <Button
-        android:id="@+id/button15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
-        android:onClick="goto_menu"
-        android:text="Revenir au menu"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.862" />
+        app:layout_constraintVertical_bias="0.888" />
 
     <ImageView
-        android:id="@+id/imageView14"
+        android:id="@+id/explosion2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="visible"
@@ -41,7 +28,7 @@
         tools:layout_editor_absoluteY="0dp" />
 
     <TextView
-        android:id="@+id/textViewfin2jeu"
+        android:id="@+id/felicitation2"
         android:layout_width="324dp"
         android:layout_height="205dp"
         android:layout_marginTop="52dp"
@@ -52,10 +39,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView14" />
+        app:layout_constraintTop_toTopOf="@+id/explosion2" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/oh_non2"
         android:layout_width="314dp"
         android:layout_height="192dp"
         android:layout_marginTop="72dp"
@@ -67,14 +54,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/pouce2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="152dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView14"
+        app:layout_constraintTop_toTopOf="@+id/explosion2"
         app:srcCompat="@drawable/pouce" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

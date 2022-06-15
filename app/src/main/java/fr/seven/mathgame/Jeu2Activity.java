@@ -17,18 +17,14 @@ public class Jeu2Activity extends Jeu {
     private String equation2;
     private String equation3;
     private String equation4;
-    private static int compteur =0;
+    private int compteur;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         numeroJeu=2;
         setContentView(R.layout.activity_jeu2);
+        compteur = getIntent().getIntExtra("compteur",0);
         qcm();
-        if(compteur==4){
-            Intent intent = new Intent(this, FinJeu2Activity.class);
-            intent.putExtra("action", "lose");
-            startActivity(intent);
-        }
     }
 
         public void qcm () {
@@ -87,18 +83,22 @@ public class Jeu2Activity extends Jeu {
                 break;
         }
 
-        int comparaison = button.compareTo(DebutantJeu2.bonneequation());
-        if (comparaison == 0) {
-            Intent intent = new Intent(this, Jeu2Activity.class);
-            intent.putExtra("action", "win");
-            intent.putExtra("numero",numeroJeu);
-            startActivity(intent);
-        } else {
-            Intent intent = new Intent(this, FinJeu2Activity.class);
-            intent.putExtra("action", "lose");
-            intent.putExtra("numero",numeroJeu);
-            startActivity(intent);
-        }
+            int comparaison = button.compareTo(DebutantJeu2.bonneequation());
+            if (comparaison == 0) {
+                Intent intent = new Intent(this, Jeu2Activity.class);
+                intent.putExtra("action", "win");
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("numero",numeroJeu);
+                intent.putExtra("compteur",compteur);
+                startActivity(intent);
+            } else {
+                Intent intent = new Intent(this, FinJeu2Activity.class);
+                intent.putExtra("action", "lose");
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("numero",numeroJeu);
+                startActivity(intent);
+                finish();
+            }
             /**if(compteur==4) {
                 Intent intent = new Intent(this, FinJeu2Activity.class);
                 intent.putExtra("action", "lose");
@@ -139,7 +139,9 @@ public class Jeu2Activity extends Jeu {
                 default:
                     Intent intent = new Intent(this, FinJeu2Activity.class);
                     intent.putExtra("action", "win");
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
+                    finish();
             }
 
         }

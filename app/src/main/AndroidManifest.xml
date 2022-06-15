@@ -74,7 +74,7 @@
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".LancementJeu1Activity"
+            android:name=".LancementJeu3Activity"
             android:exported="false"
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
@@ -90,6 +90,11 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".FinJeu2Activity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".FinJeu3Activity"
             android:exported="false"
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />

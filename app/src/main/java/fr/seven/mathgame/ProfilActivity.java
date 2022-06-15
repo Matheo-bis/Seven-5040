@@ -2,8 +2,8 @@ package fr.seven.mathgame;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,8 +17,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
+import java.util.Objects;
+
 public class ProfilActivity extends AppCompatActivity {
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,16 +29,17 @@ public class ProfilActivity extends AppCompatActivity {
 
         try {
             FirebaseUser User = FirebaseAuth.getInstance().getCurrentUser();
-            if(User.getDisplayName()!=null && User.getDisplayName().compareTo("")!=0) {
+            assert User != null;
+            if(Objects.requireNonNull(User.getDisplayName()).compareTo("")!=0) {
                 ((TextView) findViewById(R.id.textView10)).setText(User.getDisplayName());
             }
             else{
-                ((TextView) findViewById(R.id.textView10)).setText(User.getEmail().split("@")[0]);
+                ((TextView) findViewById(R.id.textView10)).setText(Objects.requireNonNull(User.getEmail()).split("@")[0]);
             }
             Picasso.get().load(User.getPhotoUrl()).into((ImageView) findViewById(R.id.imageView2));
         }
         catch(Exception e) {
-            System.err.print(e);
+            System.out.print(e);
         }
 
         if (FirebaseAuth.getInstance().getCurrentUser()==null){
@@ -53,7 +57,7 @@ public class ProfilActivity extends AppCompatActivity {
     public void del_progression(View view){
         new AlertDialog.Builder(this)
                 .setTitle("Supprimer les données?")
-                .setMessage("Voulez-vous VRAIMENT supprimer tout la progression?")
+                .setMessage("Voulez-vous VRAIMENT supprimer toute la progression?")
                 .setPositiveButton("Oui", (dialogInterface, i) -> {
                     if(FirebaseAuth.getInstance().getCurrentUser() != null){
                         FirebaseDatabase database = FirebaseDatabase.getInstance("https://projet7-e3b8a-default-rtdb.europe-west1.firebasedatabase.app/");

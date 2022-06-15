@@ -104,11 +104,14 @@
                 android:id="@+id/buttoncalc"
 
                 android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_margin="15dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
                 android:layout_weight="0.5"
-                android:background="@drawable/saturnel"
-                android:onClick="goto_calc" />
+                android:backgroundTint="#00FFFFFF"
+                android:onClick="goto_multi"
+                android:scaleType="centerInside"
+                android:src="@drawable/clash_orbital" />
         </TableRow>
 
         <TableRow
@@ -120,24 +123,28 @@
             android:weightSum="1">
 
             <ImageButton
-                android:id="@+id/buttontroll"
-
+                android:id="@+id/buttonjeu"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_margin="15dp"
                 android:layout_weight="0.5"
-                android:background="@drawable/mercure3"
-                android:onClick="goto_cours" />
+                android:background="#00FFFFFF"
+                android:onClick="goto_ranking"
+                android:scaleType="fitCenter"
+                android:src="@drawable/venus1" />
 
             <ImageButton
                 android:id="@+id/buttonranking"
 
                 android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_margin="15dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
                 android:layout_weight="0.5"
-                android:background="@drawable/venus1"
-                android:onClick="goto_ranking" />
+                android:backgroundTint="#00FFFFFF"
+                android:onClick="goto_cours"
+                android:scaleType="centerInside"
+                android:src="@drawable/mercure3" />
         </TableRow>
         <TableRow
             android:layout_width="match_parent"
@@ -149,21 +156,17 @@
 
             <ImageButton
                 android:id="@+id/buttonMulti"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
+                android:layout_width="341dp"
+                android:layout_height="150dp"
                 android:layout_margin="15dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
                 android:layout_weight="0.5"
-                android:background="@drawable/mercure3"
-                android:onClick="goto_multi" />
+                android:backgroundTint="#00FFFFFF"
+                android:onClick="goto_calc"
+                android:scaleType="centerInside"
+                android:src="@drawable/saturnel" />
 
-            <ImageButton
-                android:id="@+id/buttonwide"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_margin="15dp"
-                android:layout_weight="0.5"
-                android:background="@drawable/venus1"
-                android:onClick="goto_wide" />
         </TableRow>
     </TableLayout>
 
