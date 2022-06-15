@@ -61,6 +61,7 @@ public class DebutantJeu2 extends Equation {
                     equationok = " "+Minx + operateur + Miny + " = ";
                     return "" + MinResultat + "";
 
+
             case 2:
                 operateur = "×";
                 int Multx = rand.nextInt(5) + 1;

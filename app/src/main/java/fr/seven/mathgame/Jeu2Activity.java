@@ -3,6 +3,7 @@ package fr.seven.mathgame;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
@@ -110,31 +111,22 @@ public class Jeu2Activity extends Jeu {
 
         public void setQuestion (String str){
             View textvert = findViewById(R.id.textViewvert);
-            View textrouge = findViewById(R.id.textViewrouge);
-            View textbleu = findViewById(R.id.textViewbleu);
-            View textviolet = findViewById(R.id.textViewviolet);
+            ((TextView) findViewById(R.id.textViewvert)).setText(Html.fromHtml(str));
+            textvert.setVisibility(View.VISIBLE);
             switch (compteur){
                 case 0:
-                    ((TextView) findViewById(R.id.textViewvert)).setText(Html.fromHtml(str));
-                    textvert.setVisibility(View.VISIBLE);
                     compteur++;
                     break;
                 case 1:
-                    textvert.setVisibility(View.GONE);
-                    ((TextView) findViewById(R.id.textViewrouge)).setText(Html.fromHtml(str));
-                    textrouge.setVisibility(View.VISIBLE);
+                    textvert.setBackgroundColor(Color.RED);
                     compteur++;
                     break;
                 case 2:
-                    textrouge.setVisibility(View.GONE);
-                    ((TextView) findViewById(R.id.textViewbleu)).setText(Html.fromHtml(str));
-                    textbleu.setVisibility(View.VISIBLE);
+                    textvert.setBackgroundColor(Color.BLUE);
                     compteur++;
                     break;
                 case 3:
-                    textbleu.setVisibility(View.GONE);
-                    ((TextView) findViewById(R.id.textViewviolet)).setText(Html.fromHtml(str));
-                    textviolet.setVisibility(View.VISIBLE);
+                    textvert.setBackgroundColor(Color.MAGENTA);
                     compteur++;
                     break;
                 default:
