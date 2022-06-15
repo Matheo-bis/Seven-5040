@@ -81,7 +81,7 @@
         android:layout_width="fill_parent"
         android:layout_height="40dp"
         android:background="#1777A5"
-        android:fontFamily="sans-serif-black"
+        android:fontFamily="@font/gearsofpeace"
         android:gravity="center_horizontal"
         android:text="Addition"
         android:textColor="#04061E"
