@@ -49,24 +49,13 @@
         app:srcCompat="@drawable/pouce" />
 
     <Button
-        android:id="@+id/rejouer3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
+        android:id="@+id/revenir_au_menu3"
+        android:layout_width="136dp"
+        android:layout_height="68dp"
         android:layout_marginBottom="76dp"
+        android:onClick="goto_jeu2"
         android:text="Rejouer"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/revenir_au_menu3"
-        app:layout_constraintHorizontal_bias="0.22"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/revenir_au_menu3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="76dp"
-        android:text="Revenir au menu"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

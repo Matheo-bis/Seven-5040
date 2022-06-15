@@ -28,7 +28,7 @@ public class FinJeu2Activity extends AppCompatActivity {
         //startActivity(intent);
     //}
 
-    public void goto_menu(View view){
+    public void goto_jeu2(View view){
         finish();
     }
     public void win(View view){

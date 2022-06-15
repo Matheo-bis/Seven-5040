@@ -7,29 +7,16 @@
     tools:context=".FinJeu2Activity">
 
     <Button
-        android:id="@+id/rejouer2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/revenir_au_menu2"
+        android:layout_width="137dp"
+        android:layout_height="68dp"
         android:onClick="goto_jeu2"
         android:text="Rejouer"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/revenir_au_menu2"
-        app:layout_constraintHorizontal_bias="0.551"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.862" />
-
-    <Button
-        android:id="@+id/revenir_au_menu2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
-        android:onClick="goto_menu"
-        android:text="Revenir au menu"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.862" />
+        app:layout_constraintVertical_bias="0.888" />
 
     <ImageView
         android:id="@+id/explosion2"
