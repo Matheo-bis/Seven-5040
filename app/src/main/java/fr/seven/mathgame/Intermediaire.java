@@ -2,7 +2,7 @@ package fr.seven.mathgame;
 
 import java.util.Random;
 
-public class Intermédiaire extends Equation{
+public class Intermediaire extends Equation{
     private static int jeuequation = 0;
     private static String equationfake1;
     private static String equationfake2;

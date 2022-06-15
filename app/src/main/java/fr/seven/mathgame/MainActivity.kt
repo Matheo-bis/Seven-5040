@@ -40,23 +40,23 @@ class MainActivity : AppCompatActivity() {
         val tuto_6 = AlertDialog.Builder(this)
                 .setTitle("Bienvenue!")
                 .setMessage("Le bouton en haut à gauche permet d'accéder aux paramètres, et la photo de profil (ainsi que le nom) permet d'accéder au profil")
-                .setPositiveButton("Fini!") { dialogInterface: DialogInterface?, i: Int -> }
+                .setPositiveButton("Fini!") { _: DialogInterface?, i: Int -> }
         val tuto_5 = AlertDialog.Builder(this)
                 .setTitle("Bienvenue!")
                 .setMessage("Il y a aussi une calculatrice, des cours et un classement")
-                .setPositiveButton("Suivant") { dialogInterface: DialogInterface?, _: Int -> tuto_6.show() }
+                .setPositiveButton("Suivant") { _: DialogInterface?, _: Int -> tuto_6.show() }
         val tuto_4 = AlertDialog.Builder(this)
                 .setTitle("Bienvenue!")
                 .setMessage("Et le Clash Orbital permet de jouer à plusieurs.")
-                .setPositiveButton("Suivant") { dialogInterface: DialogInterface?, i: Int -> tuto_5.show() }
+                .setPositiveButton("Suivant") { _: DialogInterface?, i: Int -> tuto_5.show() }
         val tuto_3 = AlertDialog.Builder(this)
                 .setTitle("Bienvenue!")
                 .setMessage("... Le Rush Martien est ... un rush? (j'en sait rien j'ai pas dev ça)")
-                .setPositiveButton("Suivant") { dialogInterface: DialogInterface?, i: Int -> tuto_4.show() }
+                .setPositiveButton("Suivant") { _: DialogInterface?, i: Int -> tuto_4.show() }
         val tuto_2 = AlertDialog.Builder(this)
                 .setTitle("Bienvenue!")
                 .setMessage("... L'explosion Solaire est un désamorçage en temps limité (oui oui)...")
-                .setPositiveButton("Suivant") { dialogInterface: DialogInterface?, i: Int -> tuto_3.show() }
+                .setPositiveButton("Suivant") { _: DialogInterface?, i: Int -> tuto_3.show() }
         if (!sharedPreferences.getBoolean("Tuto_fini", false)) {
             editor.putBoolean("Tuto_fini", true)
             editor.apply()

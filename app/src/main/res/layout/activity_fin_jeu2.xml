@@ -6,17 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".FinJeu2Activity">
 
-    <ImageView
-        android:id="@+id/explosion2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/fus_e3d" />
-
     <TextView
         android:id="@+id/felicitation2"
         android:layout_width="324dp"
@@ -46,7 +35,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/pouce2"
+        android:id="@+id/pouce_haut2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:visibility="visible"
@@ -96,5 +85,17 @@
             android:text="Revenir au menu"
             android:textColor="@color/colorText" />
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/pouce_bas2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.606"
+        app:srcCompat="@drawable/_f44e" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
