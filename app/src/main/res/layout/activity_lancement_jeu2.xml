@@ -35,10 +35,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:background="@drawable/button"
+        android:textColor="@color/colorText"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:id="@+id/buttonJouer2"
         android:layout_width="294dp"
         android:layout_height="98dp"
-        android:background="#F44336"
         android:backgroundTint="#F44336"
         android:onClick="launchGame2"
         android:text="À toi de jouer!"

@@ -17,5 +17,6 @@ public class LancementJeu2Activity extends AppCompatActivity {
     public void launchGame2(View v) {
         Intent intent=new Intent(this, Jeu2Activity.class);
         startActivity(intent);
+        finish();
     }
 }

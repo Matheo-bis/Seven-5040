@@ -61,7 +61,7 @@
     <LinearLayout
         android:id="@+id/linearLayout6"
         android:layout_width="0dp"
-        android:layout_height="70"
+        android:layout_height="70dp"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="50dp"
@@ -72,16 +72,17 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/rejouer2"
+            android:background="@drawable/button"
+            android:textColor="@color/colorText"
             style="@style/Widget.AppCompat.Button.Borderless"
+            android:id="@+id/rejouer2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:layout_weight="1"
-            android:background="@drawable/button"
-            android:onClick="goto_jeu2"
+            android:onClick="restart"
             android:text="Rejouer"
-            android:textColor="@color/colorText" />
+            />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/revenir_au_menu2"

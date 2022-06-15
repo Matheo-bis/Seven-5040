@@ -17,7 +17,10 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="2dp" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
+        android:background="@drawable/button"
+        android:textColor="@color/colorText"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:id="@+id/button16"
         android:layout_width="192dp"
         android:layout_height="77dp"
