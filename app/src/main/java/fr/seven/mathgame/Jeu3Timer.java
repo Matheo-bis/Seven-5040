@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Jeu3Timer extends Jeu{
+    protected int scorejeu3 = 0;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
 
@@ -53,6 +54,8 @@ public class Jeu3Timer extends Jeu{
                     intent.putExtra("action", "lose");
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent.putExtra("numero", numeroJeu);
+                    intent.putExtra("score", scorejeu3);
+
                     startActivity(intent);
                     finish();
 

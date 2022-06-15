@@ -43,6 +43,7 @@ public class Jeu3Activity extends Jeu3Timer {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         switch (sharedPreferences.getString("Difficulty", "ERREUR")) {
             case "Intermédiaire":
+                setDifficultyTime(200);
                 setQuestion(Intermediaire.equation());
                 if (Intermediaire.functequation() == 1) {
                     qcm();
@@ -55,6 +56,7 @@ public class Jeu3Activity extends Jeu3Timer {
                 }
                 break;
             case "Expert":
+                setDifficultyTime(800);
                 setQuestion(Expert.equation());
                 if (Expert.functequation() == 1) {
                     qcm();
@@ -67,6 +69,7 @@ public class Jeu3Activity extends Jeu3Timer {
                 }
                 break;
             default:
+                setDifficultyTime(100);
                 setQuestion(Debutant.equation());
                 if (Debutant.functequation() == 1) {
                     qcm();
@@ -240,7 +243,7 @@ public class Jeu3Activity extends Jeu3Timer {
             addscorejeu3 += 1;  //set du multiplicateur
             AddScoreJeu3();
             ProgressBar timebar = findViewById(R.id.timebar);
-            timebar.setProgress(Math.min(1000,timebar.getProgress()+100));
+            timebar.setProgress(Math.min(1000,timebar.getProgress()+getDifficultytime()));
             qcmbutton1.setVisibility(View.GONE);
             qcmbutton2.setVisibility(View.GONE);
             qcmbutton3.setVisibility(View.GONE);
@@ -248,7 +251,7 @@ public class Jeu3Activity extends Jeu3Timer {
             init();
         } else {                    //Mauvaise réponse
             ProgressBar timebar = findViewById(R.id.timebar);
-            timebar.setProgress(Math.min(1000,timebar.getProgress()-100));
+            timebar.setProgress(Math.min(1000,timebar.getProgress()-150));
             if (addscorejeu3 >3){ addscorejeu3 -= 1; } //set du multiplicateur
             RetScoreJeu3();
             init();
@@ -264,25 +267,28 @@ public class Jeu3Activity extends Jeu3Timer {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         switch (sharedPreferences.getString("Difficulty", "ERREUR")) {
             case "Intermédiaire":
+                setDifficultyTime(200);
                 comparaison = (Intermediaire.resultat()).compareTo(text);
                 break;
             case "Expert":
+                setDifficultyTime(800);
                 comparaison = (Expert.resultat()).compareTo(text);
                 break;
             default:
+                setDifficultyTime(100);
                 comparaison = (Debutant.resultat()).compareTo(text);
         }
         if (comparaison == 0) { //Bonne réponse
             addscorejeu3 += 1;
             AddScoreJeu3();
             ProgressBar timebar = findViewById(R.id.timebar);
-            timebar.setProgress(Math.min(1000,timebar.getProgress()+100));
+            timebar.setProgress(Math.min(1000,timebar.getProgress()+getDifficultytime()));
             init();
         } else {                //Mauvaise reponse
             if (addscorejeu3 >3){ addscorejeu3 -= 1; } //set du multiplicateur
             RetScoreJeu3();
             ProgressBar timebar = findViewById(R.id.timebar);
-            timebar.setProgress(Math.min(1000,timebar.getProgress()-100));
+            timebar.setProgress(Math.min(1000,timebar.getProgress()-150));
             init();
         }
     }
@@ -297,7 +303,6 @@ public class Jeu3Activity extends Jeu3Timer {
         setQuestion(EquationHistory.get(0));
     }
 
-    int scorejeu3 = 0;
     int addscorejeu3 = 1;
     int multiscorejeu3 = 1;
     public void AddScoreJeu3(){
@@ -309,6 +314,16 @@ public class Jeu3Activity extends Jeu3Timer {
         scorejeu3 = scorejeu3 - addscorejeu3;
     }
 
+    int difficultytime;
+
+    public void setDifficultyTime(int x){
+        difficultytime = x;
+    }
+
+    public int getDifficultytime(){
+        return difficultytime;
+    }
+
     @Override
     public void onBackPressed(){
         ProgressBar timebar = findViewById(R.id.timebar);
@@ -316,10 +331,5 @@ public class Jeu3Activity extends Jeu3Timer {
         layout.removeView(timebar);
         finish();
     }
-
-    public int getScorejeu3(){
-        return scorejeu3;
-    }
-
 
 }

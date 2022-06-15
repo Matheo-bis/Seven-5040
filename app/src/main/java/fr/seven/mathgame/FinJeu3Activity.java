@@ -13,7 +13,7 @@ public class FinJeu3Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fin_jeu3);
-       //((TextView)findViewById(R.id.textscorefin3)).setText("Score: "+ getIntent().getIntExtra("score",0));
+       ((TextView)findViewById(R.id.textscorefin3)).setText("Score: "+ getIntent().getIntExtra("score",0));
         switch(getIntent().getStringExtra("action")){
             case "lose":
                 lose(null);
