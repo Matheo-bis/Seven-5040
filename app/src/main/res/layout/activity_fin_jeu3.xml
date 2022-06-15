@@ -48,7 +48,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/pouce" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
+        android:background="@drawable/button"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:textColor="@color/colorText"
         android:id="@+id/rejouer3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -60,7 +63,10 @@
         app:layout_constraintHorizontal_bias="0.22"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
+        android:background="@drawable/button"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:textColor="@color/colorText"
         android:id="@+id/revenir_au_menu3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
