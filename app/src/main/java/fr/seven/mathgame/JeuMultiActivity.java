@@ -36,6 +36,7 @@ public class JeuMultiActivity extends Jeu {
     private String equation1;
     private String equation2;
     private String equation3;
+    Boolean DONE = false;
     private int jeu1et2;
     public String self_identifier;
     public String enemy_identifier;
@@ -64,7 +65,11 @@ public class JeuMultiActivity extends Jeu {
             public void onCancelled(@NonNull DatabaseError error) {}
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
-                lose_points();
+                if (dataSnapshot.getValue() != null && (long) dataSnapshot.getValue() == 2) {
+                    lose();
+                } else {
+                    lose_points();
+                }
             }
         };
         ChildEventListener selfEventListener = new ChildEventListener() {
@@ -78,7 +83,12 @@ public class JeuMultiActivity extends Jeu {
             public void onCancelled(@NonNull DatabaseError error) {}
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
-                gain_points();
+                if(dataSnapshot.getValue()!=null && (long)dataSnapshot.getValue()==2) {
+                    win();
+                }
+                else {
+                    gain_points();
+                }
             }
         };
         database
@@ -119,12 +129,49 @@ public class JeuMultiActivity extends Jeu {
         textview.startAnimation(shake);
         buttonCE(null);
     }
-    public void lose_points(){
-        if(progress.getProgress()-10<=0) {
+
+    private void send_enemy_win() {
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://projet7-e3b8a-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference databaseReference = database
+                .getReference("match")
+                .child(getIntent().getStringExtra("MatchID"))
+                .child(enemy_identifier)
+                .push();
+        databaseReference.setValue(2);
+    }
+    private void send_enemy_lose() {
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://projet7-e3b8a-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference databaseReference = database
+                .getReference("match")
+                .child(getIntent().getStringExtra("MatchID"))
+                .child(self_identifier)
+                .push();
+        databaseReference.setValue(2);
+    }
+    private void win(){
+        if(!DONE) {
+            DONE=true;
             Intent intent = new Intent(this, EcranFinActivity.class);
-            intent.putExtra("action","lose");
+            intent.putExtra("action", "wide");
+            intent.putExtra("numero", 5);
             startActivity(intent);
             finish();
+        }
+    }
+
+    private void lose(){
+        if(!DONE) {
+            DONE = true;
+            Intent intent = new Intent(this, EcranFinActivity.class);
+            intent.putExtra("action", "lose");
+            startActivity(intent);
+            finish();
+        }
+    }
+    public void lose_points(){
+        if(progress.getProgress()-10<=0) {
+            lose();
+            send_enemy_win();
         }
         ObjectAnimator animator = ObjectAnimator.ofInt(progress, "progress", progress.getProgress(), Math.max(progress.getProgress()-10,0));
         animator.setDuration(100);
@@ -133,12 +180,8 @@ public class JeuMultiActivity extends Jeu {
         animator.start();    }
     public void gain_points(){
         if(progress.getProgress()+10>=100) {
-            Intent intent = new Intent(this, EcranFinActivity.class);
-            intent.putExtra("action","wide");
-            intent.putExtra("numero",5);
-
-            startActivity(intent);
-            finish();
+            win();
+            send_enemy_lose();
         }
         ObjectAnimator animator = ObjectAnimator.ofInt(progress, "progress", progress.getProgress(), Math.min(progress.getProgress()+10,100));
         animator.setDuration(100);
