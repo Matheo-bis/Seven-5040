@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -47,14 +48,19 @@ public class Jeu2Activity extends Jeu {
                     y = 2;
                     break;
                 case 2:
-                    z = 2;
+                    z = 1;
                     x = 4;
                     y = 3;
+                    break;
+                case 3:
+                    z=2;
+                    x=4;
+                    y=1;
                     break;
                 default:
                     z = 3;
                     x = 1;
-                    y = 4;
+                    y = 2;
                     break;
             }
             qcmbutton1.setText(DebutantJeu2.funcequationqcm(u));
@@ -112,6 +118,7 @@ public class Jeu2Activity extends Jeu {
         public void setQuestion (String str){
             View textvert = findViewById(R.id.textViewvert);
             ((TextView) findViewById(R.id.textViewvert)).setText(Html.fromHtml(str));
+            ImageView cable = findViewById(R.id.imageView3);
             textvert.setVisibility(View.VISIBLE);
             switch (compteur){
                 case 0:
@@ -119,14 +126,17 @@ public class Jeu2Activity extends Jeu {
                     break;
                 case 1:
                     textvert.setBackgroundColor(Color.RED);
+                    cable.setImageResource(R.drawable.cables1);
                     compteur++;
                     break;
                 case 2:
                     textvert.setBackgroundColor(Color.BLUE);
+                    cable.setImageResource(R.drawable.cables21);
                     compteur++;
                     break;
                 case 3:
                     textvert.setBackgroundColor(Color.MAGENTA);
+                    cable.setImageResource(R.drawable.cables3);
                     compteur++;
                     break;
                 default:

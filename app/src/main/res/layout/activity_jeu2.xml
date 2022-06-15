@@ -101,7 +101,7 @@
         android:adjustViewBounds="true"
         android:scaleType="fitStart"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/unknown"
+        app:srcCompat="@drawable/cables2"
         tools:layout_editor_absoluteX="0dp" />
 
     <TextView
