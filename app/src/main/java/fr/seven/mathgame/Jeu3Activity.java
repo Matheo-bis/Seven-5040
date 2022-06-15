@@ -2,6 +2,7 @@ package fr.seven.mathgame;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.preference.PreferenceManager;
 
 import android.annotation.SuppressLint;
@@ -235,16 +236,17 @@ public class Jeu3Activity extends Jeu3Timer {
         Button qcmbutton2 = findViewById(R.id.buttonequation2);
         Button qcmbutton3 = findViewById(R.id.buttonequation3);
         View space = findViewById(R.id.Space);
+        TextView text = findViewById(R.id.textView);
         if (comparaison == 0) {     //Bonne réponse
             addscorejeu3 += 1;  //set du multiplicateur
             AddScoreJeu3();
             ProgressBar timebar = findViewById(R.id.timebar);
             timebar.setProgress(Math.min(1000,timebar.getProgress()+100));
-            init();
             qcmbutton1.setVisibility(View.GONE);
             qcmbutton2.setVisibility(View.GONE);
             qcmbutton3.setVisibility(View.GONE);
             space.setVisibility(View.GONE);
+            init();
         } else {                    //Mauvaise réponse
             ProgressBar timebar = findViewById(R.id.timebar);
             timebar.setProgress(Math.min(1000,timebar.getProgress()-100));
@@ -310,7 +312,11 @@ public class Jeu3Activity extends Jeu3Timer {
 
     @Override
     public void onBackPressed(){
+        ProgressBar timebar = findViewById(R.id.timebar);
+        ConstraintLayout layout = (ConstraintLayout) timebar.getParent();
+        layout.removeView(timebar);
         finish();
     }
+
 
 }
