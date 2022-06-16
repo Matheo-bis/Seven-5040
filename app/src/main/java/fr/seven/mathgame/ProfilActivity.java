@@ -42,7 +42,7 @@ public class ProfilActivity extends AppCompatActivity {
             System.out.print(e);
         }
 
-        if (FirebaseAuth.getInstance().getCurrentUser()==null){
+        if (Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).isAnonymous()){
             Button button = findViewById(R.id.button);
             button.setText("Se Connecter");
         }
