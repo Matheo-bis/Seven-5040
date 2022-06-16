@@ -10,7 +10,7 @@
         android:id="@+id/felicitation2"
         android:layout_width="324dp"
         android:layout_height="205dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="84dp"
         android:text="Félicitations!"
         android:textAlignment="center"
         android:textSize="48sp"
@@ -36,15 +36,15 @@
 
     <ImageView
         android:id="@+id/pouce_haut2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="338dp"
+        android:layout_height="427dp"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/felicitation2"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.726"
         app:srcCompat="@drawable/pouce" />
 
     <LinearLayout
@@ -88,14 +88,14 @@
 
     <ImageView
         android:id="@+id/pouce_bas2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="358dp"
+        android:layout_height="437dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.606"
+        app:layout_constraintVertical_bias="0.591"
         app:srcCompat="@drawable/_f44e" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
