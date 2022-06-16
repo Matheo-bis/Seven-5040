@@ -3,10 +3,12 @@ package fr.seven.mathgame;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -46,14 +48,19 @@ public class Jeu2Activity extends Jeu {
                     y = 2;
                     break;
                 case 2:
-                    z = 2;
+                    z = 1;
                     x = 4;
                     y = 3;
+                    break;
+                case 3:
+                    z=2;
+                    x=4;
+                    y=1;
                     break;
                 default:
                     z = 3;
                     x = 1;
-                    y = 4;
+                    y = 2;
                     break;
             }
             qcmbutton1.setText(DebutantJeu2.funcequationqcm(u));
@@ -110,31 +117,26 @@ public class Jeu2Activity extends Jeu {
 
         public void setQuestion (String str){
             View textvert = findViewById(R.id.textViewvert);
-            View textrouge = findViewById(R.id.textViewrouge);
-            View textbleu = findViewById(R.id.textViewbleu);
-            View textviolet = findViewById(R.id.textViewviolet);
+            ((TextView) findViewById(R.id.textViewvert)).setText(Html.fromHtml(str));
+            ImageView cable = findViewById(R.id.imageView3);
+            textvert.setVisibility(View.VISIBLE);
             switch (compteur){
                 case 0:
-                    ((TextView) findViewById(R.id.textViewvert)).setText(Html.fromHtml(str));
-                    textvert.setVisibility(View.VISIBLE);
                     compteur++;
                     break;
                 case 1:
-                    textvert.setVisibility(View.GONE);
-                    ((TextView) findViewById(R.id.textViewrouge)).setText(Html.fromHtml(str));
-                    textrouge.setVisibility(View.VISIBLE);
+                    textvert.setBackgroundColor(Color.RED);
+                    cable.setImageResource(R.drawable.cables1);
                     compteur++;
                     break;
                 case 2:
-                    textrouge.setVisibility(View.GONE);
-                    ((TextView) findViewById(R.id.textViewbleu)).setText(Html.fromHtml(str));
-                    textbleu.setVisibility(View.VISIBLE);
+                    textvert.setBackgroundColor(Color.BLUE);
+                    cable.setImageResource(R.drawable.cables21);
                     compteur++;
                     break;
                 case 3:
-                    textbleu.setVisibility(View.GONE);
-                    ((TextView) findViewById(R.id.textViewviolet)).setText(Html.fromHtml(str));
-                    textviolet.setVisibility(View.VISIBLE);
+                    textvert.setBackgroundColor(Color.MAGENTA);
+                    cable.setImageResource(R.drawable.cables3);
                     compteur++;
                     break;
                 default:
