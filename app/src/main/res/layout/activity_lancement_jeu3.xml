@@ -8,8 +8,9 @@
 
     <TextView
         android:id="@+id/textView14"
-        android:layout_width="322dp"
-        android:layout_height="128dp"
+        android:layout_width="316dp"
+        android:layout_height="98dp"
+        android:background="#00FFFFFF"
         android:fontFamily="sans-serif"
         android:text="Réponds le plus vite possible! Attention aux erreurs !                 Bonne Chance!"
         android:textAlignment="center"
@@ -27,6 +28,7 @@
         android:layout_width="310dp"
         android:layout_height="209dp"
         android:layout_marginTop="112dp"
+        android:background="#00FFFFFF"
         android:fontFamily="sans-serif-smallcaps"
         android:text="C'est l'heure du Rush Martien!"
         android:textAlignment="center"
