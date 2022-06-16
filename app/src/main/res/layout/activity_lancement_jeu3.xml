@@ -7,28 +7,49 @@
     tools:context=".LancementJeu3Activity">
 
     <TextView
-        android:id="@+id/textView12"
-        android:layout_width="352dp"
-        android:layout_height="404dp"
-        android:layout_marginTop="116dp"
-        android:text="Répond aux questions le plus rapidement possible. Chaque bonne réponse te rajoute du temps et chaque mauvaise réponse t'en enlève."
+        android:id="@+id/textView14"
+        android:layout_width="322dp"
+        android:layout_height="128dp"
+        android:fontFamily="sans-serif"
+        android:text="Réponds le plus vite possible! Attention aux erreurs !                 Bonne Chance!"
         android:textAlignment="center"
-        android:textSize="34sp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.618" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:background="@drawable/button"
-        android:textColor="@color/colorText"
-        style="@style/Widget.AppCompat.Button.Borderless"
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="310dp"
+        android:layout_height="209dp"
+        android:layout_marginTop="112dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="C'est l'heure du Rush Martien!"
+        android:textAlignment="center"
+        android:textColor="#F44336"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView14"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
         android:id="@+id/button16"
-        android:layout_width="192dp"
-        android:layout_height="77dp"
+        android:layout_width="260dp"
+        android:layout_height="136dp"
+        android:background="@drawable/button"
+        android:backgroundTint="#00FFFFFF"
         android:onClick="launchGame3"
-        android:text="C'est parti!"
+        android:scaleType="centerInside"
+        android:src="@drawable/mars_3d_c_es"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -238,7 +238,6 @@ public class Jeu3Activity extends Jeu3Timer {
         Button qcmbutton2 = findViewById(R.id.buttonequation2);
         Button qcmbutton3 = findViewById(R.id.buttonequation3);
         View space = findViewById(R.id.Space);
-        TextView text = findViewById(R.id.textView);
         if (comparaison == 0) {     //Bonne réponse
             addscorejeu3 += 1;  //set du multiplicateur
             AddScoreJeu3();
