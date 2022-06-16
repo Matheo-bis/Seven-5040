@@ -11,6 +11,7 @@
         android:id="@+id/imageView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
         app:srcCompat="@drawable/fond3" />
 
     <ScrollView
@@ -42,6 +43,7 @@
         android:background="#00FFFFFF"
         android:fontFamily="sans-serif-thin"
         android:text="Classement global"
+        android:textColor="#FFFFFF"
         android:textSize="34sp"
         android:typeface="sans"
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
