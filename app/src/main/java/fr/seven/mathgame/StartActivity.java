@@ -3,21 +3,16 @@ package fr.seven.mathgame;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.appcheck.FirebaseAppCheck;
@@ -33,9 +28,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.Objects;
 
 public class StartActivity extends AppCompatActivity {
-    static Boolean initialized = true;
-    private FirebaseAuth firebaseAuth;
 
+    private FirebaseAuth firebaseAuth;
     private SharedPreferences sharedPreferences;
 
     @Override
@@ -59,7 +53,6 @@ public class StartActivity extends AppCompatActivity {
                     .setPositiveButton("OK", (dialogInterface, i) -> {})
                     .show();
         }
-        FirebaseUser fUser;
         FirebaseApp.initializeApp(/*context=*/ this);
         FirebaseAppCheck firebaseAppCheck = FirebaseAppCheck.getInstance();
         firebaseAppCheck.installAppCheckProviderFactory(
@@ -76,24 +69,18 @@ public class StartActivity extends AppCompatActivity {
 
     public void connectAnonymously(View view){
         Activity a = this;
-        firebaseAuth.signInAnonymously().addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            UserProfileChangeRequest.Builder builder = new UserProfileChangeRequest.Builder();
-                            builder.setDisplayName("Anonyme-"+ (Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid()).toString().substring(0,5));
-                            Objects.requireNonNull(firebaseAuth.getCurrentUser()).updateProfile(builder.build())
-                                    .addOnCompleteListener(a,new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful()) {
-                                                start_application(null);
-                                            }
-                                        }
-                            });
-                        }
-                    }
-                });
+        firebaseAuth.signInAnonymously().addOnCompleteListener(this, task -> {
+            if (task.isSuccessful()) {
+                UserProfileChangeRequest.Builder builder = new UserProfileChangeRequest.Builder();
+                builder.setDisplayName("Anonyme-"+ (Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid()).substring(0,5));
+                Objects.requireNonNull(firebaseAuth.getCurrentUser()).updateProfile(builder.build())
+                        .addOnCompleteListener(a, task1 -> {
+                            if (task1.isSuccessful()) {
+                                start_application(null);
+                            }
+                        });
+            }
+        });
 
     }
 
@@ -103,48 +90,32 @@ public class StartActivity extends AppCompatActivity {
         if (pendingResultTask != null) {
             pendingResultTask
                     .addOnSuccessListener(
-                            new OnSuccessListener<AuthResult>() {
-                                @Override
-                                public void onSuccess(AuthResult authResult) {
-                                    System.out.println("Signed in as "+ Objects.requireNonNull(authResult.getUser()).getDisplayName());
-                                    System.out.println("PP: "+authResult.getUser().getPhotoUrl());
-                                    FirebaseUser fUser = authResult.getUser();
-                                    sharedPreferences.edit().putString("UserUID",fUser.getUid());
-                                    sharedPreferences.edit().putString("UserDisplayName",fUser.getDisplayName());
-                                    sharedPreferences.edit().putString("UserPhoto", String.valueOf(fUser.getPhotoUrl()));
-                                    start_application(null);
+                            authResult -> {
+                                System.out.println("Signed in as "+ Objects.requireNonNull(authResult.getUser()).getDisplayName());
+                                System.out.println("PP: "+authResult.getUser().getPhotoUrl());
+                                FirebaseUser fUser = authResult.getUser();
+                                sharedPreferences.edit().putString("UserUID",fUser.getUid()).apply();
+                                sharedPreferences.edit().putString("UserDisplayName",fUser.getDisplayName()).apply();
+                                sharedPreferences.edit().putString("UserPhoto", String.valueOf(fUser.getPhotoUrl())).apply();
+                                start_application(null);
 
-                                }
                             })
                     .addOnFailureListener(
-                            new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    System.out.println("Login failed :(");
-                                    System.out.println(e);
-                                }
+                            e -> {
+                                System.out.println("Login failed :(");
+                                e.printStackTrace();
                             });
         } else {
             firebaseAuth.startActivityForSignInWithProvider(/* activity= */ this, provider.build())
                     .addOnSuccessListener(
-                            new OnSuccessListener<AuthResult>() {
-                                @Override
-                                public void onSuccess(AuthResult authResult) {
-                                    FirebaseUser fUser = authResult.getUser();
-                                    System.out.println("Signed in as "+ Objects.requireNonNull(authResult.getUser()).getDisplayName());
-                                    System.out.println("PP: "+authResult.getUser().getPhotoUrl());
-                                    fUser = authResult.getUser();
-
-                                    start_application(null);                                }
-                            })
+                            authResult -> {
+                                System.out.println("Signed in as "+ Objects.requireNonNull(authResult.getUser()).getDisplayName());
+                                System.out.println("PP: "+authResult.getUser().getPhotoUrl());
+                                start_application(null);                                })
                     .addOnFailureListener(
-                            new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    System.out.println("Login failed :(");
-                                    System.out.println(e);
-
-                                }
+                            e -> {
+                                System.out.println("Login failed :(");
+                                e.printStackTrace();
                             });
         }
     }
@@ -155,13 +126,18 @@ public class StartActivity extends AppCompatActivity {
         startActivity(intent);
         if (firebaseAuth.getCurrentUser() != null) {
             FirebaseDatabase database = FirebaseDatabase.getInstance("https://projet7-e3b8a-default-rtdb.europe-west1.firebasedatabase.app/");
-            FirebaseDatabase.getInstance("https://projet7-e3b8a-default-rtdb.europe-west1.firebasedatabase.app/").setPersistenceEnabled(true);
+            try {
+                FirebaseDatabase.getInstance("https://projet7-e3b8a-default-rtdb.europe-west1.firebasedatabase.app/").setPersistenceEnabled(true);
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
             DatabaseReference reference = database.getReference("userdata").child(firebaseAuth.getCurrentUser().getUid());
             if(firebaseAuth.getCurrentUser().getDisplayName()!=null && firebaseAuth.getCurrentUser().getDisplayName().compareTo("")!=0) {
                 reference.child("username").setValue(firebaseAuth.getCurrentUser().getDisplayName());
             }
             else{
-                reference.child("username").setValue(firebaseAuth.getCurrentUser().getEmail().split("@")[0]);
+                reference.child("username").setValue(Objects.requireNonNull(firebaseAuth.getCurrentUser().getEmail()).split("@")[0]);
             }
             ScoreActivity.initScore();
         }
