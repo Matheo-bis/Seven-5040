@@ -4,7 +4,6 @@ plugins {
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'kotlin-android'
 android {
-    compileSdk 32
 
     defaultConfig {
         applicationId "fr.seven.mathapp"
@@ -58,6 +57,7 @@ repositories {
 }
 
 android {
+    compileSdk 33
     lintOptions {
         checkReleaseBuilds false
         // Or, if you prefer, you can continue to check for errors in release builds,
